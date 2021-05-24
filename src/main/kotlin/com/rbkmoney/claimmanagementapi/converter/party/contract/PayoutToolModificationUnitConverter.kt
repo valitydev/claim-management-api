@@ -1,0 +1,84 @@
+package com.rbkmoney.claimmanagementapi.converter.party.contract
+
+import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
+import com.rbkmoney.damsel.claim_management.PayoutToolModification
+import com.rbkmoney.damsel.claim_management.PayoutToolParams
+import com.rbkmoney.damsel.domain.CurrencyRef
+import com.rbkmoney.swag.claim_management.model.ContractPayoutToolModification.PayoutToolModificationTypeEnum.CONTRACTPAYOUTTOOLCREATIONMODIFICATION
+import com.rbkmoney.swag.claim_management.model.ContractPayoutToolModification.PayoutToolModificationTypeEnum.CONTRACTPAYOUTTOOLINFOMODIFICATION
+import org.springframework.stereotype.Component
+import com.rbkmoney.damsel.claim_management.PayoutToolModificationUnit as ThriftPayoutToolModificationUnit
+import com.rbkmoney.swag.claim_management.model.ContractModification as SwagContractModification
+import com.rbkmoney.swag.claim_management.model.ContractPayoutToolCreationModification as SwagContractPayoutToolCreationModification
+import com.rbkmoney.swag.claim_management.model.ContractPayoutToolInfoModification as SwagContractPayoutToolInfoModification
+import com.rbkmoney.swag.claim_management.model.ContractPayoutToolModificationUnit as SwagContractPayoutToolModificationUnit
+import com.rbkmoney.swag.claim_management.model.CurrencyRef as SwagCurrencyRef
+
+@Component
+class PayoutToolModificationUnitConverter(
+    private val payoutToolInfoConverter: PayoutToolInfoConverter
+) : DarkApiConverter<ThriftPayoutToolModificationUnit, SwagContractPayoutToolModificationUnit> {
+
+    override fun convertToThrift(value: SwagContractPayoutToolModificationUnit): ThriftPayoutToolModificationUnit {
+        val thriftPayoutToolModification = PayoutToolModification()
+        val swagPayoutToolModification = value.modification
+        when (swagPayoutToolModification.payoutToolModificationType) {
+            CONTRACTPAYOUTTOOLCREATIONMODIFICATION -> {
+                val swagContractPayoutToolCreation =
+                    swagPayoutToolModification as SwagContractPayoutToolCreationModification
+                val creation = PayoutToolParams().apply {
+                    currency = CurrencyRef().setSymbolicCode(swagContractPayoutToolCreation.currency.symbolicCode)
+                    toolInfo = payoutToolInfoConverter.convertToThrift(swagContractPayoutToolCreation.toolInfo)
+                }
+                thriftPayoutToolModification.creation = creation
+            }
+            CONTRACTPAYOUTTOOLINFOMODIFICATION -> {
+                val swagPayoutToolInfo = swagPayoutToolModification as SwagContractPayoutToolInfoModification
+                thriftPayoutToolModification.infoModification =
+                    payoutToolInfoConverter.convertToThrift(swagPayoutToolInfo.payoutToolInfo)
+            }
+            else -> throw IllegalArgumentException(
+                "Unknown PayoutTool modification type: ${swagPayoutToolModification.payoutToolModificationType}"
+            )
+        }
+
+        return ThriftPayoutToolModificationUnit().apply {
+            payoutToolId = value.payoutToolID
+            modification = thriftPayoutToolModification
+        }
+    }
+
+    override fun convertToSwag(value: ThriftPayoutToolModificationUnit): SwagContractPayoutToolModificationUnit {
+        val thriftPayoutToolModification = value.getModification()
+        val swagPayoutToolModification = when {
+            thriftPayoutToolModification.isSetCreation -> {
+                val thriftCreation = thriftPayoutToolModification.creation
+                SwagContractPayoutToolCreationModification().apply {
+                    payoutToolModificationType = CONTRACTPAYOUTTOOLCREATIONMODIFICATION
+                    currency = SwagCurrencyRef().symbolicCode(thriftCreation.currency.symbolicCode)
+                    toolInfo = payoutToolInfoConverter.convertToSwag(thriftCreation.toolInfo)
+                }
+            }
+            thriftPayoutToolModification.isSetInfoModification -> {
+                val swagPayoutToolInfo =
+                    payoutToolInfoConverter.convertToSwag(thriftPayoutToolModification.infoModification)
+
+                SwagContractPayoutToolInfoModification()
+                    .payoutToolInfo(swagPayoutToolInfo)
+                    .payoutToolModificationType(
+                        CONTRACTPAYOUTTOOLINFOMODIFICATION
+                    )
+            }
+            else -> {
+                throw IllegalArgumentException("Unknown PayoutTool modification type!")
+            }
+        }
+
+        return SwagContractPayoutToolModificationUnit().apply {
+            payoutToolID = value.payoutToolId
+            contractModificationType =
+                SwagContractModification.ContractModificationTypeEnum.CONTRACTPAYOUTTOOLMODIFICATIONUNIT
+            modification = swagPayoutToolModification
+        }
+    }
+}
