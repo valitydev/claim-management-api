@@ -1,6 +1,6 @@
 package com.rbkmoney.claimmanagementapi.converter.party.data
 
-import com.rbkmoney.damsel.domain.Residence
+import com.rbkmoney.damsel.domain.CountryCode
 import com.rbkmoney.swag.claim_management.model.ContractModification.ContractModificationTypeEnum
 import com.rbkmoney.swag.claim_management.model.ContractPayoutToolModification.PayoutToolModificationTypeEnum
 import com.rbkmoney.swag.claim_management.model.PartyModificationType.PartyModificationTypeEnum
@@ -35,7 +35,7 @@ object TestContractData {
                     .setAbaRtn("rtn")
                     .setAddress("addr")
                     .setBic("bic123456")
-                    .setCountry(Residence.AGO)
+                    .setCountry(CountryCode.AGO)
                     .setName("some name")
             )
             .setCorrespondentAccount(
@@ -48,7 +48,7 @@ object TestContractData {
                             .setAbaRtn("21312")
                             .setAddress("qweqwe")
                             .setBic("321321")
-                            .setCountry(Residence.ALB)
+                            .setCountry(CountryCode.ALB)
                             .setName("aasdasd")
                     )
             )

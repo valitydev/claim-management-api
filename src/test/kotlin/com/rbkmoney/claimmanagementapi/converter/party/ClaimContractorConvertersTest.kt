@@ -8,6 +8,7 @@ import com.rbkmoney.claimmanagementapi.converter.party.contractor.InternationalL
 import com.rbkmoney.claimmanagementapi.converter.party.contractor.PrivateEntityConverter
 import com.rbkmoney.claimmanagementapi.converter.party.contractor.RussianLegalEntityConverter
 import com.rbkmoney.damsel.domain.ContractorIdentificationLevel
+import com.rbkmoney.damsel.domain.CountryCode
 import com.rbkmoney.geck.serializer.kit.mock.MockMode
 import com.rbkmoney.geck.serializer.kit.mock.MockTBaseProcessor
 import com.rbkmoney.geck.serializer.kit.tbase.TBaseHandler
@@ -80,7 +81,10 @@ class ClaimContractorConvertersTest {
         val converter = InternationalLegalEntityConverter()
         val swagInternationalLegalEntity = EnhancedRandom.random(
             SwagInternationalLegalEntity::class.java
-        ).apply { legalEntityType = SwagLegalEntityType.LegalEntityTypeEnum.INTERNATIONALLEGALENTITY }
+        ).apply {
+            legalEntityType = SwagLegalEntityType.LegalEntityTypeEnum.INTERNATIONALLEGALENTITY
+            country = CountryCode.GLP.name
+        }
         val resultSwagInternationalLegalEntity = converter.convertToSwag(
             converter.convertToThrift(swagInternationalLegalEntity)
         )
@@ -132,7 +136,10 @@ class ClaimContractorConvertersTest {
             }
             SwagLegalEntityType.LegalEntityTypeEnum.INTERNATIONALLEGALENTITY -> {
                 val swagInternationalLegalEntity = EnhancedRandom.random(SwagInternationalLegalEntity::class.java)
-                    .apply { legalEntityType = SwagLegalEntityType.LegalEntityTypeEnum.INTERNATIONALLEGALENTITY }
+                    .apply {
+                        legalEntityType = SwagLegalEntityType.LegalEntityTypeEnum.INTERNATIONALLEGALENTITY
+                        country = CountryCode.EGY.name
+                    }
                 swagLegalEntity.legalEntityType = swagInternationalLegalEntity
             }
             else -> throw IllegalArgumentException("Unknown legal entity type!")

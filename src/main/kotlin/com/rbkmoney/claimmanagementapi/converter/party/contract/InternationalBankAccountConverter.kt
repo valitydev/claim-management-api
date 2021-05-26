@@ -1,8 +1,8 @@
 package com.rbkmoney.claimmanagementapi.converter.party.contract
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
+import com.rbkmoney.damsel.domain.CountryCode
 import com.rbkmoney.damsel.domain.InternationalBankDetails
-import com.rbkmoney.damsel.domain.Residence
 import com.rbkmoney.swag.claim_management.model.CorrespondentAccount
 import com.rbkmoney.swag.claim_management.model.PayoutToolInfo
 import org.springframework.stereotype.Component
@@ -43,7 +43,7 @@ class InternationalBankAccountConverter :
                         .setAddress(it.address)
                         .setBic(it.bic)
                         .setName(it.name)
-                        .setCountry(Residence.valueOf(it.country))
+                        .setCountry(CountryCode.valueOf(it.country))
                 )
                 internationalBankAccount.correspondentAccount = correspondentAccount
             }
@@ -92,6 +92,6 @@ class InternationalBankAccountConverter :
         return swagInternationalBankAccount
     }
 
-    private fun convertCountryToResidence(country: String?): Residence? =
-        country?.let { Residence.valueOf(it) }
+    private fun convertCountryToResidence(country: String?) =
+        country?.let { CountryCode.valueOf(it) }
 }
