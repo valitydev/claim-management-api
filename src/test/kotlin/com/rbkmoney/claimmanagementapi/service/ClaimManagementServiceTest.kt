@@ -31,11 +31,6 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.time.OffsetDateTime
-import kotlin.collections.HashMap
-import kotlin.collections.List
-import kotlin.collections.MutableList
-import kotlin.collections.MutableMap
-import kotlin.collections.listOf
 import kotlin.collections.set
 import com.rbkmoney.damsel.claim_management.ClaimModification as ThriftClaimModification
 import com.rbkmoney.damsel.claim_management.DocumentModification as ThriftDocumentModification
@@ -84,19 +79,18 @@ class ClaimManagementServiceTest {
         )
         val requestClaim = claimManagementService.createClaim("test_request_1", modifications)
         assertEquals(
-            "Swag objects 'Claim' (create) not equals",
-            testAnswerCreateClaim.toString(), requestClaim.toString()
+            testAnswerCreateClaim.toString(), requestClaim.toString(),
+            "Swag objects 'Claim' (create) not equals"
         )
         val claimById = claimManagementService.getClaimById("test_request_1", 1L)
         assertEquals(
-            "Swag objects 'Claim' (by id) not equals",
-            testAnswerCreateClaim.toString(), claimById.toString()
+            testAnswerCreateClaim.toString(), claimById.toString(),
+            "Swag objects 'Claim' (by id) not equals"
         )
         val response: InlineResponse200 =
             claimManagementService.searchClaims("test_request_1", 1, "token", 123L, ArrayList())
         assertEquals(
-            "Swag objects 'Claim' (search) not equals",
-            testAnswerCreateClaim.toString(), response.result.get(0).toString()
+            testAnswerCreateClaim.toString(), response.result[0].toString(), "Swag objects 'Claim' (search) not equals"
         )
         assertEquals("continuation_token", response.continuationToken)
     }
