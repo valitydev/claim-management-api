@@ -118,7 +118,7 @@ class SecurityConfig : KeycloakWebSecurityConfigurerAdapter() {
         return try {
             Files.readAllLines(Paths.get(filePath))
                 .apply { removeFirst() }
-                .apply { removeFirst() }
+                .apply { removeLast() }
                 .joinToString { it.trim() }
         } catch (ex: IOException) {
             throw RuntimeException(ex)
