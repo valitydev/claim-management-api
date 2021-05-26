@@ -16,7 +16,6 @@ import com.rbkmoney.swag.claim_management.model.ClaimModificationType.ClaimModif
 import com.rbkmoney.swag.claim_management.model.DocumentModification
 import com.rbkmoney.swag.claim_management.model.DocumentModification.DocumentModificationTypeEnum
 import com.rbkmoney.swag.claim_management.model.DocumentModificationUnit
-import com.rbkmoney.swag.claim_management.model.InlineResponse200
 import com.rbkmoney.swag.claim_management.model.Modification.ModificationTypeEnum
 import com.rbkmoney.swag.claim_management.model.UserInfo
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -87,8 +86,7 @@ class ClaimManagementServiceTest {
             testAnswerCreateClaim.toString(), claimById.toString(),
             "Swag objects 'Claim' (by id) not equals"
         )
-        val response: InlineResponse200 =
-            claimManagementService.searchClaims("test_request_1", 1, "token", 123L, ArrayList())
+        val response = claimManagementService.searchClaims("test_request_1", 1, "token", 123L, ArrayList())
         assertEquals(
             testAnswerCreateClaim.toString(), response.result[0].toString(), "Swag objects 'Claim' (search) not equals"
         )

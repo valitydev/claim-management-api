@@ -3,13 +3,13 @@ package com.rbkmoney.claimmanagementapi.config
 import com.rbkmoney.claimmanagementapi.ClaimManagementApiApplication
 import com.rbkmoney.claimmanagementapi.auth.TestRestController
 import com.rbkmoney.claimmanagementapi.auth.utils.KeycloakOpenIdStub
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock
 import org.springframework.test.context.junit.jupiter.SpringExtension
+import javax.annotation.PostConstruct
 
 @SpringBootTest(
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
@@ -26,6 +26,11 @@ abstract class AbstractKeycloakOpenIdAsWiremockConfig {
 
     @Autowired
     private lateinit var keycloakOpenIdStub: KeycloakOpenIdStub
+
+    @PostConstruct
+    fun init() {
+        keycloakOpenIdStub.givenStub()
+    }
 
     protected fun generateJwt(iat: Long, exp: Long, vararg roles: String): String {
         return keycloakOpenIdStub.generateJwt(iat, exp, *roles)
@@ -45,13 +50,5 @@ abstract class AbstractKeycloakOpenIdAsWiremockConfig {
 
     protected fun generateInvoicesReadJwt(): String {
         return keycloakOpenIdStub.generateJwt("invoices:read")
-    }
-
-    companion object {
-
-        @BeforeAll
-        fun setUp(@Autowired keycloakOpenIdStub: KeycloakOpenIdStub) {
-            keycloakOpenIdStub.givenStub()
-        }
     }
 }
