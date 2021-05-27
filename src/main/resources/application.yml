@@ -1,0 +1,64 @@
+server:
+  port: '@server.port@'
+
+management:
+  security:
+    flag: false
+  server:
+    port: '@management.port@'
+  metrics:
+    export:
+      statsd:
+        flavor: etsy
+        enabled: false
+      prometheus:
+        enabled: false
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+
+spring:
+  application:
+    name: '@project.name@'
+  output:
+    ansi:
+      enabled: always
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    default-property-inclusion: NON_NULL
+info:
+  version: '@project.version@'
+  stage: dev
+
+claimmanagement:
+  client:
+    adapter:
+      url: http://localhost:8022/v1/claimmanagement
+      networkTimeout: 30000
+
+partyManagement:
+  url: http://hellgate:8022/v1/processing/partymgmt
+  timeout: 5000
+
+keycloak:
+  realm: internal
+  auth-server-url: http://keycloak:8080/auth/
+  resource: common-api
+  not-before: 0
+  ssl-required: none
+  realm-public-key:
+
+auth.enabled: true
+
+http.timeout:
+  read: 90
+  connect: 30
