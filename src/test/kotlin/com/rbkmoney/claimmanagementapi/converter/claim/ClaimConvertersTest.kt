@@ -156,7 +156,8 @@ class ClaimConvertersTest {
             ClaimDocumentModificationUnitConverter(),
             ClaimCommentModificationUnitConverter(),
             ClaimStatusModificationUnitConverter(ClaimStatusModificationConverter()),
-            ClaimFileModificationUnitConverter()
+            ClaimFileModificationUnitConverter(),
+            ClaimExternalInfoModificationUnitConverter()
         )
         val swagStatusModUnit = SwagStatusModificationUnit().apply {
             claimModificationType = ClaimModificationTypeEnum.STATUSMODIFICATIONUNIT

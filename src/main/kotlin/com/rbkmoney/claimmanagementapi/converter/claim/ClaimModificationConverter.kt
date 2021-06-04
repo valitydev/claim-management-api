@@ -8,6 +8,7 @@ import com.rbkmoney.damsel.claim_management.Modification as ThriftModification
 import com.rbkmoney.swag.claim_management.model.ClaimModification as SwagClaimModification
 import com.rbkmoney.swag.claim_management.model.CommentModificationUnit as SwagCommentModificationUnit
 import com.rbkmoney.swag.claim_management.model.DocumentModificationUnit as SwagDocumentModificationUnit
+import com.rbkmoney.swag.claim_management.model.ExternalInfoModificationUnit as SwagExternalInfoModificationUnit
 import com.rbkmoney.swag.claim_management.model.FileModificationUnit as SwagFileModificationUnit
 import com.rbkmoney.swag.claim_management.model.Modification as SwagModification
 import com.rbkmoney.swag.claim_management.model.StatusModificationUnit as SwagStatusModificationUnit
@@ -17,7 +18,8 @@ class ClaimModificationConverter(
     private val documentModificationUnitConverter: ClaimDocumentModificationUnitConverter,
     private val commentModificationUnitConverter: ClaimCommentModificationUnitConverter,
     private val statusModificationUnitConverter: ClaimStatusModificationUnitConverter,
-    private val fileModificationUnitConverter: ClaimFileModificationUnitConverter
+    private val fileModificationUnitConverter: ClaimFileModificationUnitConverter,
+    private val extInfoModificationUnitConverter: ClaimExternalInfoModificationUnitConverter
 ) : DarkApiConverter<ThriftModification, SwagClaimModification> {
 
     override fun convertToThrift(value: SwagClaimModification): ThriftModification {
@@ -43,6 +45,11 @@ class ClaimModificationConverter(
             ClaimModificationTypeEnum.FILEMODIFICATIONUNIT -> {
                 val fileModificationUnit = swagClaimModificationType as SwagFileModificationUnit
                 claimModification.fileModification = fileModificationUnitConverter.convertToThrift(fileModificationUnit)
+            }
+            ClaimModificationTypeEnum.EXTERNALINFOMODIFICATIONUNIT -> {
+                val extInfoModificationUnit = swagClaimModificationType as SwagExternalInfoModificationUnit
+                claimModification.externalInfoModification =
+                    extInfoModificationUnitConverter.convertToThrift(extInfoModificationUnit)
             }
             else -> throw IllegalArgumentException("Unknown claim modification type: $swagClaimModificationType")
         }
@@ -73,6 +80,11 @@ class ClaimModificationConverter(
                 val fileModificationUnit = claimModification.fileModification
                 swagClaimModification.claimModificationType =
                     fileModificationUnitConverter.convertToSwag(fileModificationUnit)
+            }
+            claimModification.isSetExternalInfoModification -> {
+                val externalInfoModificationUnit = claimModification.externalInfoModification
+                swagClaimModification.claimModificationType =
+                    extInfoModificationUnitConverter.convertToSwag(externalInfoModificationUnit)
             }
             else -> throw IllegalArgumentException("Unknown claim modification type")
         }
