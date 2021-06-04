@@ -133,7 +133,7 @@ class ClaimManagementServiceTest {
                 return changeset
             }
 
-        private val modifications: List<SwagModification>
+        val modifications: List<SwagModification>
             get() {
                 val documentModification = DocumentModification()
                     .apply { documentModificationType = DocumentModificationTypeEnum.DOCUMENTCREATED }
