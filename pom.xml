@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.rbkmoney</groupId>
         <artifactId>service-parent-pom</artifactId>
-        <version>1.2.2</version>
+        <version>1.2.4</version>
     </parent>
 
     <artifactId>claim-management-api</artifactId>
@@ -26,10 +26,11 @@
         <exposed.ports>${server.port} ${management.port}</exposed.ports>
         <dockerfile.registry>${env.REGISTRY}</dockerfile.registry>
 
-        <swag-claim-management.version>1.29-d665bf2-server</swag-claim-management.version>
+        <swag-claim-management.version>1.30-eafa8b6-server</swag-claim-management.version>
         <keycloak-spring-security.version>12.0.1</keycloak-spring-security.version>
         <bouncycastle-jdk15on.version>1.68</bouncycastle-jdk15on.version>
         <spring-cloud-contract-wiremock.version>2.2.4.RELEASE</spring-cloud-contract-wiremock.version>
+        <spring-security.version>5.4.6</spring-security.version>
         <jjwt.version>0.9.1</jjwt.version>
         <kotlin-logging.version>2.0.6</kotlin-logging.version>
         <mockito-kotlin.version>3.2.0</mockito-kotlin.version>
@@ -114,6 +115,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring-security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
