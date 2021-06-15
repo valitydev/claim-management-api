@@ -171,7 +171,7 @@ class ClaimConvertersTest {
         }
         val resultSwagClaimModification = converter.convertToSwag(converter.convertToThrift(swagClaimModification))
         assertEquals(swagClaimModification, resultSwagClaimModification, "Swag objects 'ClaimModification' not equals")
-        val thriftClaimModification = MockTBaseProcessor(MockMode.ALL)
+        val thriftClaimModification = MockTBaseProcessor(MockMode.REQUIRED_ONLY)
             .process(
                 ThriftClaimModification(),
                 TBaseHandler(ThriftClaimModification::class.java)

@@ -163,7 +163,6 @@ class ClaimContractorConvertersTest {
     }
 
     @Test
-
     fun privateEntityConverterTest() {
         val converter = PrivateEntityConverter()
         val swagPrivateEntity = EnhancedRandom.random(SwagPrivateEntity::class.java)

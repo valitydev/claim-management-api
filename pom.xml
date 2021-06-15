@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.rbkmoney</groupId>
         <artifactId>service-parent-pom</artifactId>
-        <version>1.2.4</version>
+        <version>1.2.6</version>
     </parent>
 
     <artifactId>claim-management-api</artifactId>
@@ -28,7 +28,7 @@
         <dockerfile.registry>${env.REGISTRY}</dockerfile.registry>
 
         <swag-claim-management.version>1.30-eafa8b6-server</swag-claim-management.version>
-        <keycloak-spring-security.version>12.0.1</keycloak-spring-security.version>
+        <keycloak-spring-security.version>13.0.1</keycloak-spring-security.version>
         <bouncycastle-jdk15on.version>1.68</bouncycastle-jdk15on.version>
         <spring-cloud-contract-wiremock.version>2.2.4.RELEASE</spring-cloud-contract-wiremock.version>
         <spring-security.version>5.4.6</spring-security.version>

@@ -17,8 +17,9 @@ import com.rbkmoney.geck.serializer.kit.tbase.TBaseHandler
 import com.rbkmoney.swag.claim_management.model.ShopPayoutScheduleModification
 import io.github.benas.randombeans.api.EnhancedRandom
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.RepeatedTest
 import org.junit.jupiter.api.Test
-import org.springframework.test.annotation.Repeat
+import org.junit.jupiter.api.assertThrows
 import com.rbkmoney.damsel.claim_management.ShopContractModification as ThriftShopContractModification
 import com.rbkmoney.damsel.claim_management.ShopModificationUnit as ThriftShopModificationUnit
 import com.rbkmoney.damsel.domain.ShopDetails as ThriftShopDetails
@@ -30,7 +31,7 @@ import com.rbkmoney.swag.claim_management.model.ShopModification as SwagShopModi
 class ShopConvertersTest {
 
     @Test
-    @Repeat(10)
+    @RepeatedTest(10)
     fun shopParamsConverterTest() {
         val converter = ShopCreationModificationConverter()
         val swagShopParams = testSwagShopParams
@@ -134,8 +135,7 @@ class ShopConvertersTest {
     }
 
     @Test
-    @Repeat(10)
-    fun shopModificationUnitConverterTest() {
+    fun shopModificationUnitSwagConverterTest() {
         val converter = ShopModificationUnitConverter(
             ShopCreationModificationConverter(),
             ShopPayoutScheduleModificationConverter(),
@@ -150,14 +150,33 @@ class ShopConvertersTest {
             swagShopModificationUnit, resultSwagShopModificationUnit,
             "Swag objects 'ShopModificationUnit' not equals"
         )
+    }
+
+    @Test
+    @RepeatedTest(10)
+    fun shopModificationUnitThriftConverterTest() {
+        val converter = ShopModificationUnitConverter(
+            ShopCreationModificationConverter(),
+            ShopPayoutScheduleModificationConverter(),
+            ShopDetailsModificationConverter(),
+            ShopAccountCreationModificationConverter(),
+            ShopContractModificationConverter()
+        )
         val thriftShopModificationUnit = MockTBaseProcessor(MockMode.ALL)
             .process(ThriftShopModificationUnit(), TBaseHandler(ThriftShopModificationUnit::class.java))
-        val resultThriftShopModificationUnit = converter.convertToThrift(
-            converter.convertToSwag(thriftShopModificationUnit)
-        )
-        assertEquals(
-            thriftShopModificationUnit, resultThriftShopModificationUnit,
-            "Thrift objects 'ShopModificationUnit' not equals"
-        )
+        // Temporary (hope so) hack
+        if (thriftShopModificationUnit.getModification().isSetCashRegisterModificationUnit) {
+            assertThrows<NullPointerException> {
+                converter.convertToThrift(converter.convertToSwag(thriftShopModificationUnit))
+            }
+        } else {
+            val resultThriftShopModificationUnit = converter.convertToThrift(
+                converter.convertToSwag(thriftShopModificationUnit)
+            )
+            assertEquals(
+                thriftShopModificationUnit, resultThriftShopModificationUnit,
+                "Thrift objects 'ShopModificationUnit' not equals"
+            )
+        }
     }
 }

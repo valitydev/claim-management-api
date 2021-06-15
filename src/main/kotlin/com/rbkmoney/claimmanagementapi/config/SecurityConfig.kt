@@ -1,6 +1,5 @@
 package com.rbkmoney.claimmanagementapi.config
 
-import mu.KotlinLogging
 import org.keycloak.adapters.KeycloakConfigResolver
 import org.keycloak.adapters.KeycloakDeploymentBuilder
 import org.keycloak.adapters.springsecurity.KeycloakSecurityComponents
@@ -63,8 +62,6 @@ class SecurityConfig : KeycloakWebSecurityConfigurerAdapter() {
     @Value("\${keycloak.not-before}")
     private var keycloakTokenNotBefore: Int = 0
 
-    private val log = KotlinLogging.logger { }
-
     @Bean
     override fun sessionAuthenticationStrategy(): SessionAuthenticationStrategy = NullAuthenticatedSessionStrategy()
 
@@ -118,14 +115,11 @@ class SecurityConfig : KeycloakWebSecurityConfigurerAdapter() {
     }
 
     private fun readKeyFromFile(filePath: String): String {
-        log.debug { "Reading public key from path $filePath" }
         return try {
             Files.readAllLines(Paths.get(filePath))
-                .also { log.debug { "Raw public key: $it" } }
                 .apply { removeFirst() }
                 .apply { removeLast() }
-                .joinToString { it.trim() }
-                .also { log.debug { "Public key has been prepared: $it" } }
+                .joinToString(separator = "") { it.trim() }
         } catch (ex: IOException) {
             throw RuntimeException(ex)
         }
