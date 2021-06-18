@@ -2,8 +2,8 @@ package com.rbkmoney.claimmanagementapi.controller
 
 import com.rbkmoney.claimmanagementapi.config.AbstractKeycloakOpenIdAsWiremockConfig
 import com.rbkmoney.claimmanagementapi.service.ClaimManagementService
-import com.rbkmoney.claimmanagementapi.service.KeycloakService
 import com.rbkmoney.claimmanagementapi.service.PartyManagementService
+import com.rbkmoney.claimmanagementapi.service.security.KeycloakService
 import com.rbkmoney.swag.claim_management.model.Claim
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

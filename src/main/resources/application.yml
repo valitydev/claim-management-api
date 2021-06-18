@@ -57,6 +57,15 @@ keycloak:
   ssl-required: none
   realm-public-key:
 
+bouncer:
+  url: http://localhost:8022/change_it
+  networkTimeout: 10000
+  context-fragment-id: claimmgmt
+  deployment-id: production
+  auth-method: SessionToken
+  realm: external
+  rule-set-id: change_it  #ToDo
+
 auth.enabled: true
 
 http.timeout:

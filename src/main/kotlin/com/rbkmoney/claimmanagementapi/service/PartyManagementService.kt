@@ -2,6 +2,7 @@ package com.rbkmoney.claimmanagementapi.service
 
 import com.rbkmoney.claimmanagementapi.exception.client.ForbiddenException
 import com.rbkmoney.claimmanagementapi.exception.server.DarkApi5xxException
+import com.rbkmoney.claimmanagementapi.service.security.KeycloakService
 import com.rbkmoney.damsel.payment_processing.InternalUser
 import com.rbkmoney.damsel.payment_processing.PartyManagementSrv
 import com.rbkmoney.damsel.payment_processing.UserInfo

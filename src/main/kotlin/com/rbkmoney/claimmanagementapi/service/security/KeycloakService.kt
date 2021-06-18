@@ -1,4 +1,4 @@
-package com.rbkmoney.claimmanagementapi.service
+package com.rbkmoney.claimmanagementapi.service.security
 
 import org.keycloak.KeycloakPrincipal
 import org.keycloak.representations.AccessToken

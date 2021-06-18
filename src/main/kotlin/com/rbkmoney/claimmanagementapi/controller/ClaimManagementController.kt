@@ -5,8 +5,8 @@ import com.rbkmoney.claimmanagementapi.exception.client.BadRequestException
 import com.rbkmoney.claimmanagementapi.exception.client.NotFoundException
 import com.rbkmoney.claimmanagementapi.exception.server.DarkApi5xxException
 import com.rbkmoney.claimmanagementapi.service.ClaimManagementService
-import com.rbkmoney.claimmanagementapi.service.KeycloakService
 import com.rbkmoney.claimmanagementapi.service.PartyManagementService
+import com.rbkmoney.claimmanagementapi.service.security.KeycloakService
 import com.rbkmoney.claimmanagementapi.util.DeadlineChecker
 import com.rbkmoney.damsel.claim_management.BadContinuationToken
 import com.rbkmoney.damsel.claim_management.ChangesetConflict
@@ -46,6 +46,7 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:read')")
     override fun createClaim(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
+        @NotNull @Valid partyId: String?,
         @NotNull @Valid changeset: List<Modification>?,
         @Size(min = 1, max = 40) xRequestDeadline: String?
     ): ResponseEntity<Claim> =
@@ -77,6 +78,7 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:write')")
     override fun revokeClaimByID(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
+        @NotNull @Valid partyId: String?,
         @NotNull @Valid claimId: Long?,
         @NotNull @Valid claimRevision: Int?,
         @Size(min = 1, max = 40) xRequestDeadline: String?,
@@ -95,6 +97,7 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:write')")
     override fun requestReviewClaimByID(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
+        @NotNull @Valid partyId: String?,
         @NotNull @Valid claimId: Long?,
         @NotNull @Valid claimRevision: Int?,
         @Size(min = 1, max = 40) xRequestDeadline: String?
@@ -140,6 +143,7 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:write')")
     override fun updateClaimByID(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
+        @NotNull @Valid partyId: String?,
         @NotNull @Valid claimId: Long?,
         @NotNull @Valid claimRevision: Int?,
         @NotNull @Valid changeset: List<Modification>?,

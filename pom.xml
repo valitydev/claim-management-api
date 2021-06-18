@@ -27,7 +27,8 @@
         <dockerfile.base.service.tag>c0612d6052ac049496b72a23a04acb142035f249</dockerfile.base.service.tag>
         <dockerfile.registry>${env.REGISTRY}</dockerfile.registry>
 
-        <swag-claim-management.version>1.30-eafa8b6-server</swag-claim-management.version>
+        <swag-claim-management.version>1.31-ded0ac5-server</swag-claim-management.version>
+        <bouncer-proto.version>1.20-7dee26e</bouncer-proto.version>
         <keycloak-spring-security.version>13.0.1</keycloak-spring-security.version>
         <bouncycastle-jdk15on.version>1.68</bouncycastle-jdk15on.version>
         <spring-cloud-contract-wiremock.version>2.2.4.RELEASE</spring-cloud-contract-wiremock.version>
@@ -87,15 +88,9 @@
             <artifactId>shared-resources</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-spring-security-adapter</artifactId>
-            <version>${keycloak-spring-security.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.bouncycastle</groupId>
-                    <artifactId>bcprov-jdk15on</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.rbkmoney</groupId>
+            <artifactId>bouncer-proto</artifactId>
+            <version>${bouncer-proto.version}</version>
         </dependency>
 
         <!--spring-->
@@ -144,6 +139,17 @@
         </dependency>
 
         <!--third party-->
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-spring-security-adapter</artifactId>
+            <version>${keycloak-spring-security.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcprov-jdk15on</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
