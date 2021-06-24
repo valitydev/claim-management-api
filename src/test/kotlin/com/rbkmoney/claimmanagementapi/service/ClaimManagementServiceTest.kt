@@ -3,7 +3,6 @@ package com.rbkmoney.claimmanagementapi.service
 import com.rbkmoney.damsel.claim_management.Claim
 import com.rbkmoney.damsel.claim_management.ClaimAccepted
 import com.rbkmoney.damsel.claim_management.ClaimManagementSrv
-import com.rbkmoney.damsel.claim_management.ClaimSearchQuery
 import com.rbkmoney.damsel.claim_management.ClaimSearchResponse
 import com.rbkmoney.damsel.claim_management.ClaimStatus
 import com.rbkmoney.damsel.claim_management.DocumentCreated
@@ -22,7 +21,7 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.ArgumentMatchers
+import org.mockito.kotlin.any
 import org.mockito.kotlin.doNothing
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
@@ -54,25 +53,19 @@ class ClaimManagementServiceTest {
 
     @BeforeEach
     fun setUp() {
-        doNothing().whenever(partyManagementService).checkStatus(ArgumentMatchers.anyString())
+        doNothing().whenever(partyManagementService).checkStatus(any())
     }
 
     @Test
     fun test() {
         whenever(
-            claimManagementClient.createClaim(
-                ArgumentMatchers.any(String::class.java),
-                ArgumentMatchers.anyListOf(ThriftModification::class.java)
-            )
+            claimManagementClient.createClaim(any(), any())
         ).thenReturn(testCreateClaim)
         whenever(
-            claimManagementClient.getClaim(
-                ArgumentMatchers.any(String::class.java),
-                ArgumentMatchers.any(Long::class.java)
-            )
+            claimManagementClient.getClaim(any(), any())
         ).thenReturn(testClaimById)
         whenever(
-            claimManagementClient.searchClaims(ArgumentMatchers.any(ClaimSearchQuery::class.java))
+            claimManagementClient.searchClaims(any())
         ).thenReturn(
             ClaimSearchResponse(testSearchClaim).setContinuationToken("continuation_token")
         )

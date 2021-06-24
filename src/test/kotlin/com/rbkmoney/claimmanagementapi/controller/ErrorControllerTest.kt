@@ -2,6 +2,7 @@ package com.rbkmoney.claimmanagementapi.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.rbkmoney.claimmanagementapi.config.AbstractKeycloakOpenIdAsWiremockConfig
+import com.rbkmoney.claimmanagementapi.security.BouncerAccessService
 import com.rbkmoney.claimmanagementapi.service.ClaimManagementService
 import com.rbkmoney.claimmanagementapi.service.ClaimManagementServiceTest
 import com.rbkmoney.claimmanagementapi.service.PartyManagementService
@@ -13,14 +14,17 @@ import com.rbkmoney.damsel.claim_management.InvalidClaimStatus
 import org.apache.thrift.TException
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.mockito.ArgumentMatchers
+import org.mockito.kotlin.any
+import org.mockito.kotlin.anyOrNull
 import org.mockito.kotlin.doAnswer
 import org.mockito.kotlin.doNothing
+import org.mockito.kotlin.eq
 import org.mockito.kotlin.reset
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
+import org.springframework.security.access.AccessDeniedException
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
@@ -42,18 +46,35 @@ class ErrorControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
     @MockBean
     private lateinit var claimManagementService: ClaimManagementService
 
+    @MockBean
+    private lateinit var bouncerAccessService: BouncerAccessService
+
     @BeforeEach
     fun setUp() {
-        doNothing().whenever(partyManagementService).checkStatus(ArgumentMatchers.anyString())
+        doNothing().whenever(partyManagementService).checkStatus(any())
         doNothing().whenever(partyManagementService).checkStatus()
+        doNothing().whenever(bouncerAccessService).checkAccess(any(), anyOrNull())
+    }
+
+    @Test
+    fun testThenBouncerForbidOperation() {
+        whenever(bouncerAccessService.checkAccess(any(), anyOrNull()))
+            .doAnswer { throw AccessDeniedException("") }
+        mockMvc.perform(
+            MockMvcRequestBuilders.get(eq("/processing/claims/{claimID}"), any<Long>())
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .header("Authorization", "Bearer " + generateReadJwt())
+                .header("X-Request-ID", string())
+                .header("X-Request-Deadline", Instant.now().plus(1, ChronoUnit.DAYS).toString())
+        ).andExpect(MockMvcResultMatchers.status().isForbidden)
     }
 
     @Test
     fun testThenClaimManagementClientThrowingExceptions() {
-        whenever(claimManagementService.getClaimById(ArgumentMatchers.anyString(), ArgumentMatchers.anyLong()))
+        whenever(claimManagementService.getClaimById(any(), any()))
             .doAnswer { throw ClaimNotFound() }
         mockMvc.perform(
-            MockMvcRequestBuilders.get("/processing/claims/{claimID}", ArgumentMatchers.anyLong())
+            MockMvcRequestBuilders.get(eq("/processing/claims/{claimID}"), any<Long>())
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .header("Authorization", "Bearer " + generateReadJwt())
                 .header("X-Request-ID", string())
@@ -61,15 +82,10 @@ class ErrorControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
         ).andExpect(MockMvcResultMatchers.status().isNotFound)
         reset(claimManagementService)
         whenever(
-            claimManagementService.updateClaimById(
-                ArgumentMatchers.anyString(),
-                ArgumentMatchers.anyLong(),
-                ArgumentMatchers.anyInt(),
-                ArgumentMatchers.anyList()
-            )
+            claimManagementService.updateClaimById(any(), any(), any(), any())
         ).doAnswer { throw ClaimNotFound() }
         mockMvc.perform(
-            MockMvcRequestBuilders.put("/processing/claims/{claimID}/update", ArgumentMatchers.anyLong())
+            MockMvcRequestBuilders.put(eq("/processing/claims/{claimID}/update"), any<Long>())
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .header("Authorization", "Bearer " + generateWriteJwt())
                 .header("X-Request-ID", string())
@@ -79,15 +95,10 @@ class ErrorControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
         ).andExpect(MockMvcResultMatchers.status().isNotFound)
         reset(claimManagementService)
         whenever(
-            claimManagementService.updateClaimById(
-                ArgumentMatchers.anyString(),
-                ArgumentMatchers.anyLong(),
-                ArgumentMatchers.anyInt(),
-                ArgumentMatchers.anyList()
-            )
+            claimManagementService.updateClaimById(any(), any(), any(), any())
         ).doAnswer { throw InvalidClaimStatus() }
         mockMvc.perform(
-            MockMvcRequestBuilders.put("/processing/claims/{claimID}/update", ArgumentMatchers.anyLong())
+            MockMvcRequestBuilders.put(eq("/processing/claims/{claimID}/update"), any<Long>())
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .header("Authorization", "Bearer " + generateWriteJwt())
                 .header("X-Request-ID", string())
@@ -97,15 +108,10 @@ class ErrorControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
         ).andExpect(MockMvcResultMatchers.status().isBadRequest)
         reset(claimManagementService)
         whenever(
-            claimManagementService.updateClaimById(
-                ArgumentMatchers.anyString(),
-                ArgumentMatchers.anyLong(),
-                ArgumentMatchers.anyInt(),
-                ArgumentMatchers.anyList()
-            )
+            claimManagementService.updateClaimById(any(), any(), any(), any())
         ).doAnswer { throw InvalidClaimRevision() }
         mockMvc.perform(
-            MockMvcRequestBuilders.put("/processing/claims/{claimID}/update", ArgumentMatchers.anyLong())
+            MockMvcRequestBuilders.put(eq("/processing/claims/{claimID}/update"), any<Long>())
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .header("Authorization", "Bearer " + generateWriteJwt())
                 .header("X-Request-ID", string())
@@ -115,15 +121,10 @@ class ErrorControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
         ).andExpect(MockMvcResultMatchers.status().isBadRequest)
         reset(claimManagementService)
         whenever(
-            claimManagementService.updateClaimById(
-                ArgumentMatchers.anyString(),
-                ArgumentMatchers.anyLong(),
-                ArgumentMatchers.anyInt(),
-                ArgumentMatchers.anyList()
-            )
+            claimManagementService.updateClaimById(any(), any(), any(), any())
         ).doAnswer { throw ChangesetConflict() }
         mockMvc.perform(
-            MockMvcRequestBuilders.put("/processing/claims/{claimID}/update", ArgumentMatchers.anyLong())
+            MockMvcRequestBuilders.put(eq("/processing/claims/{claimID}/update"), any<Long>())
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .header("Authorization", "Bearer " + generateWriteJwt())
                 .header("X-Request-ID", string())
@@ -133,15 +134,10 @@ class ErrorControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
         ).andExpect(MockMvcResultMatchers.status().isBadRequest)
         reset(claimManagementService)
         whenever(
-            claimManagementService.updateClaimById(
-                ArgumentMatchers.anyString(),
-                ArgumentMatchers.anyLong(),
-                ArgumentMatchers.anyInt(),
-                ArgumentMatchers.anyList()
-            )
+            claimManagementService.updateClaimById(any(), any(), any(), any())
         ).doAnswer { throw InvalidChangeset() }
         mockMvc.perform(
-            MockMvcRequestBuilders.put("/processing/claims/{claimID}/update", ArgumentMatchers.anyLong())
+            MockMvcRequestBuilders.put(eq("/processing/claims/{claimID}/update"), any<Long>())
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .header("Authorization", "Bearer " + generateWriteJwt())
                 .header("X-Request-ID", string())
@@ -151,15 +147,10 @@ class ErrorControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
         ).andExpect(MockMvcResultMatchers.status().isBadRequest)
         reset(claimManagementService)
         whenever(
-            claimManagementService.updateClaimById(
-                ArgumentMatchers.anyString(),
-                ArgumentMatchers.anyLong(),
-                ArgumentMatchers.anyInt(),
-                ArgumentMatchers.anyList()
-            )
+            claimManagementService.updateClaimById(any(), any(), any(), any())
         ).doAnswer { throw TException() }
         mockMvc.perform(
-            MockMvcRequestBuilders.put("/processing/claims/{claimID}/update", ArgumentMatchers.anyLong())
+            MockMvcRequestBuilders.put(eq("/processing/claims/{claimID}/update"), any<Long>())
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .header("Authorization", "Bearer " + generateWriteJwt())
                 .header("X-Request-ID", string())

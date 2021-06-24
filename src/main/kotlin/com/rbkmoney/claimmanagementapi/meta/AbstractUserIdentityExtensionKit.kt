@@ -10,7 +10,9 @@ abstract class AbstractUserIdentityExtensionKit(val key: String) : MetadataExten
     object : MetadataExtension<String> {
         override fun getValue(metadata: Metadata): String = metadata.getValue(key)
 
-        override fun setValue(value: String, metadata: Metadata) { metadata.putValue<Any>(key, value) }
+        override fun setValue(value: String, metadata: Metadata) {
+            metadata.putValue<Any>(key, value)
+        }
     },
 
     object : MetadataConverter<String> {

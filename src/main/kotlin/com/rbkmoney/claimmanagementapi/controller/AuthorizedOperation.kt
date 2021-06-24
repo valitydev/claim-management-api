@@ -1,0 +1,3 @@
+package com.rbkmoney.claimmanagementapi.controller
+
+annotation class AuthorizedOperation

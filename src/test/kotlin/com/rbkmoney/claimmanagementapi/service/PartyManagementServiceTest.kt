@@ -2,7 +2,7 @@ package com.rbkmoney.claimmanagementapi.service
 
 import com.rbkmoney.claimmanagementapi.exception.client.ForbiddenException
 import com.rbkmoney.claimmanagementapi.exception.server.DarkApi5xxException
-import com.rbkmoney.claimmanagementapi.service.security.KeycloakService
+import com.rbkmoney.claimmanagementapi.security.KeycloakService
 import com.rbkmoney.damsel.domain.Blocked
 import com.rbkmoney.damsel.domain.Blocking
 import com.rbkmoney.damsel.domain.PartyStatus
@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.ArgumentMatchers
+import org.mockito.kotlin.any
 import org.mockito.kotlin.reset
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
@@ -46,26 +46,17 @@ class PartyManagementServiceTest {
         partyStatus.setBlocking(Blocking.unblocked(Unblocked()))
         reset(partyManagementClient)
         whenever(
-            partyManagementClient.getStatus(
-                ArgumentMatchers.any(),
-                ArgumentMatchers.anyString()
-            )
+            partyManagementClient.getStatus(any(), any())
         ).thenReturn(partyStatus)
         partyManagementService.checkStatus()
         partyStatus.setBlocking(Blocking.blocked(Blocked()))
         whenever(
-            partyManagementClient.getStatus(
-                ArgumentMatchers.any(),
-                ArgumentMatchers.anyString()
-            )
+            partyManagementClient.getStatus(any(), any())
         ).thenReturn(partyStatus)
         Assertions.assertThrows(ForbiddenException::class.java) { partyManagementService.checkStatus() }
         reset(partyManagementClient)
         whenever(
-            partyManagementClient.getStatus(
-                ArgumentMatchers.any(),
-                ArgumentMatchers.anyString()
-            )
+            partyManagementClient.getStatus(any(), any())
         ).thenThrow(
             TException::class.java
         )

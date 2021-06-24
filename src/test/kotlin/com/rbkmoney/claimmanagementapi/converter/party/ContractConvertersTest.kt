@@ -25,7 +25,6 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.RepeatedTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import java.lang.IllegalArgumentException
 import com.rbkmoney.damsel.claim_management.ContractAdjustmentModificationUnit as ThriftContractAdjustmentModificationUnit
 import com.rbkmoney.damsel.claim_management.ContractParams as ThriftContractParams
 import com.rbkmoney.damsel.claim_management.PayoutToolModification as ThriftPayoutToolModification
@@ -64,7 +63,8 @@ class ContractConvertersTest {
         )
         var thriftRussianBankAccount = MockTBaseProcessor(MockMode.ALL)
             .process(ThriftRussianBankAccount(), TBaseHandler(ThriftRussianBankAccount::class.java))
-        var resultThriftRussianBankAccount = converter.convertToThrift(converter.convertToSwag(thriftRussianBankAccount))
+        var resultThriftRussianBankAccount =
+            converter.convertToThrift(converter.convertToSwag(thriftRussianBankAccount))
         assertEquals(
             thriftRussianBankAccount, resultThriftRussianBankAccount,
             "Thrift objects 'RussianBankAccount' (MockMode.ALL) not equals"

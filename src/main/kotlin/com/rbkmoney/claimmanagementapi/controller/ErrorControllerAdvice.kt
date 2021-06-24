@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.client.HttpClientErrorException
 import org.springframework.web.context.request.WebRequest
-import java.lang.Exception
 import java.net.http.HttpTimeoutException
 
 @RestControllerAdvice
