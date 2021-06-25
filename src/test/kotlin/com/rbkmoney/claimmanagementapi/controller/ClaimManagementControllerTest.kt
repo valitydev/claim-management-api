@@ -56,6 +56,7 @@ class ClaimManagementControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
                 .header("Authorization", "Bearer " + generateReadJwt())
                 .header("X-Request-ID", randomUUID())
                 .header("X-Request-Deadline", Instant.now().plus(1, ChronoUnit.DAYS).toString())
+                .param("partyID", 123.toString())
                 .content(
                     """[
                       {

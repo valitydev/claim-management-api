@@ -55,7 +55,7 @@ class ClaimManagementController(
         @Size(min = 1, max = 40) xRequestDeadline: String?
     ): ResponseEntity<Claim> =
         performRequest(operationId(), xRequestId!!) {
-            bouncerAccessService.checkAccess(operationId(), partyId)
+            bouncerAccessService.checkAccess(operationId(), partyId!!)
             log.info { "Process 'createClaim' get started, xRequestId=$xRequestId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
@@ -93,7 +93,7 @@ class ClaimManagementController(
         @Valid reason: String?
     ): ResponseEntity<Void> =
         performRequest(operationId(), xRequestId!!, claimId!!, claimRevision!!) {
-            bouncerAccessService.checkAccess(operationId(), partyId)
+            bouncerAccessService.checkAccess(operationId(), partyId!!)
             log.info { "Process 'revokeClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
@@ -113,7 +113,7 @@ class ClaimManagementController(
         @Size(min = 1, max = 40) xRequestDeadline: String?
     ): ResponseEntity<Void> =
         performRequest(operationId(), xRequestId!!, claimId!!, claimRevision!!) {
-            bouncerAccessService.checkAccess(operationId(), partyId)
+            bouncerAccessService.checkAccess(operationId(), partyId!!)
             log.info { "Process 'requestReviewClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
@@ -133,7 +133,7 @@ class ClaimManagementController(
         @Valid claimId: Long?,
         @Valid claimStatuses: List<String>?
     ): ResponseEntity<InlineResponse200> =
-        performRequest(operationId(), xRequestId!!, claimId!!) {
+        performRequest(operationId(), xRequestId!!, claimId) {
             bouncerAccessService.checkAccess(operationId())
             log.info { "Process 'searchClaims' get started, xRequestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
@@ -164,7 +164,7 @@ class ClaimManagementController(
         @Size(min = 1, max = 40) xRequestDeadline: String?
     ): ResponseEntity<Void> =
         performRequest(operationId(), xRequestId!!, claimId!!, claimRevision!!) {
-            bouncerAccessService.checkAccess(operationId(), partyId)
+            bouncerAccessService.checkAccess(operationId(), partyId!!)
             log.info { "Process 'updateClaimByID' get started, requestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
