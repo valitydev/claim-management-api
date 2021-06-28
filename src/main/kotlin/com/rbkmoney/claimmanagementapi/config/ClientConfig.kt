@@ -71,6 +71,14 @@ class ClientConfig {
         @Value("\${orgManagement.networkTimeout}") networkTimeout: Int
     ): AuthContextProviderSrv.Iface =
         THSpawnClientBuilder()
+            .withMetaExtensions(
+                listOf(
+                    UserIdentityIdExtensionKit.INSTANCE,
+                    UserIdentityEmailExtensionKit.INSTANCE,
+                    UserIdentityUsernameExtensionKit.INSTANCE,
+                    UserIdentityRealmExtensionKit.INSTANCE
+                )
+            )
             .withNetworkTimeout(networkTimeout)
             .withAddress(resource.uri)
             .build(AuthContextProviderSrv.Iface::class.java)
