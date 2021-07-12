@@ -20,6 +20,6 @@ abstract class AbstractUserIdentityExtensionKit(val key: String) : MetadataExten
 
         override fun convertToString(key: String, value: String): String = value
 
-        override fun apply(key: String): Boolean = key.equals(key, ignoreCase = true)
+        override fun apply(keyCandidate: String): Boolean = keyCandidate.equals(key, ignoreCase = true)
     }
 )

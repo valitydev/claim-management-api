@@ -1,10 +1,10 @@
 package com.rbkmoney.claimmanagementapi.meta
 
 class UserIdentityEmailExtensionKit
-private constructor(key: String) : AbstractUserIdentityExtensionKit(KEY) {
+private constructor() : AbstractUserIdentityExtensionKit(KEY) {
 
     companion object {
         const val KEY = "user-identity.email"
-        val INSTANCE = UserIdentityEmailExtensionKit(KEY)
+        val INSTANCE = UserIdentityEmailExtensionKit()
     }
 }
