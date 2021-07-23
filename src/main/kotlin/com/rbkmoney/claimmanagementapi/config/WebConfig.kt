@@ -1,13 +1,13 @@
 package com.rbkmoney.claimmanagementapi.config
 
-import com.rbkmoney.claimmanagementapi.meta.UserIdentityEmailExtensionKit
-import com.rbkmoney.claimmanagementapi.meta.UserIdentityIdExtensionKit
-import com.rbkmoney.claimmanagementapi.meta.UserIdentityRealmExtensionKit
-import com.rbkmoney.claimmanagementapi.meta.UserIdentityUsernameExtensionKit
 import com.rbkmoney.claimmanagementapi.util.DeadlineChecker
 import com.rbkmoney.woody.api.flow.WFlow
 import com.rbkmoney.woody.api.trace.ContextUtils
 import com.rbkmoney.woody.api.trace.ContextUtils.setCustomMetadataValue
+import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityEmailExtensionKit
+import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityIdExtensionKit
+import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityRealmExtensionKit
+import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityUsernameExtensionKit
 import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken
 import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.context.annotation.Bean

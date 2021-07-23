@@ -1,13 +1,13 @@
 package com.rbkmoney.claimmanagementapi.config
 
 import com.rbkmoney.bouncer.decisions.ArbiterSrv
-import com.rbkmoney.claimmanagementapi.meta.UserIdentityEmailExtensionKit
-import com.rbkmoney.claimmanagementapi.meta.UserIdentityIdExtensionKit
-import com.rbkmoney.claimmanagementapi.meta.UserIdentityRealmExtensionKit
-import com.rbkmoney.claimmanagementapi.meta.UserIdentityUsernameExtensionKit
 import com.rbkmoney.damsel.claim_management.ClaimManagementSrv
 import com.rbkmoney.damsel.payment_processing.PartyManagementSrv
 import com.rbkmoney.orgmanagement.AuthContextProviderSrv
+import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityEmailExtensionKit
+import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityIdExtensionKit
+import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityRealmExtensionKit
+import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityUsernameExtensionKit
 import com.rbkmoney.woody.thrift.impl.http.THSpawnClientBuilder
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.web.client.RestTemplateBuilder
@@ -44,10 +44,7 @@ class ClientConfig {
         THSpawnClientBuilder()
             .withMetaExtensions(
                 listOf(
-                    UserIdentityIdExtensionKit.INSTANCE,
-                    UserIdentityEmailExtensionKit.INSTANCE,
-                    UserIdentityUsernameExtensionKit.INSTANCE,
-                    UserIdentityRealmExtensionKit.INSTANCE
+                    UserIdentityEmailExtensionKit.INSTANCE
                 )
             )
             .withAddress(resource.uri)
