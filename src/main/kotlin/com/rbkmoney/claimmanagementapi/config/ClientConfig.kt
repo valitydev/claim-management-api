@@ -1,13 +1,8 @@
 package com.rbkmoney.claimmanagementapi.config
 
-import com.rbkmoney.bouncer.decisions.ArbiterSrv
 import com.rbkmoney.damsel.claim_management.ClaimManagementSrv
 import com.rbkmoney.damsel.payment_processing.PartyManagementSrv
-import com.rbkmoney.orgmanagement.AuthContextProviderSrv
 import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityEmailExtensionKit
-import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityIdExtensionKit
-import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityRealmExtensionKit
-import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityUsernameExtensionKit
 import com.rbkmoney.woody.thrift.impl.http.THSpawnClientBuilder
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.web.client.RestTemplateBuilder
@@ -61,32 +56,4 @@ class ClientConfig {
             .withNetworkTimeout(timeout)
             .build(PartyManagementSrv.Iface::class.java)
     }
-
-    @Bean
-    fun orgManagerClient(
-        @Value("\${orgManagement.url}") resource: Resource,
-        @Value("\${orgManagement.networkTimeout}") networkTimeout: Int
-    ): AuthContextProviderSrv.Iface =
-        THSpawnClientBuilder()
-            .withMetaExtensions(
-                listOf(
-                    UserIdentityIdExtensionKit.INSTANCE,
-                    UserIdentityEmailExtensionKit.INSTANCE,
-                    UserIdentityUsernameExtensionKit.INSTANCE,
-                    UserIdentityRealmExtensionKit.INSTANCE
-                )
-            )
-            .withNetworkTimeout(networkTimeout)
-            .withAddress(resource.uri)
-            .build(AuthContextProviderSrv.Iface::class.java)
-
-    @Bean
-    fun bouncerClient(
-        @Value("\${bouncer.url}") resource: Resource,
-        @Value("\${bouncer.networkTimeout}") networkTimeout: Int
-    ): ArbiterSrv.Iface =
-        THSpawnClientBuilder()
-            .withNetworkTimeout(networkTimeout)
-            .withAddress(resource.uri)
-            .build(ArbiterSrv.Iface::class.java)
 }

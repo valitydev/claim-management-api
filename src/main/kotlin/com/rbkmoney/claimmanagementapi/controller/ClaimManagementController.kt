@@ -59,7 +59,7 @@ class ClaimManagementController(
             log.info { "Process 'createClaim' get started, xRequestId=$xRequestId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            val claim = claimManagementService.createClaim(keycloakService.partyId, changeset!!)
+            val claim = claimManagementService.createClaim(partyId, changeset!!)
             log.info { "Claim created, xRequestId=$xRequestId, claimId=${claim.id}" }
             ResponseEntity.ok(claim)
         }
@@ -97,7 +97,7 @@ class ClaimManagementController(
             log.info { "Process 'revokeClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            claimManagementService.revokeClaimById(keycloakService.partyId, claimId, claimRevision, reason)
+            claimManagementService.revokeClaimById(partyId, claimId, claimRevision, reason)
             log.info { "Successful revoke claim, xRequestId=$xRequestId, claimId=$claimId" }
 
             ResponseEntity<Void>(HttpStatus.OK)
@@ -117,7 +117,7 @@ class ClaimManagementController(
             log.info { "Process 'requestReviewClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            claimManagementService.requestClaimReviewById(keycloakService.partyId, claimId, claimRevision)
+            claimManagementService.requestClaimReviewById(partyId, claimId, claimRevision)
             log.info { "Successful request claim review, xRequestId=$xRequestId, claimId=$claimId" }
 
             ResponseEntity<Void>(HttpStatus.OK)
@@ -168,7 +168,7 @@ class ClaimManagementController(
             log.info { "Process 'updateClaimByID' get started, requestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            claimManagementService.updateClaimById(keycloakService.partyId, claimId, claimRevision, changeset!!)
+            claimManagementService.updateClaimById(partyId, claimId, claimRevision, changeset!!)
             log.info { "Successful update claim, xRequestId=$xRequestId, claimId=$claimId" }
 
             ResponseEntity<Void>(HttpStatus.OK)
