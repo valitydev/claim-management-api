@@ -2,10 +2,12 @@ package com.rbkmoney.claimmanagementapi.converter.party.contract
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
 import com.rbkmoney.damsel.domain.InternationalBankAccount
+import com.rbkmoney.damsel.domain.PaymentInstitutionAccount
 import org.springframework.stereotype.Component
 import com.rbkmoney.damsel.domain.PayoutToolInfo as ThriftPayoutToolInfo
 import com.rbkmoney.damsel.domain.WalletInfo as ThriftWalletInfo
 import com.rbkmoney.swag.claim_management.model.InternationalBankAccount as SwagInternationalBankAccount
+import com.rbkmoney.swag.claim_management.model.PaymentInstitutionAccount as SwagPaymentInstitutionAccount
 import com.rbkmoney.swag.claim_management.model.PayoutToolInfo as SwagPayoutToolInfo
 import com.rbkmoney.swag.claim_management.model.RussianBankAccount as SwagRussianBankAccount
 import com.rbkmoney.swag.claim_management.model.WalletInfo as SwagWalletInfo
@@ -34,6 +36,9 @@ class PayoutToolInfoConverter(
                 val swagWalletInfo = value as SwagWalletInfo
                 thriftPayoutToolInfo.walletInfo = ThriftWalletInfo().setWalletId(swagWalletInfo.walletID)
             }
+            SwagPayoutToolInfo.PayoutToolTypeEnum.PAYMENTINSTITUTIONACCOUNT -> {
+                thriftPayoutToolInfo.paymentInstitutionAccount = PaymentInstitutionAccount()
+            }
             else -> throw IllegalArgumentException("Unknown payout tool type: ${value.payoutToolType}")
         }
         return thriftPayoutToolInfo
@@ -53,6 +58,11 @@ class PayoutToolInfoConverter(
                 SwagWalletInfo().apply {
                     payoutToolType = SwagPayoutToolInfo.PayoutToolTypeEnum.WALLETINFO
                     walletID = value.walletInfo.walletId
+                }
+            }
+            value.isSetPaymentInstitutionAccount -> {
+                SwagPaymentInstitutionAccount().apply {
+                    payoutToolType = SwagPayoutToolInfo.PayoutToolTypeEnum.PAYMENTINSTITUTIONACCOUNT
                 }
             }
             else -> throw IllegalArgumentException("Unknown payout tool type!")

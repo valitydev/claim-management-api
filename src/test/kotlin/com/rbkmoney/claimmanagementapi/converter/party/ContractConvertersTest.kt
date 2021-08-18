@@ -24,7 +24,6 @@ import io.github.benas.randombeans.api.EnhancedRandom
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.RepeatedTest
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import com.rbkmoney.damsel.claim_management.ContractAdjustmentModificationUnit as ThriftContractAdjustmentModificationUnit
 import com.rbkmoney.damsel.claim_management.ContractParams as ThriftContractParams
 import com.rbkmoney.damsel.claim_management.PayoutToolModification as ThriftPayoutToolModification
@@ -228,21 +227,13 @@ class ContractConvertersTest {
         )
         val thriftPayoutToolModificationUnit = MockTBaseProcessor(MockMode.REQUIRED_ONLY)
             .process(ThriftPayoutToolModificationUnit(), TBaseHandler(ThriftPayoutToolModificationUnit::class.java))
-        val modification = thriftPayoutToolModificationUnit.modification
-        // Temporary (hope so) hack
-        if (modification.isSetInfoModification && modification.infoModification.isSetPaymentInstitutionAccount ||
-            modification.isSetCreation && modification.creation.toolInfo.isSetPaymentInstitutionAccount
-        ) {
-            assertThrows<IllegalArgumentException> { converter.convertToSwag(thriftPayoutToolModificationUnit) }
-        } else {
-            val resultPayoutToolModificationUnit = converter.convertToThrift(
-                converter.convertToSwag(thriftPayoutToolModificationUnit)
-            )
-            assertEquals(
-                thriftPayoutToolModificationUnit, resultPayoutToolModificationUnit,
-                "Thrift objects 'PayoutToolModificationUnit' (MockMode.REQUIRED_ONLY) not equals"
-            )
-        }
+        val resultPayoutToolModificationUnit = converter.convertToThrift(
+            converter.convertToSwag(thriftPayoutToolModificationUnit)
+        )
+        assertEquals(
+            thriftPayoutToolModificationUnit, resultPayoutToolModificationUnit,
+            "Thrift objects 'PayoutToolModificationUnit' (MockMode.REQUIRED_ONLY) not equals"
+        )
     }
 
     @Test

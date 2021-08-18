@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.rbkmoney</groupId>
         <artifactId>service-parent-pom</artifactId>
-        <version>1.2.10</version>
+        <version>1.2.14</version>
     </parent>
 
     <artifactId>claim-management-api</artifactId>
@@ -27,13 +27,13 @@
         <dockerfile.base.service.tag>c0612d6052ac049496b72a23a04acb142035f249</dockerfile.base.service.tag>
         <dockerfile.registry>${env.REGISTRY}</dockerfile.registry>
 
-        <swag-claim-management.version>1.31-ded0ac5-server</swag-claim-management.version>
+        <swag-claim-management.version>1.33-1a8ca72-server</swag-claim-management.version>
         <org-management-proto.version>1.2-06c5c84</org-management-proto.version>
         <bouncer-proto.version>1.21-60cedce</bouncer-proto.version>
         <keycloak-spring-security.version>14.0.0</keycloak-spring-security.version>
         <bouncycastle-jdk15on.version>1.68</bouncycastle-jdk15on.version>
         <spring-cloud-contract-wiremock.version>2.2.4.RELEASE</spring-cloud-contract-wiremock.version>
-        <spring-security.version>5.4.6</spring-security.version>
+        <spring-security.version>5.4.7</spring-security.version>
         <jjwt.version>0.9.1</jjwt.version>
         <random-beans.version>3.6.0</random-beans.version>
     </properties>
