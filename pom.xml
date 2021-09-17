@@ -27,7 +27,7 @@
         <dockerfile.base.service.tag>c0612d6052ac049496b72a23a04acb142035f249</dockerfile.base.service.tag>
         <dockerfile.registry>${env.REGISTRY}</dockerfile.registry>
 
-        <swag-claim-management.version>1.31-ded0ac5-server</swag-claim-management.version>
+        <swag-claim-management.version>1.33-1a8ca72-server</swag-claim-management.version>
         <keycloak-spring-security.version>14.0.0</keycloak-spring-security.version>
         <bouncycastle-jdk15on.version>1.68</bouncycastle-jdk15on.version>
         <spring-cloud-contract-wiremock.version>2.2.4.RELEASE</spring-cloud-contract-wiremock.version>
