@@ -127,6 +127,7 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:read')")
     override fun searchClaims(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
+        @NotNull @Valid partyId: String?,
         @NotNull @Min(1L) @Max(1000L) @Valid limit: Int?,
         @Size(min = 1, max = 40) xRequestDeadline: String?,
         @Size(min = 1, max = 40) continuationToken: String?,
@@ -139,7 +140,7 @@ class ClaimManagementController(
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
             val response = claimManagementService.searchClaims(
-                keycloakService.partyId,
+                partyId!!,
                 limit!!,
                 continuationToken,
                 claimId,
