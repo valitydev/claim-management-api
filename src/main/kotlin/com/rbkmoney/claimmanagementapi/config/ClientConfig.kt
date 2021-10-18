@@ -64,8 +64,8 @@ class ClientConfig {
 
     @Bean
     fun orgManagerClient(
-        @Value("\${orgManagement.url}") resource: Resource,
-        @Value("\${orgManagement.networkTimeout}") networkTimeout: Int
+        @Value("\${orgManager.url}") resource: Resource,
+        @Value("\${orgManager.networkTimeout}") networkTimeout: Int
     ): AuthContextProviderSrv.Iface =
         THSpawnClientBuilder()
             .withMetaExtensions(
