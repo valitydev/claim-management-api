@@ -22,7 +22,7 @@ class InternationalLegalEntityConverter :
             .setRegisteredNumber(value.registeredNumber)
             .setTradingName(value.tradingName)
             .setCountry(
-                if (value.country.isNotEmpty())
+                if (!value.country.isNullOrEmpty())
                     CountryRef(CountryCode.valueOf(value.country))
                 else null
             )
