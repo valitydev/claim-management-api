@@ -79,6 +79,7 @@ class ErrorControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
                 .header("Authorization", "Bearer " + generateReadJwt())
                 .header("X-Request-ID", string())
                 .header("X-Request-Deadline", Instant.now().plus(1, ChronoUnit.DAYS).toString())
+                .param("partyID", 123.toString())
         ).andExpect(MockMvcResultMatchers.status().isNotFound)
         reset(claimManagementService)
         whenever(
