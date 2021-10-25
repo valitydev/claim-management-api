@@ -68,6 +68,7 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:read')")
     override fun getClaimByID(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
+        @NotNull @Valid partyId: String?,
         @NotNull @Valid claimId: Long?,
         @Size(min = 1, max = 40) xRequestDeadline: String?
     ): ResponseEntity<Claim> =
@@ -76,7 +77,7 @@ class ClaimManagementController(
             log.info { "Process 'getClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            val claim = claimManagementService.getClaimById(keycloakService.partyId, claimId)
+            val claim = claimManagementService.getClaimById(partyId!!, claimId)
             log.info { "Got a claim, xRequestId=$xRequestId, claimId=$claimId" }
 
             ResponseEntity.ok(claim)
@@ -97,7 +98,7 @@ class ClaimManagementController(
             log.info { "Process 'revokeClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            claimManagementService.revokeClaimById(keycloakService.partyId, claimId, claimRevision, reason)
+            claimManagementService.revokeClaimById(partyId, claimId, claimRevision, reason)
             log.info { "Successful revoke claim, xRequestId=$xRequestId, claimId=$claimId" }
 
             ResponseEntity<Void>(HttpStatus.OK)
@@ -117,7 +118,7 @@ class ClaimManagementController(
             log.info { "Process 'requestReviewClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            claimManagementService.requestClaimReviewById(keycloakService.partyId, claimId, claimRevision)
+            claimManagementService.requestClaimReviewById(partyId, claimId, claimRevision)
             log.info { "Successful request claim review, xRequestId=$xRequestId, claimId=$claimId" }
 
             ResponseEntity<Void>(HttpStatus.OK)
@@ -169,7 +170,7 @@ class ClaimManagementController(
             log.info { "Process 'updateClaimByID' get started, requestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            claimManagementService.updateClaimById(keycloakService.partyId, claimId, claimRevision, changeset!!)
+            claimManagementService.updateClaimById(partyId, claimId, claimRevision, changeset!!)
             log.info { "Successful update claim, xRequestId=$xRequestId, claimId=$claimId" }
 
             ResponseEntity<Void>(HttpStatus.OK)

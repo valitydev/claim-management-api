@@ -27,7 +27,7 @@
         <dockerfile.base.service.tag>c0612d6052ac049496b72a23a04acb142035f249</dockerfile.base.service.tag>
         <dockerfile.registry>${env.REGISTRY}</dockerfile.registry>
 
-        <swag-claim-management.version>1.34-3e2ac44-server</swag-claim-management.version>
+        <swag-claim-management.version>1.36-4910bd3-server</swag-claim-management.version>
         <org-management-proto.version>1.2-06c5c84</org-management-proto.version>
         <bouncer-proto.version>1.21-60cedce</bouncer-proto.version>
         <keycloak-spring-security.version>14.0.0</keycloak-spring-security.version>
