@@ -36,6 +36,7 @@
         <spring-security.version>5.4.7</spring-security.version>
         <jjwt.version>0.9.1</jjwt.version>
         <random-beans.version>3.6.0</random-beans.version>
+        <shared-resources.version>1.4.0</shared-resources.version>
     </properties>
 
     <dependencies>
