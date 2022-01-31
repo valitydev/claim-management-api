@@ -62,5 +62,4 @@ class SecurityConfig : KeycloakWebSecurityConfigurerAdapter() {
         }
         return UrlBasedCorsConfigurationSource().apply { registerCorsConfiguration("/**", configuration) }
     }
-
 }

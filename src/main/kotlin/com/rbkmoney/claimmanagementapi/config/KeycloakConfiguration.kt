@@ -67,5 +67,4 @@ class KeycloakConfiguration {
             throw RuntimeException(ex)
         }
     }
-
 }
