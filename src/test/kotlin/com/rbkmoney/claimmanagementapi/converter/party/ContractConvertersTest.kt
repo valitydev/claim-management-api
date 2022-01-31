@@ -16,34 +16,34 @@ import com.rbkmoney.claimmanagementapi.converter.party.data.TestContractData.tes
 import com.rbkmoney.claimmanagementapi.converter.party.data.TestContractData.testSwagPayoutToolModificationUnit
 import com.rbkmoney.claimmanagementapi.converter.party.data.TestContractData.testThriftContractModificationUnit
 import com.rbkmoney.claimmanagementapi.converter.party.data.TestContractData.testThriftInternationalBankAccount
-import com.rbkmoney.geck.serializer.kit.mock.MockMode
-import com.rbkmoney.geck.serializer.kit.mock.MockTBaseProcessor
-import com.rbkmoney.geck.serializer.kit.tbase.TBaseHandler
-import com.rbkmoney.swag.claim_management.model.ArticlesOfAssociation
+import dev.vality.geck.serializer.kit.mock.MockMode
+import dev.vality.geck.serializer.kit.mock.MockTBaseProcessor
+import dev.vality.geck.serializer.kit.tbase.TBaseHandler
+import dev.vality.swag.claim_management.model.ArticlesOfAssociation
 import io.github.benas.randombeans.api.EnhancedRandom
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.RepeatedTest
 import org.junit.jupiter.api.Test
-import com.rbkmoney.damsel.claim_management.ContractAdjustmentModificationUnit as ThriftContractAdjustmentModificationUnit
-import com.rbkmoney.damsel.claim_management.ContractParams as ThriftContractParams
-import com.rbkmoney.damsel.claim_management.PayoutToolModification as ThriftPayoutToolModification
-import com.rbkmoney.damsel.claim_management.PayoutToolModificationUnit as ThriftPayoutToolModificationUnit
-import com.rbkmoney.damsel.claim_management.PayoutToolParams as ThriftPayoutToolParams
-import com.rbkmoney.damsel.domain.CurrencyRef as ThriftCurrencyRef
-import com.rbkmoney.damsel.domain.InternationalBankAccount as ThriftInternationalBankAccount
-import com.rbkmoney.damsel.domain.LegalAgreement as ThriftLegalAgreement
-import com.rbkmoney.damsel.domain.PayoutToolInfo as ThriftPayoutToolInfo
-import com.rbkmoney.damsel.domain.ReportPreferences as ThriftReportPreferences
-import com.rbkmoney.damsel.domain.RepresentativeDocument as ThriftRepresentativeDocument
-import com.rbkmoney.damsel.domain.RussianBankAccount as ThriftRussianBankAccount
-import com.rbkmoney.swag.claim_management.model.ContractAdjustmentModificationUnit as SwagContractAdjustmentModificationUnit
-import com.rbkmoney.swag.claim_management.model.ContractCreationModification as SwagContractCreationModification
-import com.rbkmoney.swag.claim_management.model.ContractLegalAgreementBindingModification as SwagContractLegalAgreementBindingModification
-import com.rbkmoney.swag.claim_management.model.ContractModification as SwagContractModification
-import com.rbkmoney.swag.claim_management.model.ContractReportPreferencesModification as SwagContractReportPreferencesModification
-import com.rbkmoney.swag.claim_management.model.PayoutToolInfo as SwagPayoutToolInfo
-import com.rbkmoney.swag.claim_management.model.RepresentativeDocument as SwagRepresentativeDocument
-import com.rbkmoney.swag.claim_management.model.RussianBankAccount as SwagRussianBankAccount
+import dev.vality.damsel.claim_management.ContractAdjustmentModificationUnit as ThriftContractAdjustmentModificationUnit
+import dev.vality.damsel.claim_management.ContractParams as ThriftContractParams
+import dev.vality.damsel.claim_management.PayoutToolModification as ThriftPayoutToolModification
+import dev.vality.damsel.claim_management.PayoutToolModificationUnit as ThriftPayoutToolModificationUnit
+import dev.vality.damsel.claim_management.PayoutToolParams as ThriftPayoutToolParams
+import dev.vality.damsel.domain.CurrencyRef as ThriftCurrencyRef
+import dev.vality.damsel.domain.InternationalBankAccount as ThriftInternationalBankAccount
+import dev.vality.damsel.domain.LegalAgreement as ThriftLegalAgreement
+import dev.vality.damsel.domain.PayoutToolInfo as ThriftPayoutToolInfo
+import dev.vality.damsel.domain.ReportPreferences as ThriftReportPreferences
+import dev.vality.damsel.domain.RepresentativeDocument as ThriftRepresentativeDocument
+import dev.vality.damsel.domain.RussianBankAccount as ThriftRussianBankAccount
+import dev.vality.swag.claim_management.model.ContractAdjustmentModificationUnit as SwagContractAdjustmentModificationUnit
+import dev.vality.swag.claim_management.model.ContractCreationModification as SwagContractCreationModification
+import dev.vality.swag.claim_management.model.ContractLegalAgreementBindingModification as SwagContractLegalAgreementBindingModification
+import dev.vality.swag.claim_management.model.ContractModification as SwagContractModification
+import dev.vality.swag.claim_management.model.ContractReportPreferencesModification as SwagContractReportPreferencesModification
+import dev.vality.swag.claim_management.model.PayoutToolInfo as SwagPayoutToolInfo
+import dev.vality.swag.claim_management.model.RepresentativeDocument as SwagRepresentativeDocument
+import dev.vality.swag.claim_management.model.RussianBankAccount as SwagRussianBankAccount
 
 class ContractConvertersTest {
 

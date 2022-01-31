@@ -1,27 +1,27 @@
 package com.rbkmoney.claimmanagementapi.converter.party.data
 
-import com.rbkmoney.damsel.domain.CountryCode
-import com.rbkmoney.swag.claim_management.model.ContractModification.ContractModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.ContractPayoutToolModification.PayoutToolModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.PartyModificationType.PartyModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.PayoutToolInfo.PayoutToolTypeEnum
-import com.rbkmoney.swag.claim_management.model.RepresentativeDocument.DocumentTypeEnum
+import dev.vality.damsel.domain.CountryCode
+import dev.vality.swag.claim_management.model.ContractModification.ContractModificationTypeEnum
+import dev.vality.swag.claim_management.model.ContractPayoutToolModification.PayoutToolModificationTypeEnum
+import dev.vality.swag.claim_management.model.PartyModificationType.PartyModificationTypeEnum
+import dev.vality.swag.claim_management.model.PayoutToolInfo.PayoutToolTypeEnum
+import dev.vality.swag.claim_management.model.RepresentativeDocument.DocumentTypeEnum
 import io.github.benas.randombeans.api.EnhancedRandom
-import com.rbkmoney.damsel.claim_management.ContractModification as ThriftContractModification
-import com.rbkmoney.damsel.claim_management.ContractModificationUnit as ThriftContractModificationUnit
-import com.rbkmoney.damsel.domain.InternationalBankAccount as ThriftInternationalBankAccount
-import com.rbkmoney.damsel.domain.InternationalBankDetails as ThriftInternationalBankDetails
-import com.rbkmoney.damsel.domain.LegalAgreement as ThriftLegalAgreement
-import com.rbkmoney.swag.claim_management.model.ArticlesOfAssociation as SwagArticlesOfAssociation
-import com.rbkmoney.swag.claim_management.model.ContractModificationUnit as SwagContractModificationUnit
-import com.rbkmoney.swag.claim_management.model.ContractPayoutToolCreationModification as SwagContractPayoutToolCreationModification
-import com.rbkmoney.swag.claim_management.model.ContractPayoutToolInfoModification as SwagContractPayoutToolInfoModification
-import com.rbkmoney.swag.claim_management.model.ContractPayoutToolModificationUnit as SwagContractPayoutToolModificationUnit
-import com.rbkmoney.swag.claim_management.model.ContractTerminationModification as SwagContractTerminationModification
-import com.rbkmoney.swag.claim_management.model.InternationalBankAccount as SwagInternationalBankAccount
-import com.rbkmoney.swag.claim_management.model.PowerOfAttorney as SwagPowerOfAttorney
-import com.rbkmoney.swag.claim_management.model.RepresentativeDocument as SwagRepresentativeDocument
-import com.rbkmoney.swag.claim_management.model.RussianBankAccount as SwagRussianBankAccount
+import dev.vality.damsel.claim_management.ContractModification as ThriftContractModification
+import dev.vality.damsel.claim_management.ContractModificationUnit as ThriftContractModificationUnit
+import dev.vality.damsel.domain.InternationalBankAccount as ThriftInternationalBankAccount
+import dev.vality.damsel.domain.InternationalBankDetails as ThriftInternationalBankDetails
+import dev.vality.damsel.domain.LegalAgreement as ThriftLegalAgreement
+import dev.vality.swag.claim_management.model.ArticlesOfAssociation as SwagArticlesOfAssociation
+import dev.vality.swag.claim_management.model.ContractModificationUnit as SwagContractModificationUnit
+import dev.vality.swag.claim_management.model.ContractPayoutToolCreationModification as SwagContractPayoutToolCreationModification
+import dev.vality.swag.claim_management.model.ContractPayoutToolInfoModification as SwagContractPayoutToolInfoModification
+import dev.vality.swag.claim_management.model.ContractPayoutToolModificationUnit as SwagContractPayoutToolModificationUnit
+import dev.vality.swag.claim_management.model.ContractTerminationModification as SwagContractTerminationModification
+import dev.vality.swag.claim_management.model.InternationalBankAccount as SwagInternationalBankAccount
+import dev.vality.swag.claim_management.model.PowerOfAttorney as SwagPowerOfAttorney
+import dev.vality.swag.claim_management.model.RepresentativeDocument as SwagRepresentativeDocument
+import dev.vality.swag.claim_management.model.RussianBankAccount as SwagRussianBankAccount
 
 object TestContractData {
 

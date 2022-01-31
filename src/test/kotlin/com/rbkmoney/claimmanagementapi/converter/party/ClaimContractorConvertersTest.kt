@@ -7,32 +7,32 @@ import com.rbkmoney.claimmanagementapi.converter.party.contractor.ContractorModi
 import com.rbkmoney.claimmanagementapi.converter.party.contractor.InternationalLegalEntityConverter
 import com.rbkmoney.claimmanagementapi.converter.party.contractor.PrivateEntityConverter
 import com.rbkmoney.claimmanagementapi.converter.party.contractor.RussianLegalEntityConverter
-import com.rbkmoney.damsel.domain.ContractorIdentificationLevel
-import com.rbkmoney.damsel.domain.CountryCode
-import com.rbkmoney.geck.serializer.kit.mock.MockMode
-import com.rbkmoney.geck.serializer.kit.mock.MockTBaseProcessor
-import com.rbkmoney.geck.serializer.kit.tbase.TBaseHandler
-import com.rbkmoney.swag.claim_management.model.RegisteredUser
+import dev.vality.damsel.domain.ContractorIdentificationLevel
+import dev.vality.damsel.domain.CountryCode
+import dev.vality.geck.serializer.kit.mock.MockMode
+import dev.vality.geck.serializer.kit.mock.MockTBaseProcessor
+import dev.vality.geck.serializer.kit.tbase.TBaseHandler
+import dev.vality.swag.claim_management.model.RegisteredUser
 import io.github.benas.randombeans.api.EnhancedRandom
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import com.rbkmoney.damsel.claim_management.ContractorModificationUnit as ThriftContractorModificationUnit
-import com.rbkmoney.damsel.domain.Contractor as ThriftContractor
-import com.rbkmoney.damsel.domain.InternationalLegalEntity as ThriftInternationalLegalEntity
-import com.rbkmoney.damsel.domain.LegalEntity as ThriftLegalEntity
-import com.rbkmoney.damsel.domain.PrivateEntity as ThriftPrivateEntity
-import com.rbkmoney.damsel.domain.RussianLegalEntity as ThriftRussianLegalEntity
-import com.rbkmoney.swag.claim_management.model.Contractor as SwagContractor
-import com.rbkmoney.swag.claim_management.model.ContractorIdentificationLevel as SwagContractorIdentificationLevel
-import com.rbkmoney.swag.claim_management.model.ContractorModification as SwagContractorModification
-import com.rbkmoney.swag.claim_management.model.ContractorModificationUnit as SwagContractorModificationUnit
-import com.rbkmoney.swag.claim_management.model.ContractorType as SwagContractorType
-import com.rbkmoney.swag.claim_management.model.InternationalLegalEntity as SwagInternationalLegalEntity
-import com.rbkmoney.swag.claim_management.model.LegalEntity as SwagLegalEntity
-import com.rbkmoney.swag.claim_management.model.LegalEntityType as SwagLegalEntityType
-import com.rbkmoney.swag.claim_management.model.PartyModificationType as SwagPartyModificationType
-import com.rbkmoney.swag.claim_management.model.PrivateEntity as SwagPrivateEntity
-import com.rbkmoney.swag.claim_management.model.RussianLegalEntity as SwagRussianLegalEntity
+import dev.vality.damsel.claim_management.ContractorModificationUnit as ThriftContractorModificationUnit
+import dev.vality.damsel.domain.Contractor as ThriftContractor
+import dev.vality.damsel.domain.InternationalLegalEntity as ThriftInternationalLegalEntity
+import dev.vality.damsel.domain.LegalEntity as ThriftLegalEntity
+import dev.vality.damsel.domain.PrivateEntity as ThriftPrivateEntity
+import dev.vality.damsel.domain.RussianLegalEntity as ThriftRussianLegalEntity
+import dev.vality.swag.claim_management.model.Contractor as SwagContractor
+import dev.vality.swag.claim_management.model.ContractorIdentificationLevel as SwagContractorIdentificationLevel
+import dev.vality.swag.claim_management.model.ContractorModification as SwagContractorModification
+import dev.vality.swag.claim_management.model.ContractorModificationUnit as SwagContractorModificationUnit
+import dev.vality.swag.claim_management.model.ContractorType as SwagContractorType
+import dev.vality.swag.claim_management.model.InternationalLegalEntity as SwagInternationalLegalEntity
+import dev.vality.swag.claim_management.model.LegalEntity as SwagLegalEntity
+import dev.vality.swag.claim_management.model.LegalEntityType as SwagLegalEntityType
+import dev.vality.swag.claim_management.model.PartyModificationType as SwagPartyModificationType
+import dev.vality.swag.claim_management.model.PrivateEntity as SwagPrivateEntity
+import dev.vality.swag.claim_management.model.RussianLegalEntity as SwagRussianLegalEntity
 
 class ClaimContractorConvertersTest {
 

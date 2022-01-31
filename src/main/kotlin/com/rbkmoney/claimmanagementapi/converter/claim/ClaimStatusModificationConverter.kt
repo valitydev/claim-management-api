@@ -1,19 +1,14 @@
 package com.rbkmoney.claimmanagementapi.converter.claim
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.damsel.claim_management.ClaimAccepted
-import com.rbkmoney.damsel.claim_management.ClaimDenied
-import com.rbkmoney.damsel.claim_management.ClaimPending
-import com.rbkmoney.damsel.claim_management.ClaimPendingAcceptance
-import com.rbkmoney.damsel.claim_management.ClaimReview
-import com.rbkmoney.damsel.claim_management.ClaimRevoked
-import com.rbkmoney.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.StatusModification.StatusModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.StatusModificationUnit.StatusEnum
+import dev.vality.damsel.claim_management.*
+import dev.vality.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
+import dev.vality.swag.claim_management.model.StatusModification.StatusModificationTypeEnum
+import dev.vality.swag.claim_management.model.StatusModificationUnit.StatusEnum
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.ClaimStatus as ThriftClaimStatus
-import com.rbkmoney.swag.claim_management.model.StatusModification as SwagStatusModification
-import com.rbkmoney.swag.claim_management.model.StatusModificationUnit as SwagStatusModificationUnit
+import dev.vality.damsel.claim_management.ClaimStatus as ThriftClaimStatus
+import dev.vality.swag.claim_management.model.StatusModification as SwagStatusModification
+import dev.vality.swag.claim_management.model.StatusModificationUnit as SwagStatusModificationUnit
 
 @Component
 class ClaimStatusModificationConverter : DarkApiConverter<ThriftClaimStatus, SwagStatusModificationUnit> {

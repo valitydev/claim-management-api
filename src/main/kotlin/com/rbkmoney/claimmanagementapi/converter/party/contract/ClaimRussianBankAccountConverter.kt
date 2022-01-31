@@ -1,10 +1,10 @@
 package com.rbkmoney.claimmanagementapi.converter.party.contract
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.swag.claim_management.model.PayoutToolInfo
+import dev.vality.swag.claim_management.model.PayoutToolInfo
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.domain.RussianBankAccount as ThriftRussianBankAccount
-import com.rbkmoney.swag.claim_management.model.RussianBankAccount as SwagRussianBankAccount
+import dev.vality.damsel.domain.RussianBankAccount as ThriftRussianBankAccount
+import dev.vality.swag.claim_management.model.RussianBankAccount as SwagRussianBankAccount
 
 @Component
 class ClaimRussianBankAccountConverter : DarkApiConverter<ThriftRussianBankAccount, SwagRussianBankAccount> {

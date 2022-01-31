@@ -1,15 +1,15 @@
 package com.rbkmoney.claimmanagementapi.converter.party.contract
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.damsel.domain.CountryCode
-import com.rbkmoney.damsel.domain.InternationalBankDetails
-import com.rbkmoney.swag.claim_management.model.CorrespondentAccount
-import com.rbkmoney.swag.claim_management.model.PayoutToolInfo
+import dev.vality.damsel.domain.CountryCode
+import dev.vality.damsel.domain.InternationalBankDetails
+import dev.vality.swag.claim_management.model.CorrespondentAccount
+import dev.vality.swag.claim_management.model.PayoutToolInfo
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.domain.InternationalBankAccount as ThriftInternationalBankAccount
-import com.rbkmoney.swag.claim_management.model.CorrespondentBankDetails as SwagCorrespondentBankDetails
-import com.rbkmoney.swag.claim_management.model.InternationalBankAccount as SwagInternationalBankAccount
-import com.rbkmoney.swag.claim_management.model.InternationalBankDetails as SwagInternationalBankDetails
+import dev.vality.damsel.domain.InternationalBankAccount as ThriftInternationalBankAccount
+import dev.vality.swag.claim_management.model.CorrespondentBankDetails as SwagCorrespondentBankDetails
+import dev.vality.swag.claim_management.model.InternationalBankAccount as SwagInternationalBankAccount
+import dev.vality.swag.claim_management.model.InternationalBankDetails as SwagInternationalBankDetails
 
 @Component
 class InternationalBankAccountConverter :

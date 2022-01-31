@@ -2,12 +2,12 @@ package com.rbkmoney.claimmanagementapi.converter.party.contractor
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.domain.LegalEntity as ThriftLegalEntity
-import com.rbkmoney.swag.claim_management.model.ContractorType as SwagContractorType
-import com.rbkmoney.swag.claim_management.model.InternationalLegalEntity as SwagInternationalLegalEntity
-import com.rbkmoney.swag.claim_management.model.LegalEntity as SwagLegalEntity
-import com.rbkmoney.swag.claim_management.model.LegalEntityType as SwagLegalEntityType
-import com.rbkmoney.swag.claim_management.model.RussianLegalEntity as SwagRussianLegalEntity
+import dev.vality.damsel.domain.LegalEntity as ThriftLegalEntity
+import dev.vality.swag.claim_management.model.ContractorType as SwagContractorType
+import dev.vality.swag.claim_management.model.InternationalLegalEntity as SwagInternationalLegalEntity
+import dev.vality.swag.claim_management.model.LegalEntity as SwagLegalEntity
+import dev.vality.swag.claim_management.model.LegalEntityType as SwagLegalEntityType
+import dev.vality.swag.claim_management.model.RussianLegalEntity as SwagRussianLegalEntity
 
 @Component
 class ClaimLegalEntityConverter(

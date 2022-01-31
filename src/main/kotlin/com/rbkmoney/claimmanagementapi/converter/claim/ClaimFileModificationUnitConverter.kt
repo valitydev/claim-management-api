@@ -1,16 +1,16 @@
 package com.rbkmoney.claimmanagementapi.converter.claim
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.damsel.claim_management.FileChanged
-import com.rbkmoney.damsel.claim_management.FileCreated
-import com.rbkmoney.damsel.claim_management.FileDeleted
-import com.rbkmoney.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.FileModification.FileModificationTypeEnum
+import dev.vality.damsel.claim_management.FileChanged
+import dev.vality.damsel.claim_management.FileCreated
+import dev.vality.damsel.claim_management.FileDeleted
+import dev.vality.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
+import dev.vality.swag.claim_management.model.FileModification.FileModificationTypeEnum
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.FileModification as ThriftFileModification
-import com.rbkmoney.damsel.claim_management.FileModificationUnit as ThriftFileModificationUnit
-import com.rbkmoney.swag.claim_management.model.FileModification as SwagFileModification
-import com.rbkmoney.swag.claim_management.model.FileModificationUnit as SwagFileModificationUnit
+import dev.vality.damsel.claim_management.FileModification as ThriftFileModification
+import dev.vality.damsel.claim_management.FileModificationUnit as ThriftFileModificationUnit
+import dev.vality.swag.claim_management.model.FileModification as SwagFileModification
+import dev.vality.swag.claim_management.model.FileModificationUnit as SwagFileModificationUnit
 
 @Component
 class ClaimFileModificationUnitConverter : DarkApiConverter<ThriftFileModificationUnit, SwagFileModificationUnit> {

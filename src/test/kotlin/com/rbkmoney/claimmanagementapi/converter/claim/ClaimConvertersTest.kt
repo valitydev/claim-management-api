@@ -1,28 +1,28 @@
 package com.rbkmoney.claimmanagementapi.converter.claim
 
-import com.rbkmoney.geck.serializer.kit.mock.MockMode
-import com.rbkmoney.geck.serializer.kit.mock.MockTBaseProcessor
-import com.rbkmoney.geck.serializer.kit.tbase.TBaseHandler
-import com.rbkmoney.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.Modification.ModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.StatusModificationUnit.StatusEnum.DENIED
-import com.rbkmoney.swag.claim_management.model.StatusModificationUnit.StatusEnum.REVOKED
+import dev.vality.geck.serializer.kit.mock.MockMode
+import dev.vality.geck.serializer.kit.mock.MockTBaseProcessor
+import dev.vality.geck.serializer.kit.tbase.TBaseHandler
+import dev.vality.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
+import dev.vality.swag.claim_management.model.Modification.ModificationTypeEnum
+import dev.vality.swag.claim_management.model.StatusModificationUnit.StatusEnum.DENIED
+import dev.vality.swag.claim_management.model.StatusModificationUnit.StatusEnum.REVOKED
 import io.github.benas.randombeans.api.EnhancedRandom
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import com.rbkmoney.damsel.claim_management.ClaimModification as ThriftClaimModification
-import com.rbkmoney.damsel.claim_management.ClaimStatus as ThriftClaimStatus
-import com.rbkmoney.damsel.claim_management.CommentModificationUnit as ThriftCommentModificationUnit
-import com.rbkmoney.damsel.claim_management.DocumentModificationUnit as ThriftDocumentModificationUnit
-import com.rbkmoney.damsel.claim_management.FileModificationUnit as ThriftFileModificationUnit
-import com.rbkmoney.damsel.claim_management.Modification as ThriftModification
-import com.rbkmoney.damsel.claim_management.StatusModificationUnit as ThriftStatusModificationUnit
-import com.rbkmoney.swag.claim_management.model.ClaimModification as SwagClaimModification
-import com.rbkmoney.swag.claim_management.model.CommentModificationUnit as SwagCommentModificationUnit
-import com.rbkmoney.swag.claim_management.model.DocumentModificationUnit as SwagDocumentModificationUnit
-import com.rbkmoney.swag.claim_management.model.FileModificationUnit as SwagFileModificationUnit
-import com.rbkmoney.swag.claim_management.model.StatusModification as SwagStatusModification1
-import com.rbkmoney.swag.claim_management.model.StatusModificationUnit as SwagStatusModificationUnit
+import dev.vality.damsel.claim_management.ClaimModification as ThriftClaimModification
+import dev.vality.damsel.claim_management.ClaimStatus as ThriftClaimStatus
+import dev.vality.damsel.claim_management.CommentModificationUnit as ThriftCommentModificationUnit
+import dev.vality.damsel.claim_management.DocumentModificationUnit as ThriftDocumentModificationUnit
+import dev.vality.damsel.claim_management.FileModificationUnit as ThriftFileModificationUnit
+import dev.vality.damsel.claim_management.Modification as ThriftModification
+import dev.vality.damsel.claim_management.StatusModificationUnit as ThriftStatusModificationUnit
+import dev.vality.swag.claim_management.model.ClaimModification as SwagClaimModification
+import dev.vality.swag.claim_management.model.CommentModificationUnit as SwagCommentModificationUnit
+import dev.vality.swag.claim_management.model.DocumentModificationUnit as SwagDocumentModificationUnit
+import dev.vality.swag.claim_management.model.FileModificationUnit as SwagFileModificationUnit
+import dev.vality.swag.claim_management.model.StatusModification as SwagStatusModification1
+import dev.vality.swag.claim_management.model.StatusModificationUnit as SwagStatusModificationUnit
 
 class ClaimConvertersTest {
 

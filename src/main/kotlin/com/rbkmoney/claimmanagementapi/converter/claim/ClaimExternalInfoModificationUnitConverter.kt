@@ -2,9 +2,9 @@ package com.rbkmoney.claimmanagementapi.converter.claim
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.ExternalInfoModificationUnit as ThriftExternalInfoModificationUnit
-import com.rbkmoney.swag.claim_management.model.ClaimModificationType as SwagClaimModificationType
-import com.rbkmoney.swag.claim_management.model.ExternalInfoModificationUnit as SwagExternalInfoModificationUnit
+import dev.vality.damsel.claim_management.ExternalInfoModificationUnit as ThriftExternalInfoModificationUnit
+import dev.vality.swag.claim_management.model.ClaimModificationType as SwagClaimModificationType
+import dev.vality.swag.claim_management.model.ExternalInfoModificationUnit as SwagExternalInfoModificationUnit
 
 @Component
 class ClaimExternalInfoModificationUnitConverter :

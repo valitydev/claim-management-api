@@ -5,14 +5,14 @@ import com.rbkmoney.claimmanagementapi.converter.party.contract.ContractModifica
 import com.rbkmoney.claimmanagementapi.converter.party.contractor.ContractorModificationUnitConverter
 import com.rbkmoney.claimmanagementapi.converter.party.shop.ShopModificationUnitConverter
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.Modification as ThriftModification
-import com.rbkmoney.damsel.claim_management.PartyModification as ThriftPartyModification
-import com.rbkmoney.swag.claim_management.model.ContractModificationUnit as SwagContractModificationUnit
-import com.rbkmoney.swag.claim_management.model.ContractorModificationUnit as SwagContractorModificationUnit
-import com.rbkmoney.swag.claim_management.model.Modification as SwagModification
-import com.rbkmoney.swag.claim_management.model.PartyModification as SwagPartyModification
-import com.rbkmoney.swag.claim_management.model.PartyModificationType as SwagPartyModificationType
-import com.rbkmoney.swag.claim_management.model.ShopModificationUnit as SwagShopModificationUnit
+import dev.vality.damsel.claim_management.Modification as ThriftModification
+import dev.vality.damsel.claim_management.PartyModification as ThriftPartyModification
+import dev.vality.swag.claim_management.model.ContractModificationUnit as SwagContractModificationUnit
+import dev.vality.swag.claim_management.model.ContractorModificationUnit as SwagContractorModificationUnit
+import dev.vality.swag.claim_management.model.Modification as SwagModification
+import dev.vality.swag.claim_management.model.PartyModification as SwagPartyModification
+import dev.vality.swag.claim_management.model.PartyModificationType as SwagPartyModificationType
+import dev.vality.swag.claim_management.model.ShopModificationUnit as SwagShopModificationUnit
 
 @Component
 class PartyModificationConverter(

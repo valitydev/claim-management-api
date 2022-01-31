@@ -3,16 +3,16 @@ package com.rbkmoney.claimmanagementapi.converter
 import com.rbkmoney.claimmanagementapi.converter.claim.ClaimStatusConverter
 import org.springframework.stereotype.Component
 import java.time.OffsetDateTime
-import com.rbkmoney.damsel.claim_management.Claim as ThriftClaim
-import com.rbkmoney.damsel.claim_management.ClaimSearchQuery as ThriftClaimSearchQuery
-import com.rbkmoney.damsel.claim_management.ClaimStatus as ThriftClaimStatus
-import com.rbkmoney.damsel.claim_management.Modification as ThriftModification
-import com.rbkmoney.damsel.claim_management.ModificationUnit as ThriftModificationUnit
-import com.rbkmoney.swag.claim_management.model.Claim as SwagClaim
-import com.rbkmoney.swag.claim_management.model.ClaimChangeset as SwagClaimChangeset
-import com.rbkmoney.swag.claim_management.model.Modification as SwagModification
-import com.rbkmoney.swag.claim_management.model.ModificationUnit as SwagModificationUnit
-import com.rbkmoney.swag.claim_management.model.UserInfo as SwagUserInfo
+import dev.vality.damsel.claim_management.Claim as ThriftClaim
+import dev.vality.damsel.claim_management.ClaimSearchQuery as ThriftClaimSearchQuery
+import dev.vality.damsel.claim_management.ClaimStatus as ThriftClaimStatus
+import dev.vality.damsel.claim_management.Modification as ThriftModification
+import dev.vality.damsel.claim_management.ModificationUnit as ThriftModificationUnit
+import dev.vality.swag.claim_management.model.Claim as SwagClaim
+import dev.vality.swag.claim_management.model.ClaimChangeset as SwagClaimChangeset
+import dev.vality.swag.claim_management.model.Modification as SwagModification
+import dev.vality.swag.claim_management.model.ModificationUnit as SwagModificationUnit
+import dev.vality.swag.claim_management.model.UserInfo as SwagUserInfo
 
 @Component
 class ClaimManagementConverterImpl(
@@ -26,7 +26,9 @@ class ClaimManagementConverterImpl(
             status = claimStatusConverter.convertToSwag(sourceClaim.getStatus())
             changeset = convertClaimChangesetToSwag(sourceClaim.getChangeset())
             createdAt = OffsetDateTime.parse(sourceClaim.createdAt)
-            updatedAt = OffsetDateTime.parse(sourceClaim.updatedAt)
+            updatedAt = sourceClaim.updatedAt?.let {
+                OffsetDateTime.parse(sourceClaim.updatedAt)
+            }
             revision = sourceClaim.getRevision()
             // TODO: метадата это MAP - правильно ли ее так передавать?
             metadata = sourceClaim.getMetadata()

@@ -6,11 +6,11 @@ import com.rbkmoney.claimmanagementapi.security.BouncerAccessService
 import com.rbkmoney.claimmanagementapi.service.ClaimManagementService
 import com.rbkmoney.claimmanagementapi.service.ClaimManagementServiceTest
 import com.rbkmoney.claimmanagementapi.service.PartyManagementService
-import com.rbkmoney.damsel.claim_management.ChangesetConflict
-import com.rbkmoney.damsel.claim_management.ClaimNotFound
-import com.rbkmoney.damsel.claim_management.InvalidChangeset
-import com.rbkmoney.damsel.claim_management.InvalidClaimRevision
-import com.rbkmoney.damsel.claim_management.InvalidClaimStatus
+import dev.vality.damsel.claim_management.ChangesetConflict
+import dev.vality.damsel.claim_management.ClaimNotFound
+import dev.vality.damsel.claim_management.InvalidChangeset
+import dev.vality.damsel.claim_management.InvalidClaimRevision
+import dev.vality.damsel.claim_management.InvalidClaimStatus
 import org.apache.thrift.TException
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -79,6 +79,7 @@ class ErrorControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
                 .header("Authorization", "Bearer " + generateReadJwt())
                 .header("X-Request-ID", string())
                 .header("X-Request-Deadline", Instant.now().plus(1, ChronoUnit.DAYS).toString())
+                .param("partyID", "testPartyId")
         ).andExpect(MockMvcResultMatchers.status().isNotFound)
         reset(claimManagementService)
         whenever(

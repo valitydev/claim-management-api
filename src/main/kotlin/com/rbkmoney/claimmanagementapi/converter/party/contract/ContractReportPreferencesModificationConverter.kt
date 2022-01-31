@@ -1,17 +1,17 @@
 package com.rbkmoney.claimmanagementapi.converter.party.contract
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.damsel.domain.Representative
-import com.rbkmoney.swag.claim_management.model.ContractModification
+import dev.vality.damsel.domain.Representative
+import dev.vality.swag.claim_management.model.ContractModification
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.domain.BusinessScheduleRef as ThriftBusinessScheduleRef
-import com.rbkmoney.damsel.domain.ReportPreferences as ThriftReportPreferences
-import com.rbkmoney.damsel.domain.ServiceAcceptanceActPreferences as ThriftServiceAcceptanceActPreferences
-import com.rbkmoney.swag.claim_management.model.BusinessScheduleRef as SwagBusinessScheduleRef
-import com.rbkmoney.swag.claim_management.model.ContractReportPreferencesModification as SwagContractReportPreferencesModification
-import com.rbkmoney.swag.claim_management.model.ReportPreferences as SwagReportPreferences
-import com.rbkmoney.swag.claim_management.model.Representative as SwagRepresentative
-import com.rbkmoney.swag.claim_management.model.ServiceAcceptanceActPreferences as SwagServiceAcceptanceActPreferences
+import dev.vality.damsel.domain.BusinessScheduleRef as ThriftBusinessScheduleRef
+import dev.vality.damsel.domain.ReportPreferences as ThriftReportPreferences
+import dev.vality.damsel.domain.ServiceAcceptanceActPreferences as ThriftServiceAcceptanceActPreferences
+import dev.vality.swag.claim_management.model.BusinessScheduleRef as SwagBusinessScheduleRef
+import dev.vality.swag.claim_management.model.ContractReportPreferencesModification as SwagContractReportPreferencesModification
+import dev.vality.swag.claim_management.model.ReportPreferences as SwagReportPreferences
+import dev.vality.swag.claim_management.model.Representative as SwagRepresentative
+import dev.vality.swag.claim_management.model.ServiceAcceptanceActPreferences as SwagServiceAcceptanceActPreferences
 
 @Component
 class ContractReportPreferencesModificationConverter(

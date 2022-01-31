@@ -1,15 +1,15 @@
 package com.rbkmoney.claimmanagementapi.converter.claim
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.damsel.claim_management.DocumentChanged
-import com.rbkmoney.damsel.claim_management.DocumentCreated
-import com.rbkmoney.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.DocumentModification.DocumentModificationTypeEnum
+import dev.vality.damsel.claim_management.DocumentChanged
+import dev.vality.damsel.claim_management.DocumentCreated
+import dev.vality.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
+import dev.vality.swag.claim_management.model.DocumentModification.DocumentModificationTypeEnum
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.DocumentModification as ThriftDocumentModification
-import com.rbkmoney.damsel.claim_management.DocumentModificationUnit as ThriftDocumentModificationUnit
-import com.rbkmoney.swag.claim_management.model.DocumentModification as SwagDocumentModification
-import com.rbkmoney.swag.claim_management.model.DocumentModificationUnit as SwagDocumentModificationUnit
+import dev.vality.damsel.claim_management.DocumentModification as ThriftDocumentModification
+import dev.vality.damsel.claim_management.DocumentModificationUnit as ThriftDocumentModificationUnit
+import dev.vality.swag.claim_management.model.DocumentModification as SwagDocumentModification
+import dev.vality.swag.claim_management.model.DocumentModificationUnit as SwagDocumentModificationUnit
 
 @Component
 class ClaimDocumentModificationUnitConverter :

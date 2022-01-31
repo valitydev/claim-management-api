@@ -1,14 +1,14 @@
 package com.rbkmoney.claimmanagementapi.config
 
-import com.rbkmoney.bouncer.decisions.ArbiterSrv
-import com.rbkmoney.damsel.claim_management.ClaimManagementSrv
-import com.rbkmoney.damsel.payment_processing.PartyManagementSrv
-import com.rbkmoney.orgmanagement.AuthContextProviderSrv
-import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityEmailExtensionKit
-import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityIdExtensionKit
-import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityRealmExtensionKit
-import com.rbkmoney.woody.api.trace.context.metadata.user.UserIdentityUsernameExtensionKit
-import com.rbkmoney.woody.thrift.impl.http.THSpawnClientBuilder
+import dev.vality.bouncer.decisions.ArbiterSrv
+import dev.vality.damsel.claim_management.ClaimManagementSrv
+import dev.vality.damsel.payment_processing.PartyManagementSrv
+import dev.vality.orgmanagement.AuthContextProviderSrv
+import dev.vality.woody.api.trace.context.metadata.user.UserIdentityEmailExtensionKit
+import dev.vality.woody.api.trace.context.metadata.user.UserIdentityIdExtensionKit
+import dev.vality.woody.api.trace.context.metadata.user.UserIdentityRealmExtensionKit
+import dev.vality.woody.api.trace.context.metadata.user.UserIdentityUsernameExtensionKit
+import dev.vality.woody.thrift.impl.http.THSpawnClientBuilder
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.context.annotation.Bean

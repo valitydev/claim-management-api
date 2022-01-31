@@ -1,17 +1,17 @@
 package com.rbkmoney.claimmanagementapi.converter.party.shop
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.swag.claim_management.model.ShopModification.ShopModificationTypeEnum
+import dev.vality.swag.claim_management.model.ShopModification.ShopModificationTypeEnum
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.ShopParams as ThriftShopParams
-import com.rbkmoney.damsel.domain.CategoryRef as ThriftCategoryRef
-import com.rbkmoney.damsel.domain.ShopDetails as ThriftShopDetails
-import com.rbkmoney.damsel.domain.ShopLocation as ThriftShopLocation
-import com.rbkmoney.swag.claim_management.model.CategoryRef as SwagCategoryRef
-import com.rbkmoney.swag.claim_management.model.ShopCreationModification as SwagShopCreationModification
-import com.rbkmoney.swag.claim_management.model.ShopDetails as SwagShopDetails
-import com.rbkmoney.swag.claim_management.model.ShopLocation.LocationTypeEnum as SwagLocationTypeEnum
-import com.rbkmoney.swag.claim_management.model.ShopLocationUrl as SwagShopLocationUrl
+import dev.vality.damsel.claim_management.ShopParams as ThriftShopParams
+import dev.vality.damsel.domain.CategoryRef as ThriftCategoryRef
+import dev.vality.damsel.domain.ShopDetails as ThriftShopDetails
+import dev.vality.damsel.domain.ShopLocation as ThriftShopLocation
+import dev.vality.swag.claim_management.model.CategoryRef as SwagCategoryRef
+import dev.vality.swag.claim_management.model.ShopCreationModification as SwagShopCreationModification
+import dev.vality.swag.claim_management.model.ShopDetails as SwagShopDetails
+import dev.vality.swag.claim_management.model.ShopLocation.LocationTypeEnum as SwagLocationTypeEnum
+import dev.vality.swag.claim_management.model.ShopLocationUrl as SwagShopLocationUrl
 
 @Component
 class ShopCreationModificationConverter : DarkApiConverter<ThriftShopParams, SwagShopCreationModification> {

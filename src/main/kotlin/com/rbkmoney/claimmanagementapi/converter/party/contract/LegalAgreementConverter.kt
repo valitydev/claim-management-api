@@ -2,10 +2,10 @@ package com.rbkmoney.claimmanagementapi.converter.party.contract
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.domain.LegalAgreement as ThriftLegalAgreement
-import com.rbkmoney.swag.claim_management.model.ContractLegalAgreementBindingModification as SwagContractLegalAgreementBindingModification
-import com.rbkmoney.swag.claim_management.model.ContractModification as SwagContractModification
-import com.rbkmoney.swag.claim_management.model.LegalAgreement as SwagLegalAgreement
+import dev.vality.damsel.domain.LegalAgreement as ThriftLegalAgreement
+import dev.vality.swag.claim_management.model.ContractLegalAgreementBindingModification as SwagContractLegalAgreementBindingModification
+import dev.vality.swag.claim_management.model.ContractModification as SwagContractModification
+import dev.vality.swag.claim_management.model.LegalAgreement as SwagLegalAgreement
 
 @Component
 class LegalAgreementConverter : DarkApiConverter<ThriftLegalAgreement, SwagContractLegalAgreementBindingModification> {

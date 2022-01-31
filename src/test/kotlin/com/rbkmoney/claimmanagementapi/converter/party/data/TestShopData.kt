@@ -1,20 +1,20 @@
 package com.rbkmoney.claimmanagementapi.converter.party.data
 
-import com.rbkmoney.swag.claim_management.model.PartyModificationType.PartyModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.ShopCategoryModification
-import com.rbkmoney.swag.claim_management.model.ShopLocation.LocationTypeEnum
-import com.rbkmoney.swag.claim_management.model.ShopLocationModification
-import com.rbkmoney.swag.claim_management.model.ShopModification.ShopModificationTypeEnum
+import dev.vality.swag.claim_management.model.PartyModificationType.PartyModificationTypeEnum
+import dev.vality.swag.claim_management.model.ShopCategoryModification
+import dev.vality.swag.claim_management.model.ShopLocation.LocationTypeEnum
+import dev.vality.swag.claim_management.model.ShopLocationModification
+import dev.vality.swag.claim_management.model.ShopModification.ShopModificationTypeEnum
 import io.github.benas.randombeans.api.EnhancedRandom
-import com.rbkmoney.swag.claim_management.model.CategoryRef as SwagCategoryRef
-import com.rbkmoney.swag.claim_management.model.ShopAccountCreationModification as SwagShopAccountCreationModification1
-import com.rbkmoney.swag.claim_management.model.ShopContractModification as SwagShopContractModification
-import com.rbkmoney.swag.claim_management.model.ShopCreationModification as SwagShopCreationModification
-import com.rbkmoney.swag.claim_management.model.ShopDetailsModification as SwagShopDetailsModification
-import com.rbkmoney.swag.claim_management.model.ShopLocationUrl as SwagShopLocationUrl
-import com.rbkmoney.swag.claim_management.model.ShopModificationUnit as SwagShopModificationUnit
-import com.rbkmoney.swag.claim_management.model.ShopPayoutScheduleModification as SwagShopPayoutScheduleModification
-import com.rbkmoney.swag.claim_management.model.ShopPayoutToolModification as SwagShopPayoutToolModification
+import dev.vality.swag.claim_management.model.CategoryRef as SwagCategoryRef
+import dev.vality.swag.claim_management.model.ShopAccountCreationModification as SwagShopAccountCreationModification1
+import dev.vality.swag.claim_management.model.ShopContractModification as SwagShopContractModification
+import dev.vality.swag.claim_management.model.ShopCreationModification as SwagShopCreationModification
+import dev.vality.swag.claim_management.model.ShopDetailsModification as SwagShopDetailsModification
+import dev.vality.swag.claim_management.model.ShopLocationUrl as SwagShopLocationUrl
+import dev.vality.swag.claim_management.model.ShopModificationUnit as SwagShopModificationUnit
+import dev.vality.swag.claim_management.model.ShopPayoutScheduleModification as SwagShopPayoutScheduleModification
+import dev.vality.swag.claim_management.model.ShopPayoutToolModification as SwagShopPayoutToolModification
 
 object TestShopData {
 

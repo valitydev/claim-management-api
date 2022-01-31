@@ -23,7 +23,8 @@ class DeadlineChecker {
     }
 
     fun containsRelativeValues(xRequestDeadline: String, xRequestId: String?): Boolean {
-        return extractMinutes(xRequestDeadline, xRequestId) + extractSeconds(xRequestDeadline, xRequestId) +
+        return extractMinutes(xRequestDeadline, xRequestId) +
+            extractSeconds(xRequestDeadline, xRequestId) +
             extractMilliseconds(xRequestDeadline, xRequestId) > 0
     }
 

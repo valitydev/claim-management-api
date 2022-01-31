@@ -5,7 +5,7 @@ import com.rbkmoney.claimmanagementapi.security.BouncerAccessService
 import com.rbkmoney.claimmanagementapi.security.KeycloakService
 import com.rbkmoney.claimmanagementapi.service.ClaimManagementService
 import com.rbkmoney.claimmanagementapi.service.PartyManagementService
-import com.rbkmoney.swag.claim_management.model.Claim
+import dev.vality.swag.claim_management.model.Claim
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.any

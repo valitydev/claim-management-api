@@ -1,22 +1,22 @@
 package com.rbkmoney.claimmanagementapi.service
 
-import com.rbkmoney.damsel.claim_management.Claim
-import com.rbkmoney.damsel.claim_management.ClaimAccepted
-import com.rbkmoney.damsel.claim_management.ClaimManagementSrv
-import com.rbkmoney.damsel.claim_management.ClaimSearchResponse
-import com.rbkmoney.damsel.claim_management.ClaimStatus
-import com.rbkmoney.damsel.claim_management.DocumentCreated
-import com.rbkmoney.damsel.claim_management.InternalUser
-import com.rbkmoney.damsel.claim_management.UserType
-import com.rbkmoney.damsel.msgpack.Value
-import com.rbkmoney.swag.claim_management.model.ClaimChangeset
-import com.rbkmoney.swag.claim_management.model.ClaimModification
-import com.rbkmoney.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.DocumentModification
-import com.rbkmoney.swag.claim_management.model.DocumentModification.DocumentModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.DocumentModificationUnit
-import com.rbkmoney.swag.claim_management.model.Modification.ModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.UserInfo
+import dev.vality.damsel.claim_management.Claim
+import dev.vality.damsel.claim_management.ClaimAccepted
+import dev.vality.damsel.claim_management.ClaimManagementSrv
+import dev.vality.damsel.claim_management.ClaimSearchResponse
+import dev.vality.damsel.claim_management.ClaimStatus
+import dev.vality.damsel.claim_management.DocumentCreated
+import dev.vality.damsel.claim_management.InternalUser
+import dev.vality.damsel.claim_management.UserType
+import dev.vality.damsel.msgpack.Value
+import dev.vality.swag.claim_management.model.ClaimChangeset
+import dev.vality.swag.claim_management.model.ClaimModification
+import dev.vality.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
+import dev.vality.swag.claim_management.model.DocumentModification
+import dev.vality.swag.claim_management.model.DocumentModification.DocumentModificationTypeEnum
+import dev.vality.swag.claim_management.model.DocumentModificationUnit
+import dev.vality.swag.claim_management.model.Modification.ModificationTypeEnum
+import dev.vality.swag.claim_management.model.UserInfo
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -30,13 +30,13 @@ import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.time.OffsetDateTime
 import kotlin.collections.set
-import com.rbkmoney.damsel.claim_management.ClaimModification as ThriftClaimModification
-import com.rbkmoney.damsel.claim_management.DocumentModification as ThriftDocumentModification
-import com.rbkmoney.damsel.claim_management.DocumentModificationUnit as ThriftDocumentModificationUnit
-import com.rbkmoney.damsel.claim_management.Modification as ThriftModification
-import com.rbkmoney.damsel.claim_management.ModificationUnit as ThriftModificationUnit
-import com.rbkmoney.damsel.claim_management.UserInfo as ThriftUserInfo
-import com.rbkmoney.swag.claim_management.model.Modification as SwagModification
+import dev.vality.damsel.claim_management.ClaimModification as ThriftClaimModification
+import dev.vality.damsel.claim_management.DocumentModification as ThriftDocumentModification
+import dev.vality.damsel.claim_management.DocumentModificationUnit as ThriftDocumentModificationUnit
+import dev.vality.damsel.claim_management.Modification as ThriftModification
+import dev.vality.damsel.claim_management.ModificationUnit as ThriftModificationUnit
+import dev.vality.damsel.claim_management.UserInfo as ThriftUserInfo
+import dev.vality.swag.claim_management.model.Modification as SwagModification
 
 @SpringBootTest
 @ExtendWith(SpringExtension::class)
@@ -87,9 +87,9 @@ class ClaimManagementServiceTest {
     }
 
     companion object {
-        private val testAnswerCreateClaim: com.rbkmoney.swag.claim_management.model.Claim
+        private val testAnswerCreateClaim: dev.vality.swag.claim_management.model.Claim
             get() {
-                val testClaim = com.rbkmoney.swag.claim_management.model.Claim()
+                val testClaim = dev.vality.swag.claim_management.model.Claim()
                 testClaim.id = 1L
                 testClaim.status = "accepted"
                 testClaim.createdAt = OffsetDateTime.parse("2019-08-21T12:09:32.449571+03:00")
@@ -104,7 +104,7 @@ class ClaimManagementServiceTest {
         private val changeset: ClaimChangeset
             get() {
                 val changeset = ClaimChangeset()
-                val modificationUnit = com.rbkmoney.swag.claim_management.model.ModificationUnit()
+                val modificationUnit = dev.vality.swag.claim_management.model.ModificationUnit()
                 val swagClaimModification = ClaimModification()
                 swagClaimModification.modificationType = ModificationTypeEnum.CLAIMMODIFICATION
                 modificationUnit.modificationID = 1L

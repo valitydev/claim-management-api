@@ -1,16 +1,10 @@
 package com.rbkmoney.claimmanagementapi.security
 
-import com.rbkmoney.bouncer.context.v1.Auth
-import com.rbkmoney.bouncer.context.v1.ClaimManagementOperation
-import com.rbkmoney.bouncer.context.v1.ContextClaimManagement
-import com.rbkmoney.bouncer.context.v1.ContextFragment
-import com.rbkmoney.bouncer.context.v1.Deployment
-import com.rbkmoney.bouncer.context.v1.Entity
-import com.rbkmoney.bouncer.context.v1.Environment
-import com.rbkmoney.bouncer.context.v1.Token
-import com.rbkmoney.bouncer.ctx.ContextFragmentType
-import com.rbkmoney.bouncer.decisions.Context
 import com.rbkmoney.claimmanagementapi.config.properties.BouncerProperties
+import dev.vality.bouncer.base.Entity
+import dev.vality.bouncer.context.v1.*
+import dev.vality.bouncer.ctx.ContextFragmentType
+import dev.vality.bouncer.decisions.Context
 import mu.KotlinLogging
 import org.apache.thrift.TSerializer
 import org.springframework.boot.context.properties.EnableConfigurationProperties
@@ -30,7 +24,7 @@ class BouncerContextFactory(
     fun buildContext(bouncerContext: BouncerContextDto): Context {
         val contextFragment = buildContextFragment(bouncerContext)
         val serializer = TSerializer()
-        val fragment = com.rbkmoney.bouncer.ctx.ContextFragment().apply {
+        val fragment = dev.vality.bouncer.ctx.ContextFragment().apply {
             setType(ContextFragmentType.v1_thrift_binary)
             setContent(serializer.serialize(contextFragment))
         }

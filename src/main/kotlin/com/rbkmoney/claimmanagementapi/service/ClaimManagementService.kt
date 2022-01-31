@@ -1,10 +1,10 @@
 package com.rbkmoney.claimmanagementapi.service
 
 import com.rbkmoney.claimmanagementapi.converter.ClaimManagementConverter
-import com.rbkmoney.damsel.claim_management.ClaimManagementSrv
-import com.rbkmoney.swag.claim_management.model.Claim
-import com.rbkmoney.swag.claim_management.model.InlineResponse200
-import com.rbkmoney.swag.claim_management.model.Modification
+import dev.vality.damsel.claim_management.ClaimManagementSrv
+import dev.vality.swag.claim_management.model.Claim
+import dev.vality.swag.claim_management.model.InlineResponse200
+import dev.vality.swag.claim_management.model.Modification
 import org.springframework.stereotype.Service
 
 @Service

@@ -1,14 +1,14 @@
 package com.rbkmoney.claimmanagementapi.converter.party.contractor
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.damsel.claim_management.ContractorModification
+import dev.vality.damsel.claim_management.ContractorModification
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.ContractorModificationUnit as ThriftContractorModificationUnit
-import com.rbkmoney.swag.claim_management.model.Contractor as SwagContractor
-import com.rbkmoney.swag.claim_management.model.ContractorIdentificationLevel as SwagContractorIdentificationLevel
-import com.rbkmoney.swag.claim_management.model.ContractorModification as SwagContractorModification
-import com.rbkmoney.swag.claim_management.model.ContractorModificationUnit as SwagContractorModificationUnit
-import com.rbkmoney.swag.claim_management.model.PartyModificationType as SwagPartyModificationType
+import dev.vality.damsel.claim_management.ContractorModificationUnit as ThriftContractorModificationUnit
+import dev.vality.swag.claim_management.model.Contractor as SwagContractor
+import dev.vality.swag.claim_management.model.ContractorIdentificationLevel as SwagContractorIdentificationLevel
+import dev.vality.swag.claim_management.model.ContractorModification as SwagContractorModification
+import dev.vality.swag.claim_management.model.ContractorModificationUnit as SwagContractorModificationUnit
+import dev.vality.swag.claim_management.model.PartyModificationType as SwagPartyModificationType
 
 @Component
 class ContractorModificationUnitConverter(

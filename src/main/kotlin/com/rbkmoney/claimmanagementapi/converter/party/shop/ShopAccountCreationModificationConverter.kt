@@ -1,12 +1,12 @@
 package com.rbkmoney.claimmanagementapi.converter.party.shop
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.swag.claim_management.model.ShopModification
+import dev.vality.swag.claim_management.model.ShopModification
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.ShopAccountParams as ThriftShopAccountParams
-import com.rbkmoney.damsel.domain.CurrencyRef as ThriftCurrencyRef
-import com.rbkmoney.swag.claim_management.model.CurrencyRef as SwagCurrencyRef
-import com.rbkmoney.swag.claim_management.model.ShopAccountCreationModification as SwagShopAccountCreationModification
+import dev.vality.damsel.claim_management.ShopAccountParams as ThriftShopAccountParams
+import dev.vality.damsel.domain.CurrencyRef as ThriftCurrencyRef
+import dev.vality.swag.claim_management.model.CurrencyRef as SwagCurrencyRef
+import dev.vality.swag.claim_management.model.ShopAccountCreationModification as SwagShopAccountCreationModification
 
 @Component
 class ShopAccountCreationModificationConverter :
