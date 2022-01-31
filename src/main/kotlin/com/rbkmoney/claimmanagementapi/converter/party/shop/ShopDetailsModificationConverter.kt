@@ -1,11 +1,11 @@
 package com.rbkmoney.claimmanagementapi.converter.party.shop
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.swag.claim_management.model.ShopModification.ShopModificationTypeEnum
+import dev.vality.swag.claim_management.model.ShopModification.ShopModificationTypeEnum
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.domain.ShopDetails as ThriftShopDetails
-import com.rbkmoney.swag.claim_management.model.ShopDetails as SwagShopDetails
-import com.rbkmoney.swag.claim_management.model.ShopDetailsModification as SwagShopDetailsModification
+import dev.vality.damsel.domain.ShopDetails as ThriftShopDetails
+import dev.vality.swag.claim_management.model.ShopDetails as SwagShopDetails
+import dev.vality.swag.claim_management.model.ShopDetailsModification as SwagShopDetailsModification
 
 @Component
 class ShopDetailsModificationConverter : DarkApiConverter<ThriftShopDetails, SwagShopDetailsModification> {

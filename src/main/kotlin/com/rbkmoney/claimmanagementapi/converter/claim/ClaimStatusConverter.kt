@@ -7,13 +7,13 @@ import com.rbkmoney.claimmanagementapi.converter.claim.ThriftClaimStatus.PENDING
 import com.rbkmoney.claimmanagementapi.converter.claim.ThriftClaimStatus.PENDING_ACCEPTANCE
 import com.rbkmoney.claimmanagementapi.converter.claim.ThriftClaimStatus.REVIEW
 import com.rbkmoney.claimmanagementapi.converter.claim.ThriftClaimStatus.REVOKED
-import com.rbkmoney.damsel.claim_management.ClaimAccepted
-import com.rbkmoney.damsel.claim_management.ClaimDenied
-import com.rbkmoney.damsel.claim_management.ClaimPending
-import com.rbkmoney.damsel.claim_management.ClaimPendingAcceptance
-import com.rbkmoney.damsel.claim_management.ClaimReview
-import com.rbkmoney.damsel.claim_management.ClaimRevoked
-import com.rbkmoney.damsel.claim_management.ClaimStatus
+import dev.vality.damsel.claim_management.ClaimAccepted
+import dev.vality.damsel.claim_management.ClaimDenied
+import dev.vality.damsel.claim_management.ClaimPending
+import dev.vality.damsel.claim_management.ClaimPendingAcceptance
+import dev.vality.damsel.claim_management.ClaimReview
+import dev.vality.damsel.claim_management.ClaimRevoked
+import dev.vality.damsel.claim_management.ClaimStatus
 import org.springframework.stereotype.Component
 
 @Component

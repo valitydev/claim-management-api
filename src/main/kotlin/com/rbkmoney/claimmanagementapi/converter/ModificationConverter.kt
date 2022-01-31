@@ -2,11 +2,11 @@ package com.rbkmoney.claimmanagementapi.converter
 
 import com.rbkmoney.claimmanagementapi.converter.claim.ClaimModificationConverter
 import com.rbkmoney.claimmanagementapi.converter.party.PartyModificationConverter
-import com.rbkmoney.swag.claim_management.model.ClaimModification
-import com.rbkmoney.swag.claim_management.model.PartyModification
+import dev.vality.swag.claim_management.model.ClaimModification
+import dev.vality.swag.claim_management.model.PartyModification
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.Modification as ThriftModification
-import com.rbkmoney.swag.claim_management.model.Modification as SwagModification
+import dev.vality.damsel.claim_management.Modification as ThriftModification
+import dev.vality.swag.claim_management.model.Modification as SwagModification
 
 @Component
 class ModificationConverter(

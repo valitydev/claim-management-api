@@ -3,11 +3,11 @@ package com.rbkmoney.claimmanagementapi.service
 import com.rbkmoney.claimmanagementapi.exception.client.ForbiddenException
 import com.rbkmoney.claimmanagementapi.exception.server.DarkApi5xxException
 import com.rbkmoney.claimmanagementapi.security.KeycloakService
-import com.rbkmoney.damsel.domain.Blocked
-import com.rbkmoney.damsel.domain.Blocking
-import com.rbkmoney.damsel.domain.PartyStatus
-import com.rbkmoney.damsel.domain.Unblocked
-import com.rbkmoney.damsel.payment_processing.PartyManagementSrv
+import dev.vality.damsel.domain.Blocked
+import dev.vality.damsel.domain.Blocking
+import dev.vality.damsel.domain.PartyStatus
+import dev.vality.damsel.domain.Unblocked
+import dev.vality.damsel.payment_processing.PartyManagementSrv
 import org.apache.thrift.TException
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach

@@ -8,25 +8,25 @@ import com.rbkmoney.claimmanagementapi.converter.party.shop.ShopCreationModifica
 import com.rbkmoney.claimmanagementapi.converter.party.shop.ShopDetailsModificationConverter
 import com.rbkmoney.claimmanagementapi.converter.party.shop.ShopModificationUnitConverter
 import com.rbkmoney.claimmanagementapi.converter.party.shop.ShopPayoutScheduleModificationConverter
-import com.rbkmoney.damsel.claim_management.ScheduleModification
-import com.rbkmoney.damsel.claim_management.ShopAccountParams
-import com.rbkmoney.damsel.claim_management.ShopParams
-import com.rbkmoney.geck.serializer.kit.mock.MockMode
-import com.rbkmoney.geck.serializer.kit.mock.MockTBaseProcessor
-import com.rbkmoney.geck.serializer.kit.tbase.TBaseHandler
-import com.rbkmoney.swag.claim_management.model.ShopPayoutScheduleModification
+import dev.vality.damsel.claim_management.ScheduleModification
+import dev.vality.damsel.claim_management.ShopAccountParams
+import dev.vality.damsel.claim_management.ShopParams
+import dev.vality.geck.serializer.kit.mock.MockMode
+import dev.vality.geck.serializer.kit.mock.MockTBaseProcessor
+import dev.vality.geck.serializer.kit.tbase.TBaseHandler
+import dev.vality.swag.claim_management.model.ShopPayoutScheduleModification
 import io.github.benas.randombeans.api.EnhancedRandom
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.RepeatedTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-import com.rbkmoney.damsel.claim_management.ShopContractModification as ThriftShopContractModification
-import com.rbkmoney.damsel.claim_management.ShopModificationUnit as ThriftShopModificationUnit
-import com.rbkmoney.damsel.domain.ShopDetails as ThriftShopDetails
-import com.rbkmoney.swag.claim_management.model.ShopAccountCreationModification as SwagShopAccountCreationModification
-import com.rbkmoney.swag.claim_management.model.ShopContractModification as SwagShopContractModification
-import com.rbkmoney.swag.claim_management.model.ShopDetailsModification as SwagShopDetailsModification
-import com.rbkmoney.swag.claim_management.model.ShopModification as SwagShopModification
+import dev.vality.damsel.claim_management.ShopContractModification as ThriftShopContractModification
+import dev.vality.damsel.claim_management.ShopModificationUnit as ThriftShopModificationUnit
+import dev.vality.damsel.domain.ShopDetails as ThriftShopDetails
+import dev.vality.swag.claim_management.model.ShopAccountCreationModification as SwagShopAccountCreationModification
+import dev.vality.swag.claim_management.model.ShopContractModification as SwagShopContractModification
+import dev.vality.swag.claim_management.model.ShopDetailsModification as SwagShopDetailsModification
+import dev.vality.swag.claim_management.model.ShopModification as SwagShopModification
 
 class ShopConvertersTest {
 

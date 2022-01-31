@@ -10,17 +10,17 @@ import com.rbkmoney.claimmanagementapi.service.ClaimManagementService
 import com.rbkmoney.claimmanagementapi.service.PartyManagementService
 import com.rbkmoney.claimmanagementapi.util.DeadlineChecker
 import com.rbkmoney.claimmanagementapi.util.ReflectionUtils
-import com.rbkmoney.damsel.claim_management.BadContinuationToken
-import com.rbkmoney.damsel.claim_management.ChangesetConflict
-import com.rbkmoney.damsel.claim_management.ClaimNotFound
-import com.rbkmoney.damsel.claim_management.InvalidChangeset
-import com.rbkmoney.damsel.claim_management.InvalidClaimRevision
-import com.rbkmoney.damsel.claim_management.InvalidClaimStatus
-import com.rbkmoney.damsel.claim_management.LimitExceeded
-import com.rbkmoney.swag.claim_management.api.ProcessingApi
-import com.rbkmoney.swag.claim_management.model.Claim
-import com.rbkmoney.swag.claim_management.model.InlineResponse200
-import com.rbkmoney.swag.claim_management.model.Modification
+import dev.vality.damsel.claim_management.BadContinuationToken
+import dev.vality.damsel.claim_management.ChangesetConflict
+import dev.vality.damsel.claim_management.ClaimNotFound
+import dev.vality.damsel.claim_management.InvalidChangeset
+import dev.vality.damsel.claim_management.InvalidClaimRevision
+import dev.vality.damsel.claim_management.InvalidClaimStatus
+import dev.vality.damsel.claim_management.LimitExceeded
+import dev.vality.swag.claim_management.api.ProcessingApi
+import dev.vality.swag.claim_management.model.Claim
+import dev.vality.swag.claim_management.model.InlineResponse200
+import dev.vality.swag.claim_management.model.Modification
 import mu.KotlinLogging
 import org.apache.thrift.TException
 import org.springframework.http.HttpStatus
@@ -68,6 +68,7 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:read')")
     override fun getClaimByID(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
+        @NotNull @Valid partyId: String?,
         @NotNull @Valid claimId: Long?,
         @Size(min = 1, max = 40) xRequestDeadline: String?
     ): ResponseEntity<Claim> =
@@ -76,7 +77,7 @@ class ClaimManagementController(
             log.info { "Process 'getClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            val claim = claimManagementService.getClaimById(keycloakService.partyId, claimId)
+            val claim = claimManagementService.getClaimById(partyId!!, claimId)
             log.info { "Got a claim, xRequestId=$xRequestId, claimId=$claimId" }
 
             ResponseEntity.ok(claim)
@@ -127,6 +128,7 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:read')")
     override fun searchClaims(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
+        @NotNull partyId: String?,
         @NotNull @Min(1L) @Max(1000L) @Valid limit: Int?,
         @Size(min = 1, max = 40) xRequestDeadline: String?,
         @Size(min = 1, max = 40) continuationToken: String?,
@@ -139,7 +141,7 @@ class ClaimManagementController(
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
             val response = claimManagementService.searchClaims(
-                keycloakService.partyId,
+                partyId!!,
                 limit!!,
                 continuationToken,
                 claimId,

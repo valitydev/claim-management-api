@@ -1,16 +1,16 @@
 package com.rbkmoney.claimmanagementapi.converter.claim
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.damsel.claim_management.CommentChanged
-import com.rbkmoney.damsel.claim_management.CommentCreated
-import com.rbkmoney.damsel.claim_management.CommentDeleted
-import com.rbkmoney.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.CommentModification.CommentModificationTypeEnum
+import dev.vality.damsel.claim_management.CommentChanged
+import dev.vality.damsel.claim_management.CommentCreated
+import dev.vality.damsel.claim_management.CommentDeleted
+import dev.vality.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
+import dev.vality.swag.claim_management.model.CommentModification.CommentModificationTypeEnum
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.CommentModification as ThriftCommentModification
-import com.rbkmoney.damsel.claim_management.CommentModificationUnit as ThriftCommentModificationUnit
-import com.rbkmoney.swag.claim_management.model.CommentModification as SwagCommentModification
-import com.rbkmoney.swag.claim_management.model.CommentModificationUnit as SwagCommentModificationUnit
+import dev.vality.damsel.claim_management.CommentModification as ThriftCommentModification
+import dev.vality.damsel.claim_management.CommentModificationUnit as ThriftCommentModificationUnit
+import dev.vality.swag.claim_management.model.CommentModification as SwagCommentModification
+import dev.vality.swag.claim_management.model.CommentModificationUnit as SwagCommentModificationUnit
 
 @Component
 class ClaimCommentModificationUnitConverter :

@@ -1,6 +1,6 @@
 package com.rbkmoney.claimmanagementapi.security
 
-import com.rbkmoney.bouncer.decisions.ArbiterSrv
+import dev.vality.bouncer.decisions.ArbiterSrv
 import com.rbkmoney.claimmanagementapi.config.properties.BouncerProperties
 import mu.KotlinLogging
 import org.apache.thrift.TException

@@ -2,14 +2,14 @@ package com.rbkmoney.claimmanagementapi.converter.party.contractor
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.domain.Contractor as ThriftContractor
-import com.rbkmoney.damsel.domain.RegisteredUser as ThriftRegisteredUser
-import com.rbkmoney.swag.claim_management.model.Contractor as SwagContractor
-import com.rbkmoney.swag.claim_management.model.ContractorModification as SwagContractorModification
-import com.rbkmoney.swag.claim_management.model.ContractorType as SwagContractorType
-import com.rbkmoney.swag.claim_management.model.LegalEntity as SwagLegalEntity
-import com.rbkmoney.swag.claim_management.model.PrivateEntity as SwagPrivateEntity
-import com.rbkmoney.swag.claim_management.model.RegisteredUser as SwagRegisteredUser
+import dev.vality.damsel.domain.Contractor as ThriftContractor
+import dev.vality.damsel.domain.RegisteredUser as ThriftRegisteredUser
+import dev.vality.swag.claim_management.model.Contractor as SwagContractor
+import dev.vality.swag.claim_management.model.ContractorModification as SwagContractorModification
+import dev.vality.swag.claim_management.model.ContractorType as SwagContractorType
+import dev.vality.swag.claim_management.model.LegalEntity as SwagLegalEntity
+import dev.vality.swag.claim_management.model.PrivateEntity as SwagPrivateEntity
+import dev.vality.swag.claim_management.model.RegisteredUser as SwagRegisteredUser
 
 @Component
 class ClaimContractorConverter(

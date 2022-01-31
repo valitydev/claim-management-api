@@ -1,12 +1,12 @@
 package com.rbkmoney.claimmanagementapi.converter.claim
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.damsel.claim_management.StatusChanged
+import dev.vality.damsel.claim_management.StatusChanged
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.StatusModification as ThriftStatusModification
-import com.rbkmoney.damsel.claim_management.StatusModificationUnit as ThriftStatusModificationUnit
-import com.rbkmoney.swag.claim_management.model.StatusModification as SwagStatusModification
-import com.rbkmoney.swag.claim_management.model.StatusModificationUnit as SwagStatusModificationUnit
+import dev.vality.damsel.claim_management.StatusModification as ThriftStatusModification
+import dev.vality.damsel.claim_management.StatusModificationUnit as ThriftStatusModificationUnit
+import dev.vality.swag.claim_management.model.StatusModification as SwagStatusModification
+import dev.vality.swag.claim_management.model.StatusModificationUnit as SwagStatusModificationUnit
 
 @Component
 class ClaimStatusModificationUnitConverter(

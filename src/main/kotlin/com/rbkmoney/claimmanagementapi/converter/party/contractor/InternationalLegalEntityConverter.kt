@@ -1,12 +1,12 @@
 package com.rbkmoney.claimmanagementapi.converter.party.contractor
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.damsel.domain.CountryCode
-import com.rbkmoney.damsel.domain.CountryRef
+import dev.vality.damsel.domain.CountryCode
+import dev.vality.damsel.domain.CountryRef
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.domain.InternationalLegalEntity as ThriftInternationalLegalEntity
-import com.rbkmoney.swag.claim_management.model.InternationalLegalEntity as SwagInternationalLegalEntity
-import com.rbkmoney.swag.claim_management.model.LegalEntityType as SwagLegalEntityType
+import dev.vality.damsel.domain.InternationalLegalEntity as ThriftInternationalLegalEntity
+import dev.vality.swag.claim_management.model.InternationalLegalEntity as SwagInternationalLegalEntity
+import dev.vality.swag.claim_management.model.LegalEntityType as SwagLegalEntityType
 
 @Component
 class InternationalLegalEntityConverter :

@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.rbkmoney</groupId>
+        <groupId>dev.vality</groupId>
         <artifactId>service-parent-pom</artifactId>
-        <version>1.2.14</version>
+        <version>1.0.7</version>
     </parent>
 
     <artifactId>claim-management-api</artifactId>
@@ -27,9 +27,9 @@
         <dockerfile.base.service.tag>c0612d6052ac049496b72a23a04acb142035f249</dockerfile.base.service.tag>
         <dockerfile.registry>${env.REGISTRY}</dockerfile.registry>
 
-        <swag-claim-management.version>1.33-1a8ca72-server</swag-claim-management.version>
-        <org-management-proto.version>1.2-06c5c84</org-management-proto.version>
-        <bouncer-proto.version>1.21-60cedce</bouncer-proto.version>
+        <swag-claim-management.version>1.1-18ebff9-server</swag-claim-management.version>
+        <org-management-proto.version>1.6-abb4b4d</org-management-proto.version>
+        <bouncer-proto.version>1.36-96bd74d</bouncer-proto.version>
         <keycloak-spring-security.version>14.0.0</keycloak-spring-security.version>
         <bouncycastle-jdk15on.version>1.68</bouncycastle-jdk15on.version>
         <spring-cloud-contract-wiremock.version>2.2.4.RELEASE</spring-cloud-contract-wiremock.version>
@@ -55,38 +55,38 @@
 
         <!--swag-->
         <dependency>
-            <groupId>com.rbkmoney</groupId>
+            <groupId>dev.vality</groupId>
             <artifactId>swag-claim-management</artifactId>
             <version>${swag-claim-management.version}</version>
         </dependency>
 
         <!--rbkmoney-->
         <dependency>
-            <groupId>com.rbkmoney</groupId>
+            <groupId>dev.vality</groupId>
             <artifactId>custom-metrics-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.rbkmoney</groupId>
+            <groupId>dev.vality</groupId>
             <artifactId>custom-actuator-endpoints</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.rbkmoney.woody</groupId>
+            <groupId>dev.vality.woody</groupId>
             <artifactId>woody-thrift</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.rbkmoney</groupId>
+            <groupId>dev.vality</groupId>
             <artifactId>damsel</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.rbkmoney.geck</groupId>
+            <groupId>dev.vality.geck</groupId>
             <artifactId>serializer</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.rbkmoney</groupId>
+            <groupId>dev.vality</groupId>
             <artifactId>shared-resources</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.rbkmoney</groupId>
+            <groupId>dev.vality</groupId>
             <artifactId>org-management-proto</artifactId>
             <version>${org-management-proto.version}</version>
             <exclusions>
@@ -97,7 +97,7 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.rbkmoney</groupId>
+            <groupId>dev.vality</groupId>
             <artifactId>bouncer-proto</artifactId>
             <version>${bouncer-proto.version}</version>
         </dependency>

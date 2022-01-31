@@ -1,12 +1,12 @@
 package com.rbkmoney.claimmanagementapi.converter.party.shop
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.swag.claim_management.model.ShopModification
+import dev.vality.swag.claim_management.model.ShopModification
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.ScheduleModification as ThriftScheduleModification
-import com.rbkmoney.damsel.domain.BusinessScheduleRef as ThriftBusinessScheduleRef
-import com.rbkmoney.swag.claim_management.model.BusinessScheduleRef as SwagBusinessScheduleRef
-import com.rbkmoney.swag.claim_management.model.ShopPayoutScheduleModification as SwagShopPayoutScheduleModification
+import dev.vality.damsel.claim_management.ScheduleModification as ThriftScheduleModification
+import dev.vality.damsel.domain.BusinessScheduleRef as ThriftBusinessScheduleRef
+import dev.vality.swag.claim_management.model.BusinessScheduleRef as SwagBusinessScheduleRef
+import dev.vality.swag.claim_management.model.ShopPayoutScheduleModification as SwagShopPayoutScheduleModification
 
 @Component
 class ShopPayoutScheduleModificationConverter :

@@ -1,13 +1,13 @@
 package com.rbkmoney.claimmanagementapi.converter.party.contractor
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.damsel.domain.ContactInfo
+import dev.vality.damsel.domain.ContactInfo
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.domain.PrivateEntity as ThriftPrivateEntity
-import com.rbkmoney.damsel.domain.RussianPrivateEntity as ThriftRussianPrivateEntity
-import com.rbkmoney.swag.claim_management.model.ContactInfo as SwagContactInfo
-import com.rbkmoney.swag.claim_management.model.ContractorType as SwagContractorType
-import com.rbkmoney.swag.claim_management.model.PrivateEntity as SwagPrivateEntity
+import dev.vality.damsel.domain.PrivateEntity as ThriftPrivateEntity
+import dev.vality.damsel.domain.RussianPrivateEntity as ThriftRussianPrivateEntity
+import dev.vality.swag.claim_management.model.ContactInfo as SwagContactInfo
+import dev.vality.swag.claim_management.model.ContractorType as SwagContractorType
+import dev.vality.swag.claim_management.model.PrivateEntity as SwagPrivateEntity
 
 @Component
 class PrivateEntityConverter :

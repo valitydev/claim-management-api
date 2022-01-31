@@ -1,17 +1,17 @@
 package com.rbkmoney.claimmanagementapi.converter.claim
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
+import dev.vality.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.ClaimModification as ThriftClaimModification
-import com.rbkmoney.damsel.claim_management.Modification as ThriftModification
-import com.rbkmoney.swag.claim_management.model.ClaimModification as SwagClaimModification
-import com.rbkmoney.swag.claim_management.model.CommentModificationUnit as SwagCommentModificationUnit
-import com.rbkmoney.swag.claim_management.model.DocumentModificationUnit as SwagDocumentModificationUnit
-import com.rbkmoney.swag.claim_management.model.ExternalInfoModificationUnit as SwagExternalInfoModificationUnit
-import com.rbkmoney.swag.claim_management.model.FileModificationUnit as SwagFileModificationUnit
-import com.rbkmoney.swag.claim_management.model.Modification as SwagModification
-import com.rbkmoney.swag.claim_management.model.StatusModificationUnit as SwagStatusModificationUnit
+import dev.vality.damsel.claim_management.ClaimModification as ThriftClaimModification
+import dev.vality.damsel.claim_management.Modification as ThriftModification
+import dev.vality.swag.claim_management.model.ClaimModification as SwagClaimModification
+import dev.vality.swag.claim_management.model.CommentModificationUnit as SwagCommentModificationUnit
+import dev.vality.swag.claim_management.model.DocumentModificationUnit as SwagDocumentModificationUnit
+import dev.vality.swag.claim_management.model.ExternalInfoModificationUnit as SwagExternalInfoModificationUnit
+import dev.vality.swag.claim_management.model.FileModificationUnit as SwagFileModificationUnit
+import dev.vality.swag.claim_management.model.Modification as SwagModification
+import dev.vality.swag.claim_management.model.StatusModificationUnit as SwagStatusModificationUnit
 
 @Component
 class ClaimModificationConverter(

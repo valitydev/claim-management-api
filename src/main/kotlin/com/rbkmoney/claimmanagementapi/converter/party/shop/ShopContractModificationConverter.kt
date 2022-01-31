@@ -1,10 +1,10 @@
 package com.rbkmoney.claimmanagementapi.converter.party.shop
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.swag.claim_management.model.ShopModification.ShopModificationTypeEnum
+import dev.vality.swag.claim_management.model.ShopModification.ShopModificationTypeEnum
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.ShopContractModification as ThriftShopContractModification
-import com.rbkmoney.swag.claim_management.model.ShopContractModification as SwagShopContractModification
+import dev.vality.damsel.claim_management.ShopContractModification as ThriftShopContractModification
+import dev.vality.swag.claim_management.model.ShopContractModification as SwagShopContractModification
 
 @Component
 class ShopContractModificationConverter :

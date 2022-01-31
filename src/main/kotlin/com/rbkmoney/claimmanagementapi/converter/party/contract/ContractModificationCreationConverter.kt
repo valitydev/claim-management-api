@@ -1,14 +1,14 @@
 package com.rbkmoney.claimmanagementapi.converter.party.contract
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.damsel.domain.ContractTemplateRef
-import com.rbkmoney.damsel.domain.PaymentInstitutionRef
-import com.rbkmoney.swag.claim_management.model.ContractModification.ContractModificationTypeEnum
+import dev.vality.damsel.domain.ContractTemplateRef
+import dev.vality.damsel.domain.PaymentInstitutionRef
+import dev.vality.swag.claim_management.model.ContractModification.ContractModificationTypeEnum
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.ContractParams as ThriftContractParams
-import com.rbkmoney.swag.claim_management.model.ContractCreationModification as SwagContractCreationModification
-import com.rbkmoney.swag.claim_management.model.ContractTemplateRef as SwagContractTemplateRef
-import com.rbkmoney.swag.claim_management.model.PaymentInstitutionRef as SwagPaymentInstitutionRef
+import dev.vality.damsel.claim_management.ContractParams as ThriftContractParams
+import dev.vality.swag.claim_management.model.ContractCreationModification as SwagContractCreationModification
+import dev.vality.swag.claim_management.model.ContractTemplateRef as SwagContractTemplateRef
+import dev.vality.swag.claim_management.model.PaymentInstitutionRef as SwagPaymentInstitutionRef
 
 @Component
 class ContractModificationCreationConverter : DarkApiConverter<ThriftContractParams, SwagContractCreationModification> {

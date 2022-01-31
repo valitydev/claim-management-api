@@ -1,24 +1,24 @@
 package com.rbkmoney.claimmanagementapi.converter.party.shop
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.damsel.claim_management.ShopModification
-import com.rbkmoney.damsel.domain.CategoryRef
-import com.rbkmoney.damsel.domain.ShopLocation
-import com.rbkmoney.swag.claim_management.model.PartyModificationType.PartyModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.ShopAccountCreationModification
-import com.rbkmoney.swag.claim_management.model.ShopCategoryModification
-import com.rbkmoney.swag.claim_management.model.ShopContractModification
-import com.rbkmoney.swag.claim_management.model.ShopCreationModification
-import com.rbkmoney.swag.claim_management.model.ShopDetailsModification
-import com.rbkmoney.swag.claim_management.model.ShopLocationModification
-import com.rbkmoney.swag.claim_management.model.ShopLocationUrl
-import com.rbkmoney.swag.claim_management.model.ShopPayoutScheduleModification
-import com.rbkmoney.swag.claim_management.model.ShopPayoutToolModification
+import dev.vality.damsel.claim_management.ShopModification
+import dev.vality.damsel.domain.CategoryRef
+import dev.vality.damsel.domain.ShopLocation
+import dev.vality.swag.claim_management.model.PartyModificationType.PartyModificationTypeEnum
+import dev.vality.swag.claim_management.model.ShopAccountCreationModification
+import dev.vality.swag.claim_management.model.ShopCategoryModification
+import dev.vality.swag.claim_management.model.ShopContractModification
+import dev.vality.swag.claim_management.model.ShopCreationModification
+import dev.vality.swag.claim_management.model.ShopDetailsModification
+import dev.vality.swag.claim_management.model.ShopLocationModification
+import dev.vality.swag.claim_management.model.ShopLocationUrl
+import dev.vality.swag.claim_management.model.ShopPayoutScheduleModification
+import dev.vality.swag.claim_management.model.ShopPayoutToolModification
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.claim_management.ShopModificationUnit as ThriftShopModificationUnit
-import com.rbkmoney.swag.claim_management.model.CategoryRef as SwagCategoryRef
-import com.rbkmoney.swag.claim_management.model.ShopModification.ShopModificationTypeEnum as SwagShopModificationTypeEnum
-import com.rbkmoney.swag.claim_management.model.ShopModificationUnit as SwagShopModificationUnit
+import dev.vality.damsel.claim_management.ShopModificationUnit as ThriftShopModificationUnit
+import dev.vality.swag.claim_management.model.CategoryRef as SwagCategoryRef
+import dev.vality.swag.claim_management.model.ShopModification.ShopModificationTypeEnum as SwagShopModificationTypeEnum
+import dev.vality.swag.claim_management.model.ShopModificationUnit as SwagShopModificationUnit
 
 @Component
 class ShopModificationUnitConverter(

@@ -1,14 +1,14 @@
 package com.rbkmoney.claimmanagementapi.converter.party.contract
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import com.rbkmoney.damsel.domain.ArticlesOfAssociation
-import com.rbkmoney.damsel.domain.LegalAgreement
+import dev.vality.damsel.domain.ArticlesOfAssociation
+import dev.vality.damsel.domain.LegalAgreement
 import org.springframework.stereotype.Component
-import com.rbkmoney.damsel.domain.RepresentativeDocument as ThriftRepresentativeDocument
-import com.rbkmoney.swag.claim_management.model.ArticlesOfAssociation as SwagArticlesOfAssociation
-import com.rbkmoney.swag.claim_management.model.PowerOfAttorney as SwagPowerOfAttorney
-import com.rbkmoney.swag.claim_management.model.RepresentativeDocument as SwagRepresentativeDocument
-import com.rbkmoney.swag.claim_management.model.RepresentativeDocument.DocumentTypeEnum as SwagDocumentTypeEnum
+import dev.vality.damsel.domain.RepresentativeDocument as ThriftRepresentativeDocument
+import dev.vality.swag.claim_management.model.ArticlesOfAssociation as SwagArticlesOfAssociation
+import dev.vality.swag.claim_management.model.PowerOfAttorney as SwagPowerOfAttorney
+import dev.vality.swag.claim_management.model.RepresentativeDocument as SwagRepresentativeDocument
+import dev.vality.swag.claim_management.model.RepresentativeDocument.DocumentTypeEnum as SwagDocumentTypeEnum
 
 @Component
 class RepresentativeDocumentConverter : DarkApiConverter<ThriftRepresentativeDocument, SwagRepresentativeDocument> {

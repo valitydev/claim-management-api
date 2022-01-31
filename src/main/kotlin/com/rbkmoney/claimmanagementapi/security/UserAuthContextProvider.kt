@@ -1,7 +1,7 @@
 package com.rbkmoney.claimmanagementapi.security
 
-import com.rbkmoney.bouncer.ctx.ContextFragment
-import com.rbkmoney.orgmanagement.AuthContextProviderSrv
+import dev.vality.bouncer.ctx.ContextFragment
+import dev.vality.orgmanagement.AuthContextProviderSrv
 import org.springframework.stereotype.Service
 
 @Service
