@@ -22,7 +22,7 @@ class PartyManagementService(
         val partyId = keycloakService.partyId
         log.info {
             "Trying to get request on party-management service for party-status, " +
-                "xRequestId='$xRequestId', partyId='$partyId'"
+                    "xRequestId='$xRequestId', partyId='$partyId'"
         }
         val status = getPartyStatus(xRequestId, partyId)
         if (status.getBlocking().isSetBlocked) {
@@ -33,7 +33,7 @@ class PartyManagementService(
         }
         log.info {
             "Request has been got on party-management service, " +
-                "party-status=unblocked, xRequestId='$xRequestId', partyId='$partyId'"
+                    "party-status=unblocked, xRequestId='$xRequestId', partyId='$partyId'"
         }
     }
 

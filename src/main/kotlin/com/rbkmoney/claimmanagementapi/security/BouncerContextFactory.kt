@@ -1,16 +1,10 @@
 package com.rbkmoney.claimmanagementapi.security
 
-import dev.vality.bouncer.context.v1.Auth
-import dev.vality.bouncer.context.v1.ClaimManagementOperation
-import dev.vality.bouncer.context.v1.ContextClaimManagement
-import dev.vality.bouncer.context.v1.ContextFragment
-import dev.vality.bouncer.context.v1.Deployment
-import dev.vality.bouncer.context.v1.Environment
-import dev.vality.bouncer.context.v1.Token
-import dev.vality.bouncer.ctx.ContextFragmentType
-import dev.vality.bouncer.decisions.Context
 import com.rbkmoney.claimmanagementapi.config.properties.BouncerProperties
 import dev.vality.bouncer.base.Entity
+import dev.vality.bouncer.context.v1.*
+import dev.vality.bouncer.ctx.ContextFragmentType
+import dev.vality.bouncer.decisions.Context
 import mu.KotlinLogging
 import org.apache.thrift.TSerializer
 import org.springframework.boot.context.properties.EnableConfigurationProperties

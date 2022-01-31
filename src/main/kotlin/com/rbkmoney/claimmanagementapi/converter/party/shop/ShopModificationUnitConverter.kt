@@ -4,16 +4,8 @@ import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
 import dev.vality.damsel.claim_management.ShopModification
 import dev.vality.damsel.domain.CategoryRef
 import dev.vality.damsel.domain.ShopLocation
+import dev.vality.swag.claim_management.model.*
 import dev.vality.swag.claim_management.model.PartyModificationType.PartyModificationTypeEnum
-import dev.vality.swag.claim_management.model.ShopAccountCreationModification
-import dev.vality.swag.claim_management.model.ShopCategoryModification
-import dev.vality.swag.claim_management.model.ShopContractModification
-import dev.vality.swag.claim_management.model.ShopCreationModification
-import dev.vality.swag.claim_management.model.ShopDetailsModification
-import dev.vality.swag.claim_management.model.ShopLocationModification
-import dev.vality.swag.claim_management.model.ShopLocationUrl
-import dev.vality.swag.claim_management.model.ShopPayoutScheduleModification
-import dev.vality.swag.claim_management.model.ShopPayoutToolModification
 import org.springframework.stereotype.Component
 import dev.vality.damsel.claim_management.ShopModificationUnit as ThriftShopModificationUnit
 import dev.vality.swag.claim_management.model.CategoryRef as SwagCategoryRef

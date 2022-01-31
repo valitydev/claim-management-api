@@ -1,7 +1,7 @@
 package com.rbkmoney.claimmanagementapi.security
 
-import dev.vality.bouncer.decisions.ArbiterSrv
 import com.rbkmoney.claimmanagementapi.config.properties.BouncerProperties
+import dev.vality.bouncer.decisions.ArbiterSrv
 import mu.KotlinLogging
 import org.apache.thrift.TException
 import org.springframework.stereotype.Service

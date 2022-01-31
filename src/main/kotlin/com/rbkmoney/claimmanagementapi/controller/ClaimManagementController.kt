@@ -10,13 +10,7 @@ import com.rbkmoney.claimmanagementapi.service.ClaimManagementService
 import com.rbkmoney.claimmanagementapi.service.PartyManagementService
 import com.rbkmoney.claimmanagementapi.util.DeadlineChecker
 import com.rbkmoney.claimmanagementapi.util.ReflectionUtils
-import dev.vality.damsel.claim_management.BadContinuationToken
-import dev.vality.damsel.claim_management.ChangesetConflict
-import dev.vality.damsel.claim_management.ClaimNotFound
-import dev.vality.damsel.claim_management.InvalidChangeset
-import dev.vality.damsel.claim_management.InvalidClaimRevision
-import dev.vality.damsel.claim_management.InvalidClaimStatus
-import dev.vality.damsel.claim_management.LimitExceeded
+import dev.vality.damsel.claim_management.*
 import dev.vality.swag.claim_management.api.ProcessingApi
 import dev.vality.swag.claim_management.model.Claim
 import dev.vality.swag.claim_management.model.InlineResponse200
@@ -149,7 +143,7 @@ class ClaimManagementController(
             )
             log.info {
                 "For status list, xRequestId=$xRequestId, claimId=$claimId, list statuses=$claimStatuses," +
-                    " size results=${response.result.size}"
+                        " size results=${response.result.size}"
             }
 
             ResponseEntity.ok(response)

@@ -1,12 +1,7 @@
 package com.rbkmoney.claimmanagementapi.converter.claim
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
-import dev.vality.damsel.claim_management.ClaimAccepted
-import dev.vality.damsel.claim_management.ClaimDenied
-import dev.vality.damsel.claim_management.ClaimPending
-import dev.vality.damsel.claim_management.ClaimPendingAcceptance
-import dev.vality.damsel.claim_management.ClaimReview
-import dev.vality.damsel.claim_management.ClaimRevoked
+import dev.vality.damsel.claim_management.*
 import dev.vality.swag.claim_management.model.ClaimModificationType.ClaimModificationTypeEnum
 import dev.vality.swag.claim_management.model.StatusModification.StatusModificationTypeEnum
 import dev.vality.swag.claim_management.model.StatusModificationUnit.StatusEnum
