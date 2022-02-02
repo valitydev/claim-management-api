@@ -45,6 +45,7 @@ class SecurityConfig : KeycloakWebSecurityConfigurerAdapter() {
             .authorizeRequests()
             .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
             .antMatchers(HttpMethod.GET, "/**/health").permitAll()
+            .antMatchers(HttpMethod.GET, "/**/prometheus").permitAll()
             .anyRequest().authenticated()
     }
 
