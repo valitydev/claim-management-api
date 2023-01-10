@@ -28,15 +28,14 @@
         <dockerfile.registry>${env.REGISTRY}</dockerfile.registry>
 
         <swag-claim-management.version>1.1-18ebff9-server</swag-claim-management.version>
-        <org-management-proto.version>1.6-abb4b4d</org-management-proto.version>
-        <bouncer-proto.version>1.36-96bd74d</bouncer-proto.version>
+        <org-management-proto.version>1.17-04de2f4</org-management-proto.version>
+        <bouncer-proto.version>1.49-fa8fb0f</bouncer-proto.version>
         <keycloak-spring-security.version>14.0.0</keycloak-spring-security.version>
         <bouncycastle-jdk15on.version>1.68</bouncycastle-jdk15on.version>
         <spring-cloud-contract-wiremock.version>2.2.4.RELEASE</spring-cloud-contract-wiremock.version>
         <spring-security.version>5.4.7</spring-security.version>
         <jjwt.version>0.9.1</jjwt.version>
         <random-beans.version>3.6.0</random-beans.version>
-        <shared-resources.version>1.4.0</shared-resources.version>
     </properties>
 
     <dependencies>
@@ -69,15 +68,15 @@
         <dependency>
             <groupId>dev.vality</groupId>
             <artifactId>damsel</artifactId>
+            <version>1.586-7218614</version>
         </dependency>
         <dependency>
             <groupId>dev.vality.geck</groupId>
             <artifactId>serializer</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.rbkmoney</groupId>
-            <artifactId>shared-resources</artifactId>
-            <version>${shared-resources.version}</version>
+            <groupId>dev.vality.geck</groupId>
+            <artifactId>filter</artifactId>
         </dependency>
         <dependency>
             <groupId>dev.vality</groupId>
@@ -274,7 +273,7 @@
             <plugin>
                 <groupId>com.github.gantsign.maven</groupId>
                 <artifactId>ktlint-maven-plugin</artifactId>
-                <version>1.9.0</version>
+                <version>1.15.1</version>
                 <executions>
                     <execution>
                         <phase>validate</phase>
@@ -297,7 +296,7 @@
                 </dependencies>
                 <configuration>
                     <resourceBundles>
-                        <resourceBundle>com.rbkmoney:shared-resources:${shared-resources.version}</resourceBundle>
+                        <resourceBundle>dev.vality:shared-resources:${shared-resources.version}</resourceBundle>
                     </resourceBundles>
                     <attachToMain>false</attachToMain>
                     <attachToTest>false</attachToTest>
