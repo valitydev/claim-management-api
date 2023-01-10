@@ -141,7 +141,7 @@ class ClaimManagementController(
             )
             log.info {
                 "For status list, xRequestId=$xRequestId, claimId=$claimId, list statuses=$claimStatuses," +
-                        " size results=${response.result.size}"
+                    " size results=${response.result.size}"
             }
 
             ResponseEntity.ok(response)
