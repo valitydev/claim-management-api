@@ -46,17 +46,17 @@ class PartyManagementServiceTest {
         partyStatus.setBlocking(Blocking.unblocked(Unblocked()))
         reset(partyManagementClient)
         whenever(
-            partyManagementClient.getStatus(any(), any())
+            partyManagementClient.getStatus(any())
         ).thenReturn(partyStatus)
         partyManagementService.checkStatus()
         partyStatus.setBlocking(Blocking.blocked(Blocked()))
         whenever(
-            partyManagementClient.getStatus(any(), any())
+            partyManagementClient.getStatus(any())
         ).thenReturn(partyStatus)
         Assertions.assertThrows(ForbiddenException::class.java) { partyManagementService.checkStatus() }
         reset(partyManagementClient)
         whenever(
-            partyManagementClient.getStatus(any(), any())
+            partyManagementClient.getStatus(any())
         ).thenThrow(
             TException::class.java
         )

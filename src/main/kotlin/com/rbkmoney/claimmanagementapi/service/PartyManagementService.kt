@@ -3,10 +3,7 @@ package com.rbkmoney.claimmanagementapi.service
 import com.rbkmoney.claimmanagementapi.exception.client.ForbiddenException
 import com.rbkmoney.claimmanagementapi.exception.server.DarkApi5xxException
 import com.rbkmoney.claimmanagementapi.security.KeycloakService
-import dev.vality.damsel.payment_processing.InternalUser
 import dev.vality.damsel.payment_processing.PartyManagementSrv
-import dev.vality.damsel.payment_processing.UserInfo
-import dev.vality.damsel.payment_processing.UserType
 import mu.KotlinLogging
 import org.springframework.stereotype.Service
 
@@ -39,15 +36,11 @@ class PartyManagementService(
 
     private fun getPartyStatus(xRequestId: String?, partyId: String) =
         try {
-            partyManagementClient.getStatus(userInfo, partyId)
+            partyManagementClient.getStatus(partyId)
         } catch (ex: Exception) {
             throw DarkApi5xxException(
                 "Some Exception while requesting api='party-management', method='getStatus', xRequestId=$xRequestId",
                 ex
             )
         }
-
-    companion object {
-        private val userInfo = UserInfo("dark-api", UserType.internal_user(InternalUser()))
-    }
 }

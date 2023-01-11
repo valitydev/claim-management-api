@@ -5,7 +5,6 @@ import com.rbkmoney.claimmanagementapi.exception.client.BadRequestException
 import com.rbkmoney.claimmanagementapi.exception.client.NotFoundException
 import com.rbkmoney.claimmanagementapi.exception.server.DarkApi5xxException
 import com.rbkmoney.claimmanagementapi.security.BouncerAccessService
-import com.rbkmoney.claimmanagementapi.security.KeycloakService
 import com.rbkmoney.claimmanagementapi.service.ClaimManagementService
 import com.rbkmoney.claimmanagementapi.service.PartyManagementService
 import com.rbkmoney.claimmanagementapi.util.DeadlineChecker
@@ -33,7 +32,6 @@ import javax.validation.constraints.Size
 class ClaimManagementController(
     private val claimManagementService: ClaimManagementService,
     private val partyManagementService: PartyManagementService,
-    private val keycloakService: KeycloakService,
     private val deadlineChecker: DeadlineChecker,
     private val bouncerAccessService: BouncerAccessService
 ) : ProcessingApi {
@@ -53,7 +51,7 @@ class ClaimManagementController(
             log.info { "Process 'createClaim' get started, xRequestId=$xRequestId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            val claim = claimManagementService.createClaim(keycloakService.partyId, changeset!!)
+            val claim = claimManagementService.createClaim(partyId, changeset!!)
             log.info { "Claim created, xRequestId=$xRequestId, claimId=${claim.id}" }
             ResponseEntity.ok(claim)
         }
@@ -92,7 +90,7 @@ class ClaimManagementController(
             log.info { "Process 'revokeClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            claimManagementService.revokeClaimById(keycloakService.partyId, claimId, claimRevision, reason)
+            claimManagementService.revokeClaimById(partyId, claimId, claimRevision, reason)
             log.info { "Successful revoke claim, xRequestId=$xRequestId, claimId=$claimId" }
 
             ResponseEntity<Void>(HttpStatus.OK)
@@ -112,7 +110,7 @@ class ClaimManagementController(
             log.info { "Process 'requestReviewClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            claimManagementService.requestClaimReviewById(keycloakService.partyId, claimId, claimRevision)
+            claimManagementService.requestClaimReviewById(partyId, claimId, claimRevision)
             log.info { "Successful request claim review, xRequestId=$xRequestId, claimId=$claimId" }
 
             ResponseEntity<Void>(HttpStatus.OK)
@@ -164,7 +162,7 @@ class ClaimManagementController(
             log.info { "Process 'updateClaimByID' get started, requestId=$xRequestId, claimId=$claimId" }
             partyManagementService.checkStatus(xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            claimManagementService.updateClaimById(keycloakService.partyId, claimId, claimRevision, changeset!!)
+            claimManagementService.updateClaimById(partyId, claimId, claimRevision, changeset!!)
             log.info { "Successful update claim, xRequestId=$xRequestId, claimId=$claimId" }
 
             ResponseEntity<Void>(HttpStatus.OK)
