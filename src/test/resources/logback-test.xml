@@ -6,6 +6,6 @@
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
     </root>
-    <logger name="com.rbkmoney.woody" level="ERROR"/>
+    <logger name="com.rbkmoney" level="ERROR"/>
     <logger name="WireMock" level="WARN"/>
 </configuration>
