@@ -15,8 +15,7 @@ class PartyManagementService(
 
     private val log = KotlinLogging.logger { }
 
-    fun checkStatus(xRequestId: String? = null) {
-        val partyId = keycloakService.partyId
+    fun checkStatus(xRequestId: String? = null, partyId: String) {
         log.info {
             "Trying to get request on party-management service for party-status, " +
                 "xRequestId='$xRequestId', partyId='$partyId'"

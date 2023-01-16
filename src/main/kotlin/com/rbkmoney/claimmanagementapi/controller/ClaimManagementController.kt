@@ -42,14 +42,14 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:read')")
     override fun createClaim(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
-        @NotNull @Valid partyId: String?,
+        @NotNull @Valid partyId: String,
         @NotNull @Valid changeset: List<Modification>?,
         @Size(min = 1, max = 40) xRequestDeadline: String?
     ): ResponseEntity<Claim> =
         performRequest(operationId(), xRequestId!!) {
-            bouncerAccessService.checkAccess(operationId(), partyId!!)
+            bouncerAccessService.checkAccess(operationId(), partyId)
             log.info { "Process 'createClaim' get started, xRequestId=$xRequestId" }
-            partyManagementService.checkStatus(xRequestId)
+            partyManagementService.checkStatus(xRequestId, partyId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
             val claim = claimManagementService.createClaim(partyId, changeset!!)
             log.info { "Claim created, xRequestId=$xRequestId, claimId=${claim.id}" }
@@ -60,16 +60,16 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:read')")
     override fun getClaimByID(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
-        @NotNull @Valid partyId: String?,
+        @NotNull @Valid partyId: String,
         @NotNull @Valid claimId: Long?,
         @Size(min = 1, max = 40) xRequestDeadline: String?
     ): ResponseEntity<Claim> =
         performRequest(operationId(), xRequestId!!, claimId!!) {
             bouncerAccessService.checkAccess(operationId())
             log.info { "Process 'getClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
-            partyManagementService.checkStatus(xRequestId)
+            partyManagementService.checkStatus(xRequestId, partyId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
-            val claim = claimManagementService.getClaimById(partyId!!, claimId)
+            val claim = claimManagementService.getClaimById(partyId, claimId)
             log.info { "Got a claim, xRequestId=$xRequestId, claimId=$claimId" }
 
             ResponseEntity.ok(claim)
@@ -79,16 +79,16 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:write')")
     override fun revokeClaimByID(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
-        @NotNull @Valid partyId: String?,
+        @NotNull @Valid partyId: String,
         @NotNull @Valid claimId: Long?,
         @NotNull @Valid claimRevision: Int?,
         @Size(min = 1, max = 40) xRequestDeadline: String?,
         @Valid reason: String?
     ): ResponseEntity<Void> =
         performRequest(operationId(), xRequestId!!, claimId!!, claimRevision!!) {
-            bouncerAccessService.checkAccess(operationId(), partyId!!)
+            bouncerAccessService.checkAccess(operationId(), partyId)
             log.info { "Process 'revokeClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
-            partyManagementService.checkStatus(xRequestId)
+            partyManagementService.checkStatus(xRequestId, partyId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
             claimManagementService.revokeClaimById(partyId, claimId, claimRevision, reason)
             log.info { "Successful revoke claim, xRequestId=$xRequestId, claimId=$claimId" }
@@ -100,15 +100,15 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:write')")
     override fun requestReviewClaimByID(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
-        @NotNull @Valid partyId: String?,
+        @NotNull @Valid partyId: String,
         @NotNull @Valid claimId: Long?,
         @NotNull @Valid claimRevision: Int?,
         @Size(min = 1, max = 40) xRequestDeadline: String?
     ): ResponseEntity<Void> =
         performRequest(operationId(), xRequestId!!, claimId!!, claimRevision!!) {
-            bouncerAccessService.checkAccess(operationId(), partyId!!)
+            bouncerAccessService.checkAccess(operationId(), partyId)
             log.info { "Process 'requestReviewClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
-            partyManagementService.checkStatus(xRequestId)
+            partyManagementService.checkStatus(xRequestId, partyId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
             claimManagementService.requestClaimReviewById(partyId, claimId, claimRevision)
             log.info { "Successful request claim review, xRequestId=$xRequestId, claimId=$claimId" }
@@ -120,7 +120,7 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:read')")
     override fun searchClaims(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
-        @NotNull partyId: String?,
+        @NotNull partyId: String,
         @NotNull @Min(1L) @Max(1000L) @Valid limit: Int?,
         @Size(min = 1, max = 40) xRequestDeadline: String?,
         @Size(min = 1, max = 40) continuationToken: String?,
@@ -130,10 +130,10 @@ class ClaimManagementController(
         performRequest(operationId(), xRequestId!!, claimId) {
             bouncerAccessService.checkAccess(operationId())
             log.info { "Process 'searchClaims' get started, xRequestId=$xRequestId, claimId=$claimId" }
-            partyManagementService.checkStatus(xRequestId)
+            partyManagementService.checkStatus(xRequestId, partyId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
             val response = claimManagementService.searchClaims(
-                partyId!!,
+                partyId,
                 limit!!,
                 continuationToken,
                 claimId,
@@ -141,7 +141,7 @@ class ClaimManagementController(
             )
             log.info {
                 "For status list, xRequestId=$xRequestId, claimId=$claimId, list statuses=$claimStatuses," +
-                    " size results=${response.result.size}"
+                        " size results=${response.result.size}"
             }
 
             ResponseEntity.ok(response)
@@ -151,16 +151,16 @@ class ClaimManagementController(
     @PreAuthorize("hasAuthority('party:write')")
     override fun updateClaimByID(
         @NotNull @Size(min = 1, max = 40) xRequestId: String?,
-        @NotNull @Valid partyId: String?,
+        @NotNull @Valid partyId: String,
         @NotNull @Valid claimId: Long?,
         @NotNull @Valid claimRevision: Int?,
         @NotNull @Valid changeset: List<Modification>?,
         @Size(min = 1, max = 40) xRequestDeadline: String?
     ): ResponseEntity<Void> =
         performRequest(operationId(), xRequestId!!, claimId!!, claimRevision!!) {
-            bouncerAccessService.checkAccess(operationId(), partyId!!)
+            bouncerAccessService.checkAccess(operationId(), partyId)
             log.info { "Process 'updateClaimByID' get started, requestId=$xRequestId, claimId=$claimId" }
-            partyManagementService.checkStatus(xRequestId)
+            partyManagementService.checkStatus(xRequestId, partyId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
             claimManagementService.updateClaimById(partyId, claimId, claimRevision, changeset!!)
             log.info { "Successful update claim, xRequestId=$xRequestId, claimId=$claimId" }
