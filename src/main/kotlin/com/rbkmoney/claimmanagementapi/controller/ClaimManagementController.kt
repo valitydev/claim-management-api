@@ -49,7 +49,7 @@ class ClaimManagementController(
         performRequest(operationId(), xRequestId!!) {
             bouncerAccessService.checkAccess(operationId(), partyId)
             log.info { "Process 'createClaim' get started, xRequestId=$xRequestId" }
-            partyManagementService.checkStatus(xRequestId, partyId)
+            partyManagementService.checkStatus(partyId, xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
             val claim = claimManagementService.createClaim(partyId, changeset!!)
             log.info { "Claim created, xRequestId=$xRequestId, claimId=${claim.id}" }
@@ -67,7 +67,7 @@ class ClaimManagementController(
         performRequest(operationId(), xRequestId!!, claimId!!) {
             bouncerAccessService.checkAccess(operationId())
             log.info { "Process 'getClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
-            partyManagementService.checkStatus(xRequestId, partyId)
+            partyManagementService.checkStatus(partyId, xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
             val claim = claimManagementService.getClaimById(partyId, claimId)
             log.info { "Got a claim, xRequestId=$xRequestId, claimId=$claimId" }
@@ -88,7 +88,7 @@ class ClaimManagementController(
         performRequest(operationId(), xRequestId!!, claimId!!, claimRevision!!) {
             bouncerAccessService.checkAccess(operationId(), partyId)
             log.info { "Process 'revokeClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
-            partyManagementService.checkStatus(xRequestId, partyId)
+            partyManagementService.checkStatus(partyId, xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
             claimManagementService.revokeClaimById(partyId, claimId, claimRevision, reason)
             log.info { "Successful revoke claim, xRequestId=$xRequestId, claimId=$claimId" }
@@ -108,7 +108,7 @@ class ClaimManagementController(
         performRequest(operationId(), xRequestId!!, claimId!!, claimRevision!!) {
             bouncerAccessService.checkAccess(operationId(), partyId)
             log.info { "Process 'requestReviewClaimByID' get started, xRequestId=$xRequestId, claimId=$claimId" }
-            partyManagementService.checkStatus(xRequestId, partyId)
+            partyManagementService.checkStatus(partyId, xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
             claimManagementService.requestClaimReviewById(partyId, claimId, claimRevision)
             log.info { "Successful request claim review, xRequestId=$xRequestId, claimId=$claimId" }
@@ -130,7 +130,7 @@ class ClaimManagementController(
         performRequest(operationId(), xRequestId!!, claimId) {
             bouncerAccessService.checkAccess(operationId())
             log.info { "Process 'searchClaims' get started, xRequestId=$xRequestId, claimId=$claimId" }
-            partyManagementService.checkStatus(xRequestId, partyId)
+            partyManagementService.checkStatus(partyId, xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
             val response = claimManagementService.searchClaims(
                 partyId,
@@ -160,7 +160,7 @@ class ClaimManagementController(
         performRequest(operationId(), xRequestId!!, claimId!!, claimRevision!!) {
             bouncerAccessService.checkAccess(operationId(), partyId)
             log.info { "Process 'updateClaimByID' get started, requestId=$xRequestId, claimId=$claimId" }
-            partyManagementService.checkStatus(xRequestId, partyId)
+            partyManagementService.checkStatus(partyId, xRequestId)
             deadlineChecker.checkDeadline(xRequestDeadline, xRequestId)
             claimManagementService.updateClaimById(partyId, claimId, claimRevision, changeset!!)
             log.info { "Successful update claim, xRequestId=$xRequestId, claimId=$claimId" }

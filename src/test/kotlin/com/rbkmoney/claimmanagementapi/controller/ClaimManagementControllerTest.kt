@@ -40,8 +40,8 @@ class ClaimManagementControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
 
     @BeforeEach
     fun setUp() {
+        doNothing().whenever(partyManagementService).checkStatus(any(), any())
         doNothing().whenever(partyManagementService).checkStatus(any())
-        doNothing().whenever(partyManagementService).checkStatus()
         whenever(keycloakService.partyId).thenReturn(randomUUID())
         doNothing().whenever(bouncerAccessService).checkAccess(any(), any())
     }
