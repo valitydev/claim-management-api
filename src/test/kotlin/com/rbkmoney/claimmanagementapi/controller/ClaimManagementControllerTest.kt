@@ -8,7 +8,9 @@ import com.rbkmoney.claimmanagementapi.service.PartyManagementService
 import dev.vality.swag.claim_management.model.Claim
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.mockito.ArgumentMatchers.anyString
 import org.mockito.kotlin.any
+import org.mockito.kotlin.anyOrNull
 import org.mockito.kotlin.doNothing
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
@@ -40,8 +42,7 @@ class ClaimManagementControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
 
     @BeforeEach
     fun setUp() {
-        doNothing().whenever(partyManagementService).checkStatus(any())
-        doNothing().whenever(partyManagementService).checkStatus()
+        doNothing().whenever(partyManagementService).checkStatus(any(), anyOrNull())
         whenever(keycloakService.partyId).thenReturn(randomUUID())
         doNothing().whenever(bouncerAccessService).checkAccess(any(), any())
     }

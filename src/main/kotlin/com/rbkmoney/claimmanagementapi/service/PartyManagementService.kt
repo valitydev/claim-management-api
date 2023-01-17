@@ -10,13 +10,11 @@ import org.springframework.stereotype.Service
 @Service
 class PartyManagementService(
     private val partyManagementClient: PartyManagementSrv.Iface,
-    private val keycloakService: KeycloakService
 ) {
 
     private val log = KotlinLogging.logger { }
 
-    fun checkStatus(xRequestId: String? = null) {
-        val partyId = keycloakService.partyId
+    fun checkStatus(partyId: String, xRequestId: String? = null) {
         log.info {
             "Trying to get request on party-management service for party-status, " +
                 "xRequestId='$xRequestId', partyId='$partyId'"

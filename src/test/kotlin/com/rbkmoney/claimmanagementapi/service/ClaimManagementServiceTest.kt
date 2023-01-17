@@ -22,6 +22,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.kotlin.any
+import org.mockito.kotlin.anyOrNull
 import org.mockito.kotlin.doNothing
 import org.mockito.kotlin.whenever
 import org.springframework.beans.factory.annotation.Autowired
@@ -53,7 +54,7 @@ class ClaimManagementServiceTest {
 
     @BeforeEach
     fun setUp() {
-        doNothing().whenever(partyManagementService).checkStatus(any())
+        doNothing().whenever(partyManagementService).checkStatus(any(), anyOrNull())
     }
 
     @Test
