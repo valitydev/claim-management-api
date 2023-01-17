@@ -48,18 +48,18 @@ class PartyManagementServiceTest {
         whenever(
             partyManagementClient.getStatus(any())
         ).thenReturn(partyStatus)
-        partyManagementService.checkStatus(any())
+        partyManagementService.checkStatus(any(), any())
         partyStatus.setBlocking(Blocking.blocked(Blocked()))
         whenever(
             partyManagementClient.getStatus(any())
         ).thenReturn(partyStatus)
-        Assertions.assertThrows(ForbiddenException::class.java) { partyManagementService.checkStatus(any()) }
+        Assertions.assertThrows(ForbiddenException::class.java) { partyManagementService.checkStatus(any(), any()) }
         reset(partyManagementClient)
         whenever(
             partyManagementClient.getStatus(any())
         ).thenThrow(
             TException::class.java
         )
-        Assertions.assertThrows(DarkApi5xxException::class.java) { partyManagementService.checkStatus(any()) }
+        Assertions.assertThrows(DarkApi5xxException::class.java) { partyManagementService.checkStatus(any(), any()) }
     }
 }

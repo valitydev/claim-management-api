@@ -53,7 +53,7 @@ class ClaimManagementServiceTest {
 
     @BeforeEach
     fun setUp() {
-        doNothing().whenever(partyManagementService).checkStatus(any())
+        doNothing().whenever(partyManagementService).checkStatus(any(), any())
     }
 
     @Test

@@ -13,7 +13,7 @@ class PartyManagementService(
 
     private val log = KotlinLogging.logger { }
 
-    fun checkStatus(partyId: String, xRequestId: String? = null) {
+    fun checkStatus(xRequestId: String, partyId: String) {
         log.info {
             "Trying to get request on party-management service for party-status, " +
                 "xRequestId='$xRequestId', partyId='$partyId'"
@@ -31,7 +31,7 @@ class PartyManagementService(
         }
     }
 
-    private fun getPartyStatus(xRequestId: String?, partyId: String) =
+    private fun getPartyStatus(xRequestId: String, partyId: String) =
         try {
             partyManagementClient.getStatus(partyId)
         } catch (ex: Exception) {
