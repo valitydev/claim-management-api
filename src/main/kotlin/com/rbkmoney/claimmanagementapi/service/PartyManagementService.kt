@@ -2,7 +2,6 @@ package com.rbkmoney.claimmanagementapi.service
 
 import com.rbkmoney.claimmanagementapi.exception.client.ForbiddenException
 import com.rbkmoney.claimmanagementapi.exception.server.DarkApi5xxException
-import com.rbkmoney.claimmanagementapi.security.KeycloakService
 import dev.vality.damsel.payment_processing.PartyManagementSrv
 import mu.KotlinLogging
 import org.springframework.stereotype.Service
