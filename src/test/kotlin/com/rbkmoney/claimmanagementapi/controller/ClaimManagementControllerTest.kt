@@ -8,7 +8,6 @@ import com.rbkmoney.claimmanagementapi.service.PartyManagementService
 import dev.vality.swag.claim_management.model.Claim
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.mockito.ArgumentMatchers.anyString
 import org.mockito.kotlin.any
 import org.mockito.kotlin.anyOrNull
 import org.mockito.kotlin.doNothing
@@ -21,7 +20,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import java.time.Instant
 import java.time.temporal.ChronoUnit
-import java.util.UUID
+import java.util.*
 
 class ClaimManagementControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
 
