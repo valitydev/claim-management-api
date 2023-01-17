@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.ArgumentMatchers.anyString
 import org.mockito.kotlin.any
 import org.mockito.kotlin.reset
 import org.mockito.kotlin.whenever
@@ -48,18 +49,18 @@ class PartyManagementServiceTest {
         whenever(
             partyManagementClient.getStatus(any())
         ).thenReturn(partyStatus)
-        partyManagementService.checkStatus()
+        partyManagementService.checkStatus(anyString())
         partyStatus.setBlocking(Blocking.blocked(Blocked()))
         whenever(
             partyManagementClient.getStatus(any())
         ).thenReturn(partyStatus)
-        Assertions.assertThrows(ForbiddenException::class.java) { partyManagementService.checkStatus() }
+        Assertions.assertThrows(ForbiddenException::class.java) { partyManagementService.checkStatus(anyString()) }
         reset(partyManagementClient)
         whenever(
             partyManagementClient.getStatus(any())
         ).thenThrow(
             TException::class.java
         )
-        Assertions.assertThrows(DarkApi5xxException::class.java) { partyManagementService.checkStatus() }
+        Assertions.assertThrows(DarkApi5xxException::class.java) { partyManagementService.checkStatus(anyString()) }
     }
 }

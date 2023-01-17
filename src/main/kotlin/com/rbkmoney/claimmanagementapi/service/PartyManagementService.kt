@@ -2,7 +2,6 @@ package com.rbkmoney.claimmanagementapi.service
 
 import com.rbkmoney.claimmanagementapi.exception.client.ForbiddenException
 import com.rbkmoney.claimmanagementapi.exception.server.DarkApi5xxException
-import com.rbkmoney.claimmanagementapi.security.KeycloakService
 import dev.vality.damsel.payment_processing.PartyManagementSrv
 import mu.KotlinLogging
 import org.springframework.stereotype.Service
@@ -10,13 +9,11 @@ import org.springframework.stereotype.Service
 @Service
 class PartyManagementService(
     private val partyManagementClient: PartyManagementSrv.Iface,
-    private val keycloakService: KeycloakService
 ) {
 
     private val log = KotlinLogging.logger { }
 
-    fun checkStatus(xRequestId: String? = null) {
-        val partyId = keycloakService.partyId
+    fun checkStatus(partyId: String, xRequestId: String? = null) {
         log.info {
             "Trying to get request on party-management service for party-status, " +
                 "xRequestId='$xRequestId', partyId='$partyId'"

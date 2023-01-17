@@ -51,8 +51,7 @@ class ErrorControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
 
     @BeforeEach
     fun setUp() {
-        doNothing().whenever(partyManagementService).checkStatus(any())
-        doNothing().whenever(partyManagementService).checkStatus()
+        doNothing().whenever(partyManagementService).checkStatus(any(), anyOrNull())
         doNothing().whenever(bouncerAccessService).checkAccess(any(), anyOrNull())
     }
 
