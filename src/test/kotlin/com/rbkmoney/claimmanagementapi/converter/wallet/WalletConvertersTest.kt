@@ -29,7 +29,7 @@ class WalletConvertersTest {
             swagWalletCreationModification, resultSwagWalletModification,
             "Swag objects 'WalletCreationModification' not equals"
         )
-        val testThriftWalletParams =testThriftWalletParams()
+        val testThriftWalletParams = testThriftWalletParams()
         val thriftWalletCreationModification = MockTBaseProcessor(MockMode.REQUIRED_ONLY)
             .process(testThriftWalletParams, TBaseHandler(ThriftWalletParams()::class.java))
         val tmpSwagWalletModification = walletCreationConverter.convertToSwag(thriftWalletCreationModification)
