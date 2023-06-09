@@ -27,7 +27,7 @@ class IdentityConvertersTest {
             swagIdentityCreationModification, resultSwagIdentityModification,
             "Swag objects 'IdentityCreationModification' not equals"
         )
-        val thriftIdentityCreationModification = MockTBaseProcessor(MockMode.ALL)
+        val thriftIdentityCreationModification = MockTBaseProcessor(MockMode.REQUIRED_ONLY)
             .process(testThriftIdentityParams(), TBaseHandler(ThriftIdentityParams()::class.java))
         val tmpSwagIdentityModification = identityCreationConverter.convertToSwag(thriftIdentityCreationModification)
         val resultThriftIdentityCreation = identityCreationConverter.convertToThrift(tmpSwagIdentityModification)
