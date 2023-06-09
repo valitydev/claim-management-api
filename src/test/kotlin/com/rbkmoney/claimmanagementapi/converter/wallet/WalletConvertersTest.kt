@@ -17,7 +17,6 @@ import dev.vality.swag.claim_management.model.CurrencyRef as SwagCurrency
 import dev.vality.swag.claim_management.model.WalletCreationModification as SwagWalletCreationModification
 import dev.vality.swag.claim_management.model.WalletModificationUnit as SwagWalletModificationUnit
 
-
 class WalletConvertersTest {
 
     @Test
@@ -112,5 +111,4 @@ class WalletConvertersTest {
         metadata["test_key"] = Value()
         return metadata
     }
-
 }

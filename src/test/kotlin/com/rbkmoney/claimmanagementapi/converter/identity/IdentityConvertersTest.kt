@@ -15,7 +15,6 @@ import dev.vality.damsel.claim_management.IdentityParams as ThriftIdentityParams
 import dev.vality.swag.claim_management.model.IdentityCreationModification as SwagIdentityCreationModification
 import dev.vality.swag.claim_management.model.IdentityModificationUnit as SwagIdentityModificationUnit
 
-
 class IdentityConvertersTest {
 
     @Test
@@ -110,5 +109,4 @@ class IdentityConvertersTest {
         metadata["test_key"] = Value()
         return metadata
     }
-
 }
