@@ -27,8 +27,9 @@ class IdentityConvertersTest {
             swagIdentityCreationModification, resultSwagIdentityModification,
             "Swag objects 'IdentityCreationModification' not equals"
         )
+        val testThriftIdentityParams = testThriftIdentityParams()
         val thriftIdentityCreationModification = MockTBaseProcessor(MockMode.REQUIRED_ONLY)
-            .process(testThriftIdentityParams(), TBaseHandler(ThriftIdentityParams()::class.java))
+            .process(testThriftIdentityParams, TBaseHandler(ThriftIdentityParams()::class.java))
         val tmpSwagIdentityModification = identityCreationConverter.convertToSwag(thriftIdentityCreationModification)
         val resultThriftIdentityCreation = identityCreationConverter.convertToThrift(tmpSwagIdentityModification)
         assertEquals(
@@ -48,9 +49,10 @@ class IdentityConvertersTest {
             swagIdentityModificationUnit, swagIdentityModificationUnitResult,
             "Swag objects 'IdentityModificationUnit' not equals"
         )
+        val testThriftIdentityModificationUnit = testThriftIdentityModificationUnit()
         val thriftIdentityModificationUnit = MockTBaseProcessor(MockMode.REQUIRED_ONLY)
             .process(
-                testThriftIdentityModificationUnit(),
+                testThriftIdentityModificationUnit,
                 TBaseHandler(ThriftIdentityModificationUnit()::class.java)
             )
         val thriftModification = Modification().apply { identityModification = thriftIdentityModificationUnit }
@@ -105,8 +107,6 @@ class IdentityConvertersTest {
     }
 
     private fun testMetadata(): MutableMap<String, Value> {
-        val metadata: MutableMap<String, Value> = HashMap()
-        metadata["test_key"] = Value()
-        return metadata
+        return HashMap()
     }
 }

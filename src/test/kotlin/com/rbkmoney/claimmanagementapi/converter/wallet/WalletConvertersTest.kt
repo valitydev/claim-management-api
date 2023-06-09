@@ -29,8 +29,9 @@ class WalletConvertersTest {
             swagWalletCreationModification, resultSwagWalletModification,
             "Swag objects 'WalletCreationModification' not equals"
         )
+        val testThriftWalletParams =testThriftWalletParams()
         val thriftWalletCreationModification = MockTBaseProcessor(MockMode.REQUIRED_ONLY)
-            .process(testThriftWalletParams(), TBaseHandler(ThriftWalletParams()::class.java))
+            .process(testThriftWalletParams, TBaseHandler(ThriftWalletParams()::class.java))
         val tmpSwagWalletModification = walletCreationConverter.convertToSwag(thriftWalletCreationModification)
         val resultThriftWalletCreation = walletCreationConverter.convertToThrift(tmpSwagWalletModification)
         assertEquals(
@@ -50,9 +51,10 @@ class WalletConvertersTest {
             swagWalletModificationUnit, swagWalletModificationUnitResult,
             "Swag objects 'WalletModificationUnit' not equals"
         )
+        val testThriftWalletModificationUnit = testThriftWalletModificationUnit()
         val thriftWalletModificationUnit = MockTBaseProcessor(MockMode.REQUIRED_ONLY)
             .process(
-                testThriftWalletModificationUnit(),
+                testThriftWalletModificationUnit,
                 TBaseHandler(ThriftWalletModificationUnit()::class.java)
             )
         val thriftModification = Modification().apply { walletModification = thriftWalletModificationUnit }
@@ -107,8 +109,6 @@ class WalletConvertersTest {
     }
 
     private fun testMetadata(): MutableMap<String, Value> {
-        val metadata: MutableMap<String, Value> = HashMap()
-        metadata["test_key"] = Value()
-        return metadata
+        return HashMap()
     }
 }
