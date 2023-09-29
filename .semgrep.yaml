@@ -1,0 +1,7 @@
+rules:
+- id: hardcoded-password
+  pattern: |
+    $X = "password"
+  message: "password in plain text is restricted"
+  severity: ERROR
+  languages: [java]
