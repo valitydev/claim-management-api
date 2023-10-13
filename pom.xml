@@ -6,7 +6,7 @@
     <parent>
         <groupId>dev.vality</groupId>
         <artifactId>service-parent-pom</artifactId>
-        <version>2.1.4</version>
+        <version>2.1.5</version>
     </parent>
 
     <artifactId>claim-management-api</artifactId>
@@ -17,10 +17,12 @@
     <description></description>
 
     <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
-        <kotlin.version>1.4.31</kotlin.version>
+        <kotlin.version>1.8.22</kotlin.version>
         <server.port>8080</server.port>
         <management.port>8023</management.port>
         <exposed.ports>${server.port} ${management.port}</exposed.ports>
@@ -64,7 +66,7 @@
         <dependency>
             <groupId>dev.vality.woody</groupId>
             <artifactId>woody-thrift</artifactId>
-            <version>1.0.5</version>
+            <version>${woody.version}</version>
         </dependency>
         <dependency>
             <groupId>dev.vality</groupId>
@@ -279,7 +281,7 @@
             <plugin>
                 <groupId>com.github.gantsign.maven</groupId>
                 <artifactId>ktlint-maven-plugin</artifactId>
-                <version>1.9.0</version>
+                <version>1.11.2</version>
                 <executions>
                     <execution>
                         <phase>validate</phase>
