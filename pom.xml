@@ -29,7 +29,7 @@
         <dockerfile.base.service.tag>c0612d6052ac049496b72a23a04acb142035f249</dockerfile.base.service.tag>
         <dockerfile.registry>${env.REGISTRY}</dockerfile.registry>
 
-        <swag-claim-management.version>1.46-2c84fce-server</swag-claim-management.version>
+        <swag-claim-management.version>1.52-b5248eb-server</swag-claim-management.version>
         <org-management-proto.version>1.17-04de2f4</org-management-proto.version>
         <bouncer-proto.version>1.49-fa8fb0f</bouncer-proto.version>
         <keycloak-spring-security.version>14.0.0</keycloak-spring-security.version>
@@ -71,7 +71,7 @@
         <dependency>
             <groupId>dev.vality</groupId>
             <artifactId>damsel</artifactId>
-            <version>1.597-bfedcb9</version>
+            <version>1.636-b869c09</version>
         </dependency>
         <dependency>
             <groupId>dev.vality.geck</groupId>
