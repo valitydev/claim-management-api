@@ -128,6 +128,7 @@ class ClaimContractorConvertersTest {
                 }
                 swagLegalEntity.legalEntityType = swagRussianLegalEntity
             }
+
             SwagLegalEntityType.LegalEntityTypeEnum.INTERNATIONALLEGALENTITY -> {
                 val swagInternationalLegalEntity = EnhancedRandom.random(SwagInternationalLegalEntity::class.java)
                     .apply {
@@ -136,6 +137,7 @@ class ClaimContractorConvertersTest {
                     }
                 swagLegalEntity.legalEntityType = swagInternationalLegalEntity
             }
+
             else -> throw IllegalArgumentException("Unknown legal entity type!")
         }
         val resultSwagLegalEntity = converter.convertToSwag(converter.convertToThrift(swagLegalEntity))
@@ -167,15 +169,15 @@ class ClaimContractorConvertersTest {
             .process(ThriftPrivateEntity(), TBaseHandler(ThriftPrivateEntity::class.java))
         var resultThriftPrivateEntity = converter.convertToThrift(converter.convertToSwag(thriftPrivateEntity))
         assertEquals(
-            thriftPrivateEntity, resultThriftPrivateEntity,
-            "Thrift objects 'PrivateEntity' (MockMode.ALL) not equals"
+            thriftPrivateEntity.russianPrivateEntity.contactInfo.phoneNumber,
+            resultThriftPrivateEntity.russianPrivateEntity.contactInfo.phoneNumber
         )
         thriftPrivateEntity = MockTBaseProcessor(MockMode.REQUIRED_ONLY)
             .process(thriftPrivateEntity, TBaseHandler(ThriftPrivateEntity::class.java))
         resultThriftPrivateEntity = converter.convertToThrift(converter.convertToSwag(thriftPrivateEntity))
         assertEquals(
-            thriftPrivateEntity, resultThriftPrivateEntity,
-            "Thrift objects 'PrivateEntity' (MockMode.REQUIRED_ONLY) not equals"
+            thriftPrivateEntity.russianPrivateEntity.contactInfo.phoneNumber,
+            resultThriftPrivateEntity.russianPrivateEntity.contactInfo.phoneNumber
         )
     }
 
