@@ -1,9 +1,11 @@
 package com.rbkmoney.claimmanagementapi.converter.party
 
 import com.rbkmoney.claimmanagementapi.converter.DarkApiConverter
+import com.rbkmoney.claimmanagementapi.converter.party.additional.AdditionalInfoModificationConverter
 import com.rbkmoney.claimmanagementapi.converter.party.contract.ContractModificationUnitConverter
 import com.rbkmoney.claimmanagementapi.converter.party.contractor.ContractorModificationUnitConverter
 import com.rbkmoney.claimmanagementapi.converter.party.shop.ShopModificationUnitConverter
+import dev.vality.swag.claim_management.model.AdditionalInfoModificationUnit
 import org.springframework.stereotype.Component
 import dev.vality.damsel.claim_management.Modification as ThriftModification
 import dev.vality.damsel.claim_management.PartyModification as ThriftPartyModification
@@ -18,7 +20,8 @@ import dev.vality.swag.claim_management.model.ShopModificationUnit as SwagShopMo
 class PartyModificationConverter(
     private val contractModificationUnitConverter: ContractModificationUnitConverter,
     private val contractorModificationUnitConverter: ContractorModificationUnitConverter,
-    private val shopModificationUnitConverter: ShopModificationUnitConverter
+    private val shopModificationUnitConverter: ShopModificationUnitConverter,
+    private val additionalInfoModificationConverter: AdditionalInfoModificationConverter,
 ) : DarkApiConverter<ThriftModification, SwagPartyModification> {
 
     override fun convertToThrift(value: SwagPartyModification): ThriftModification {
@@ -40,6 +43,10 @@ class PartyModificationConverter(
                 thriftPartyModification.shopModification =
                     shopModificationUnitConverter.convertToThrift(swagShopModificationUnit)
             }
+            SwagPartyModificationType.PartyModificationTypeEnum.ADDITIONALINFOMODIFICATIONUNIT -> {
+                val modificationUnit = swagPartyModificationType as AdditionalInfoModificationUnit
+                additionalInfoModificationConverter.convertToThrift(modificationUnit)
+            }
             else -> throw IllegalArgumentException("Unknown claim management party modification type: $value")
         }
         return ThriftModification().apply { partyModification = thriftPartyModification }
@@ -54,6 +61,8 @@ class PartyModificationConverter(
                 contractorModificationUnitConverter.convertToSwag(thriftPartyModification.contractorModification)
             thriftPartyModification.isSetShopModification ->
                 shopModificationUnitConverter.convertToSwag(thriftPartyModification.shopModification)
+            thriftPartyModification.isSetAdditionalInfoModification ->
+                additionalInfoModificationConverter.convertToSwag(thriftPartyModification.additionalInfoModification)
             else -> throw IllegalArgumentException("Unknown party modification type!")
         }
         return SwagPartyModification().apply {
