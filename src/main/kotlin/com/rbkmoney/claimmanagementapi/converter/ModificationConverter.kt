@@ -4,7 +4,10 @@ import com.rbkmoney.claimmanagementapi.converter.claim.ClaimModificationConverte
 import com.rbkmoney.claimmanagementapi.converter.identity.IdentityModificationUnitConverter
 import com.rbkmoney.claimmanagementapi.converter.party.PartyModificationConverter
 import com.rbkmoney.claimmanagementapi.converter.wallet.WalletModificationUnitConverter
-import dev.vality.swag.claim_management.model.*
+import dev.vality.swag.claim_management.model.ClaimModification
+import dev.vality.swag.claim_management.model.IdentityModificationUnit
+import dev.vality.swag.claim_management.model.PartyModification
+import dev.vality.swag.claim_management.model.WalletModificationUnit
 import org.springframework.stereotype.Component
 import dev.vality.damsel.claim_management.Modification as ThriftModification
 import dev.vality.swag.claim_management.model.Modification as SwagModification

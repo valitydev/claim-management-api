@@ -125,7 +125,7 @@ class ShopModificationUnitConverter(
             thriftShopModification.isSetCashRegisterModificationUnit -> {
                 // todo
             }
-            else -> throw IllegalArgumentException("Unknown party modification type!")
+            else -> throw IllegalArgumentException("Unknown party modification type: $thriftShopModification!")
         }
         return swagShopModificationUnit
     }

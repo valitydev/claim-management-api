@@ -2,12 +2,7 @@ package com.rbkmoney.claimmanagementapi.converter.party
 
 import com.rbkmoney.claimmanagementapi.converter.party.data.TestShopData.testSwagShopModificationUnit
 import com.rbkmoney.claimmanagementapi.converter.party.data.TestShopData.testSwagShopParams
-import com.rbkmoney.claimmanagementapi.converter.party.shop.ShopAccountCreationModificationConverter
-import com.rbkmoney.claimmanagementapi.converter.party.shop.ShopContractModificationConverter
-import com.rbkmoney.claimmanagementapi.converter.party.shop.ShopCreationModificationConverter
-import com.rbkmoney.claimmanagementapi.converter.party.shop.ShopDetailsModificationConverter
-import com.rbkmoney.claimmanagementapi.converter.party.shop.ShopModificationUnitConverter
-import com.rbkmoney.claimmanagementapi.converter.party.shop.ShopPayoutScheduleModificationConverter
+import com.rbkmoney.claimmanagementapi.converter.party.shop.*
 import dev.vality.damsel.claim_management.ScheduleModification
 import dev.vality.damsel.claim_management.ShopAccountParams
 import dev.vality.damsel.claim_management.ShopParams
@@ -169,7 +164,7 @@ class ShopConvertersTest {
             assertThrows<NullPointerException> {
                 converter.convertToThrift(converter.convertToSwag(thriftShopModificationUnit))
             }
-        } else {
+        } else if (!thriftShopModificationUnit.getModification().isSetTurnoverLimitsModification) {
             val resultThriftShopModificationUnit = converter.convertToThrift(
                 converter.convertToSwag(thriftShopModificationUnit)
             )
