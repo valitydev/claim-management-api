@@ -1,5 +1,6 @@
 package com.rbkmoney.claimmanagementapi.converter.party
 
+import com.rbkmoney.claimmanagementapi.converter.party.data.TestShopData.testSwagShopModificationUnit
 import com.rbkmoney.claimmanagementapi.converter.party.data.TestShopData.testSwagShopParams
 import com.rbkmoney.claimmanagementapi.converter.party.shop.*
 import dev.vality.damsel.claim_management.ScheduleModification
