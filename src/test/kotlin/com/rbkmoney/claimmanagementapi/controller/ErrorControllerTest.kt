@@ -6,21 +6,11 @@ import com.rbkmoney.claimmanagementapi.security.BouncerAccessService
 import com.rbkmoney.claimmanagementapi.service.ClaimManagementService
 import com.rbkmoney.claimmanagementapi.service.ClaimManagementServiceTest
 import com.rbkmoney.claimmanagementapi.service.PartyManagementService
-import dev.vality.damsel.claim_management.ChangesetConflict
-import dev.vality.damsel.claim_management.ClaimNotFound
-import dev.vality.damsel.claim_management.InvalidChangeset
-import dev.vality.damsel.claim_management.InvalidClaimRevision
-import dev.vality.damsel.claim_management.InvalidClaimStatus
+import dev.vality.damsel.claim_management.*
 import org.apache.thrift.TException
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.mockito.kotlin.any
-import org.mockito.kotlin.anyOrNull
-import org.mockito.kotlin.doAnswer
-import org.mockito.kotlin.doNothing
-import org.mockito.kotlin.eq
-import org.mockito.kotlin.reset
-import org.mockito.kotlin.whenever
+import org.mockito.kotlin.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
@@ -30,7 +20,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import java.time.Instant
 import java.time.temporal.ChronoUnit
-import java.util.UUID
+import java.util.*
 
 class ErrorControllerTest : AbstractKeycloakOpenIdAsWiremockConfig() {
 

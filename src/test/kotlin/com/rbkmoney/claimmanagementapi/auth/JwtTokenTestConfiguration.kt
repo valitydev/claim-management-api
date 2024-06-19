@@ -9,8 +9,7 @@ import java.security.KeyFactory
 import java.security.KeyPair
 import java.security.KeyPairGenerator
 import java.security.spec.X509EncodedKeySpec
-import java.util.Base64
-import java.util.Properties
+import java.util.*
 
 @Configuration
 class JwtTokenTestConfiguration {

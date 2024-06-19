@@ -1,13 +1,6 @@
 package com.rbkmoney.claimmanagementapi.service
 
-import dev.vality.damsel.claim_management.Claim
-import dev.vality.damsel.claim_management.ClaimAccepted
-import dev.vality.damsel.claim_management.ClaimManagementSrv
-import dev.vality.damsel.claim_management.ClaimSearchResponse
-import dev.vality.damsel.claim_management.ClaimStatus
-import dev.vality.damsel.claim_management.DocumentCreated
-import dev.vality.damsel.claim_management.InternalUser
-import dev.vality.damsel.claim_management.UserType
+import dev.vality.damsel.claim_management.*
 import dev.vality.damsel.msgpack.Value
 import dev.vality.swag.claim_management.model.ClaimChangeset
 import dev.vality.swag.claim_management.model.ClaimModification

@@ -1,12 +1,6 @@
 package com.rbkmoney.claimmanagementapi.converter.party
 
-import com.rbkmoney.claimmanagementapi.converter.party.contractor.ClaimContractorConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contractor.ClaimLegalEntityConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contractor.ContractorIdentificationLevelConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contractor.ContractorModificationUnitConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contractor.InternationalLegalEntityConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contractor.PrivateEntityConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contractor.RussianLegalEntityConverter
+import com.rbkmoney.claimmanagementapi.converter.party.contractor.*
 import dev.vality.damsel.domain.ContractorIdentificationLevel
 import dev.vality.damsel.domain.CountryCode
 import dev.vality.geck.serializer.kit.mock.MockMode
