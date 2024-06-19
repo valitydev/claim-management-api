@@ -221,7 +221,8 @@ class ContractConvertersTest {
         if ((thriftPayoutToolModificationUnit.getModification().isSetCreation
                     && !thriftPayoutToolModificationUnit.getModification().creation.toolInfo.isSetDummyAccount)
             || (thriftPayoutToolModificationUnit.getModification().isSetInfoModification
-            && !thriftPayoutToolModificationUnit.getModification().infoModification.isSetDummyAccount)) {
+                    && !thriftPayoutToolModificationUnit.getModification().infoModification.isSetDummyAccount)
+        ) {
             val resultPayoutToolModificationUnit = converter.convertToThrift(
                 converter.convertToSwag(thriftPayoutToolModificationUnit)
             )
