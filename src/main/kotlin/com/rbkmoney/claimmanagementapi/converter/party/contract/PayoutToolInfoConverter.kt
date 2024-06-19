@@ -26,19 +26,23 @@ class PayoutToolInfoConverter(
                 thriftPayoutToolInfo.russianBankAccount =
                     claimRussianBankAccountConverter.convertToThrift(swagRussianBankAccount)
             }
+
             SwagPayoutToolInfo.PayoutToolTypeEnum.INTERNATIONALBANKACCOUNT -> {
                 val swagInternationalBankAccount = value as SwagInternationalBankAccount
                 val internationalBankAccount: InternationalBankAccount =
                     internationalBankAccountConverter.convertToThrift(swagInternationalBankAccount)
                 thriftPayoutToolInfo.internationalBankAccount = internationalBankAccount
             }
+
             SwagPayoutToolInfo.PayoutToolTypeEnum.WALLETINFO -> {
                 val swagWalletInfo = value as SwagWalletInfo
                 thriftPayoutToolInfo.walletInfo = ThriftWalletInfo().setWalletId(swagWalletInfo.walletID)
             }
+
             SwagPayoutToolInfo.PayoutToolTypeEnum.PAYMENTINSTITUTIONACCOUNT -> {
                 thriftPayoutToolInfo.paymentInstitutionAccount = PaymentInstitutionAccount()
             }
+
             else -> throw IllegalArgumentException("Unknown payout tool type: ${value.payoutToolType}")
         }
         return thriftPayoutToolInfo
@@ -50,22 +54,26 @@ class PayoutToolInfoConverter(
                 val russianBankAccount = value.russianBankAccount
                 claimRussianBankAccountConverter.convertToSwag(russianBankAccount)
             }
+
             value.isSetInternationalBankAccount -> {
                 val internationalBankAccount = value.internationalBankAccount
                 internationalBankAccountConverter.convertToSwag(internationalBankAccount)
             }
+
             value.isSetWalletInfo -> {
                 SwagWalletInfo().apply {
                     payoutToolType = SwagPayoutToolInfo.PayoutToolTypeEnum.WALLETINFO
                     walletID = value.walletInfo.walletId
                 }
             }
+
             value.isSetPaymentInstitutionAccount -> {
                 SwagPaymentInstitutionAccount().apply {
                     payoutToolType = SwagPayoutToolInfo.PayoutToolTypeEnum.PAYMENTINSTITUTIONACCOUNT
                 }
             }
-            else -> throw IllegalArgumentException("Unknown payout tool type!")
+
+            else -> throw IllegalArgumentException("Unknown payout tool type: $value!")
         }
     }
 }

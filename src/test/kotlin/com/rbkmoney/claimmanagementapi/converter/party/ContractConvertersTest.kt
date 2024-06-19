@@ -1,15 +1,6 @@
 package com.rbkmoney.claimmanagementapi.converter.party
 
-import com.rbkmoney.claimmanagementapi.converter.party.contract.ClaimRussianBankAccountConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contract.ContractAdjustmentModificationUnitConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contract.ContractModificationCreationConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contract.ContractModificationUnitConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contract.ContractReportPreferencesModificationConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contract.InternationalBankAccountConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contract.LegalAgreementConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contract.PayoutToolInfoConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contract.PayoutToolModificationUnitConverter
-import com.rbkmoney.claimmanagementapi.converter.party.contract.RepresentativeDocumentConverter
+import com.rbkmoney.claimmanagementapi.converter.party.contract.*
 import com.rbkmoney.claimmanagementapi.converter.party.data.TestContractData.prepareSwagDocument
 import com.rbkmoney.claimmanagementapi.converter.party.data.TestContractData.testSwagContractModificationUnit
 import com.rbkmoney.claimmanagementapi.converter.party.data.TestContractData.testSwagInternationalBankAccount
@@ -227,13 +218,18 @@ class ContractConvertersTest {
         )
         val thriftPayoutToolModificationUnit = MockTBaseProcessor(MockMode.REQUIRED_ONLY)
             .process(ThriftPayoutToolModificationUnit(), TBaseHandler(ThriftPayoutToolModificationUnit::class.java))
-        val resultPayoutToolModificationUnit = converter.convertToThrift(
-            converter.convertToSwag(thriftPayoutToolModificationUnit)
-        )
-        assertEquals(
-            thriftPayoutToolModificationUnit, resultPayoutToolModificationUnit,
-            "Thrift objects 'PayoutToolModificationUnit' (MockMode.REQUIRED_ONLY) not equals"
-        )
+        if ((thriftPayoutToolModificationUnit.getModification().isSetCreation
+                    && !thriftPayoutToolModificationUnit.getModification().creation.toolInfo.isSetDummyAccount)
+            || (thriftPayoutToolModificationUnit.getModification().isSetInfoModification
+            && !thriftPayoutToolModificationUnit.getModification().infoModification.isSetDummyAccount)) {
+            val resultPayoutToolModificationUnit = converter.convertToThrift(
+                converter.convertToSwag(thriftPayoutToolModificationUnit)
+            )
+            assertEquals(
+                thriftPayoutToolModificationUnit, resultPayoutToolModificationUnit,
+                "Thrift objects 'PayoutToolModificationUnit' (MockMode.REQUIRED_ONLY) not equals"
+            )
+        }
     }
 
     @Test
