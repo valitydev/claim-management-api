@@ -218,10 +218,8 @@ class ContractConvertersTest {
         )
         val thriftPayoutToolModificationUnit = MockTBaseProcessor(MockMode.REQUIRED_ONLY)
             .process(ThriftPayoutToolModificationUnit(), TBaseHandler(ThriftPayoutToolModificationUnit::class.java))
-        if ((thriftPayoutToolModificationUnit.getModification().isSetCreation
-                    && !thriftPayoutToolModificationUnit.getModification().creation.toolInfo.isSetDummyAccount)
-            || (thriftPayoutToolModificationUnit.getModification().isSetInfoModification
-                    && !thriftPayoutToolModificationUnit.getModification().infoModification.isSetDummyAccount)
+        if ((thriftPayoutToolModificationUnit.getModification().isSetCreation && !thriftPayoutToolModificationUnit.getModification().creation.toolInfo.isSetDummyAccount)
+            || (thriftPayoutToolModificationUnit.getModification().isSetInfoModification && !thriftPayoutToolModificationUnit.getModification().infoModification.isSetDummyAccount)
         ) {
             val resultPayoutToolModificationUnit = converter.convertToThrift(
                 converter.convertToSwag(thriftPayoutToolModificationUnit)
