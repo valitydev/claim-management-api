@@ -35,7 +35,7 @@
         <keycloak-spring-security.version>14.0.0</keycloak-spring-security.version>
         <bouncycastle-jdk15on.version>1.68</bouncycastle-jdk15on.version>
         <spring-cloud-contract-wiremock.version>2.2.4.RELEASE</spring-cloud-contract-wiremock.version>
-        <spring-security.version>5.4.7</spring-security.version>
+        <spring-security.version>5.4.11</spring-security.version>
         <jjwt.version>0.9.1</jjwt.version>
         <random-beans.version>3.6.0</random-beans.version>
     </properties>
